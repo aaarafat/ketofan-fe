@@ -1,0 +1,22 @@
+/* Abstract */
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+/* Base */
+@import "base/fonts";
+@import "base/typography";
+@import "base/global";
+
+/* Layout */
+
+/* Components */
+
+/* Views */
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #ce1616;
+  margin-top: 60px;
+}
