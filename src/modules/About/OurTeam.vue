@@ -1,5 +1,5 @@
 <template>
-  <h2 class="">Life At Ketofan</h2>
+  <h2 class="">Our Team</h2>
 </template>
 
 <script>

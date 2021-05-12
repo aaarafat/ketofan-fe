@@ -2,7 +2,9 @@
   <h1>About</h1>
   <div class="about">
     <AboutSideBar />
-    <div class="content"></div>
+    <div class="content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
