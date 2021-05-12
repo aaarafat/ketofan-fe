@@ -1,6 +1,15 @@
 // === NEUTRALS ===
-$N000: #ffffff;
+$N0: rgb(255, 255, 255); //WHITE
+$N1: rgb(230, 230, 230); //BORDERS
+$N2: rgb(226, 230, 234); //BG
+$N3: rgb(204, 204, 204); //BLOCKED
+$N4: rgb(102, 102, 102); //FONT
+// === PRIMARY ===
+$B1: rgb(0, 112, 205); //MAIN BLUE
+$B2: rgb(59, 146, 223); //LIGHT BLUE
+$B3: rgba(59, 146, 223, 0.5); //BLOCKED BLUE
 
-// === BLUES ===
-// === REDS ===
+$P2: rgb(239, 15, 15); // MAIN RED
 // === SECONDARY ===
+$S1: rgb(106, 207, 128); //SUCCESS
+$S2: rgb(255, 182, 36); //SPONSER & RATES
