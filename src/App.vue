@@ -1,6 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <h1>Ketofan</h1>
+  <router-view></router-view>
 </template>
 
 <script setup></script>
