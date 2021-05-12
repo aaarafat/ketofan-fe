@@ -1,8 +1,0 @@
-@mixin button($bg-color, $color, $padding-x, $padding-y) {
-  border-radius: 5px;
-  background-color: $bg-color;
-  color: $color;
-  padding: $padding-y $padding-x;
-  width: fit-content !important;
-  border: none;
-}

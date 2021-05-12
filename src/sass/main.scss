@@ -4,11 +4,13 @@
 
 /* Base */
 @import "base/fonts";
+@import "base/reset";
 @import "base/typography";
 @import "base/global";
 
 /* Layout */
-
+@import "layouts/navigation";
+@import "layouts/footer";
 /* Components */
 
 /* Views */
