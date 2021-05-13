@@ -1,7 +1,8 @@
 <template>
-  <h1>About</h1>
   <div class="about">
-    <AboutSideBar />
+    <div class="side">
+      <AboutSideBar active-route />
+    </div>
     <div class="content">
       <router-view></router-view>
     </div>
