@@ -1,0 +1,43 @@
+.about {
+  margin: 2em 0;
+  display: flex;
+  .side {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    .about-sidebar {
+      background-color: $N1;
+      width: 90%;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      a {
+        color: $N4;
+
+        text-decoration: none;
+        .option {
+          background-color: $N0;
+          padding-left: 1em;
+          line-height: 35px;
+          display: flex;
+          align-items: center;
+          span {
+            margin-right: 0.5em;
+          }
+          &:hover {
+            background-color: $N1;
+          }
+        }
+        .active {
+          background-color: $B1;
+          color: $N0;
+          &:hover {
+            background-color: $B1;
+          }
+        }
+      }
+    }
+  }
+}
