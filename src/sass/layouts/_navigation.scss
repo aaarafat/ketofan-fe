@@ -1,5 +1,115 @@
-.navbar {
-  width: 100%;
+
+nav{
+  background: $B1;
   height: 60px;
-  background-color: $B1;
+  width: 100%;
+  ul{
+    float: right;
+    margin-right: 20px;
+    hr{
+      display: none;
+    }
+    span{
+      color: white;
+      line-height: 31px;
+      margin: 0px 5.5px;
+    }
+    li{
+      display: inline-block;
+      line-height: 60px;
+      margin: 0.5px 2px 0px;
+      color: white;
+      font-size: 13px;
+      padding: 7px 5px;
+      a{
+        color: white;
+        font-size: 13px;
+        text-decoration: none;
+      
+      }
+      a:hover{
+        text-decoration: underline;
+        transition: .5s;
+      }
+    }
+  }
+  .checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 60px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+  }
+  #navCheck, #navHome{
+    display: none;
+  }
+  label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 60px;
+    padding: 0 5%;
+    font-weight: bold;
+  }
+  
+}
+
+
+
+@media (max-width: $BP0){
+  nav{
+    color: white;
+    .checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: clamp(100px, 30%, 300px);
+      height: 100%;
+      background: $B1;
+      top: 60px;
+      right: -105%;
+      text-align: center;
+      transition: all .6s;
+      hr{
+        display: block;
+        opacity: 0.5;
+      }
+      span{
+        display: none;
+      }
+
+      li{
+        display: block;
+        margin: 20px 30px;
+        line-height: 30px;
+        font-size: 16px;
+        text-align: left;
+
+        a{
+          font-size: 16px;
+          border-bottom: 5px;
+          border-color: white;
+        }
+      }
+    }
+    label.logo{
+      font-size: 30px;
+      
+    }
+    #navEgypt, #navEgyptFlag{
+      display: none;
+    }
+
+    #navHome{
+      display:block;
+    }
+  }
+
+  #navCheck:checked ~ ul{
+    right: -3%;
+    z-index: 1000;
+  }
+  
 }

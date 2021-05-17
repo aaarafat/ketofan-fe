@@ -39,4 +39,7 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+//to-do
+//rerouting to login using token
+</script>

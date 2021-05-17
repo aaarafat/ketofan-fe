@@ -109,6 +109,16 @@ const routes = [
   //   name: "doctors-privacy-policy",
   //   component: DoctorsPrivacyPolicy,
   // },
+  // {
+    //   path: "/login",
+    //   name: "login",
+    //   component: Login,
+    // },
+    // {
+    //   path: "/signup",
+    //   name: "signup",
+    //   component: Signup,
+    // },
 ];
 
 const router = createRouter({
