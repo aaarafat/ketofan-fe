@@ -1,0 +1,139 @@
+.login{
+    width: 370px;
+    height: 90%;
+    margin: 30px auto;
+    font-size: 16px;
+    color: $N4; 
+    background-color: white;
+    border-radius: 11px;
+    .loginTitle{
+        color: white;
+        background-color: $B1;
+        text-align: center;
+        padding: 4px 0px;
+        height: 24px;
+        border-radius: 11px 11px 0px 0px;
+    }
+   
+
+    .formBody{
+        display: block;
+        margin: auto;
+        width: 100%;
+        padding: 20px 45px;
+         
+        label{
+            display: block;
+            margin: 17px 0px 8px;
+        }
+
+        .formField{
+            margin-bottom: 15px;
+            height: 60px;
+            input{
+                display:block;
+                padding: 6px 12px;
+            }
+        }
+        .loginInput{
+            width: 100%;
+            border-width: 1px;
+            border-radius: 5px; 
+            border-color: $N5;     
+            outline: none;      
+        }
+        .loginButton{
+            background-color: $P2; 
+            cursor: pointer;
+            margin-top: 3px;
+            justify-content: center;
+            padding: 8px 10px;
+            font-weight: 700;
+            border: none;
+            outline: none;
+            margin-bottom: 7px;
+            color: white;
+        }
+        
+    }
+    
+}
+#conWFacebook{
+    background-color: rgb(66, 103, 178); 
+    position: relative;
+    
+    #facebookIcon{
+        position: absolute;
+        left: 7px;
+        top: 2px;
+        bottom: 3px;
+        width: 26px;
+        line-height: 28px;
+        font-size: 20px;
+        text-align: left;
+        border-right: 2px solid rgba(255, 255, 255, 0.2);
+        
+    }
+    
+}
+.formSeparator{
+    #loginOr{
+        display: flex;
+        position: relative;
+        border-radius: 50%;
+        border: solid;
+        border-color: $N5;
+        border-width: 2px;
+        padding: 5px 6px;
+        margin: auto;
+        color: rgb(173, 173, 173);
+        bottom: 27px;
+        right: 5px;
+        background-color: white;
+        outline: none;
+        width: 30px;
+        height: 30px;
+        text-align: left;
+        font-size: 14px;
+
+    }
+    hr{
+        width: 100%;
+      
+        color: $N5;
+        border: 1px solid;
+    }
+}
+
+.WrongAuthPage{
+    margin: auto;
+    text-align: center;
+    padding: 15px 0px 30px;
+    span{
+        font-size: 14px;
+        a{
+            font-size: 12px;
+            font-weight: 500;
+            color: $B1;
+            text-decoration: none;
+            margin-left: 12px;
+            padding-bottom: 2px;
+            border-bottom: 2px solid red;
+
+        }
+        a:visited{
+            color: $B1;
+        }
+    }
+
+}
+
+
+
+@media (max-width: $BP0) { 
+    .login{
+        width: 85%;
+        height: 95%;
+        margin: 20px auto;
+    }
+}

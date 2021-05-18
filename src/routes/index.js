@@ -6,7 +6,8 @@ import HeaderLayout from "../layouts/HeaderLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
-
+import Login from '../views/Login.vue'
+import Signup from '../views/Signup.vue'
 const routes = [
   {
     path: "",
@@ -17,6 +18,16 @@ const routes = [
         path: "",
         name: "Home",
         component: Home,
+      },
+      {
+        path: "/login",
+        name: "login",
+        component: Login,
+      },
+      {
+        path: "/signup",
+        name: "signup",
+        component: Signup,
       },
     ],
   },
@@ -49,11 +60,7 @@ const routes = [
       },
     ],
   },
-  {
-    path: "/login",
-    name: "login",
-    component: Login
-  }
+  
 ];
 
 const router = createRouter({
