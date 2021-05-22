@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import ContactUs from "../views/ContactUs.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
@@ -47,6 +48,11 @@ const routes = [
           },
         ],
       },
+      {
+        path: "/contact-us",
+        name: "contact-us",
+        component: ContactUs
+      }
     ],
   },
 ];
