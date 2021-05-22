@@ -106,16 +106,18 @@
           text-align: right;
         }
         li{
-          .icons{
-            margin-right: 20px;
-            width:20px;
-          }
           display: flex;
-          margin: 20px 0px;
+          margin: 15px 0px;
           line-height: 30px;
           font-size: 16px;
           text-align: left;
           width:100%;
+          .icons{
+            margin-right: 20px;
+            width:20px;
+            margin-left: 10px;
+            
+          }
           .icons{
             display: inline-block;
           }
