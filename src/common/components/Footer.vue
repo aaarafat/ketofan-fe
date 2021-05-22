@@ -3,7 +3,6 @@
     <div class="footerSub">
 
       <div class="footerElement">
-        <!-- صورة عرفات يعملها -->
         <p id="footerTitle">Ketofan</p>
         <router-link to="about"><div>About Us</div></router-link>
         <router-link to="our-team">Our Team</router-link>
