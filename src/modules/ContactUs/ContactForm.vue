@@ -35,8 +35,7 @@
           type="text"
           name="comments"
           value=""
-          placeholder=""
-          textarea="true"
+          input="textarea"
         ></FormGroup>
         <div class="wrapper">
           <button class="submit" type="submit">Send</button>
@@ -60,15 +59,11 @@ export default {
       alert(JSON.stringify(values, null, 2));
     }
 
-    function onCountrySelect({ name, iso2, dialCode }) {
-      console.log(name, iso2, dialCode);
-    }
-
     const schema = Yup.object().shape({
       name: Yup.string().required().label("Name"),
       email: Yup.string().email().required().label("Email Address"),
       mobile: Yup.string()
-        .matches(/^(\+2)?01[0125]\d{8}$/, "Mobile Number is invalid")
+        .matches(/^((\+2)|2)?01[0125]\d{8}$/, "Mobile Number is invalid")
         .required()
         .label("Mobile Number"),
       comments: Yup.string().min(20).required().label("Comment"),
@@ -76,7 +71,6 @@ export default {
 
     return {
       onSubmit,
-      onCountrySelect,
       schema,
     };
   },
