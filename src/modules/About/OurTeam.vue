@@ -1,5 +1,36 @@
 <template>
   <h2 class="title">Our Team</h2>
+  <div class="our-team">
+    <div class="team-member">
+      <div class="photo"><img src="../../assets/img/about-us/pablo.jpg" /></div>
+
+      <div class="content">
+        <h2 class="title">Marwan Pablo : CEO & Co-founder</h2>
+        <p class="paragraph">
+          Pablo introduced Ketofan in 2019 as a digital platform which today has
+          redefined the healthcare industry in FREE. The revolutionary
+          accessibility bridge between patients and doctors is creating
+          unprecedentedly swift and effective healthcare experiences. Marwan
+          built Vezeeta from an idea to a company of 200 employees, 60,000
+          monthly bookings, 6000 subscribed doctors and 1 million users across
+          MENA with offices in Cairo, Jordan, Lebanon, Morocco and UAE. Marwan’s
+          unique entrepreneurial vision was the cornerstone for raising US$ 10.5
+          Mn in 4 years turning Vezeeta into the go-to portal for
+          healthcare-related matters across MENA. Marwan is an all-time
+          entrepreneur; he established his first company directly after
+          graduation. He successfully grew it into a well-established FMCG
+          importer and distributor. Later he made an exit and moved into the
+          corporate world learning to build bigger companies and industry
+          disrupters. Prior to Vezeeta, Marwan was a Management Consultant at
+          McKinsey & Company where he provided expertise for Healthcare and
+          FMCGs across public and private sectors in Europe and MENA. He also
+          led the strategy creation of AstraZeneca in MENA. He holds an MBA from
+          the American University of Cairo, a Bachelor of Pharmacy from Ain
+          Shams University. Marwan is also an endeavor entrepreneur.
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
