@@ -59,6 +59,10 @@ export default {
       return this.selected === "life-at-ketofan";
     },
   },
+  mounted() {
+    console.log(this.$router.currentRoute._rawValue.name);
+    this.selected = this.$router.currentRoute._rawValue.name;
+  },
 };
 </script>
 
