@@ -1,7 +1,7 @@
 <template>
   <div class="form-group">
     <label :for="name">{{ label }}<sup v-if="required">*</sup></label>
-    <div class="input-wrapper" :class="{ error: !!errorMessage }">
+    <div class="input-wrapper">
       <component
         :is="input"
         :required="required"
@@ -10,6 +10,7 @@
         :name="name"
         :value="inputValue"
         class="form-control"
+        :class="{ error: !!errorMessage }"
         :placeholder="placeholder"
         :rows="rows"
         @input="handleChange"

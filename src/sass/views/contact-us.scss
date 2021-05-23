@@ -77,7 +77,6 @@
         padding: 6px 12px;
         margin: 0px;
         font-size: 14px;
-
         &::placeholder {
           color: #999fb2;
         }
@@ -139,7 +138,9 @@
         label {
           width: 100%;
         }
-        .input-wrapper, input, textarea {
+        .input-wrapper,
+        input,
+        textarea {
           width: 100%;
         }
       }
