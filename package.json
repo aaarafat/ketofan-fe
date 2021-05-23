@@ -9,9 +9,10 @@
   },
   "dependencies": {
     "vee-validate": "^4.4.0-alpha.2",
+    "yup": "^0.29.3",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
-    "yup": "^0.29.3"
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.2",
