@@ -30,6 +30,29 @@
         </p>
       </div>
     </div>
+    <div class="team-member">
+      <div class="photo">
+        <img src="../../assets/img/about-us/veryh.jpeg" />
+      </div>
+
+      <div class="content">
+        <h2 class="title">Muhammad Hesham : Director of Product Management</h2>
+        <p class="paragraph">
+          Muhammad Hesham joined Ketofan in 2016 as Director of Product
+          Management and since then his team has managed to re-launch great
+          products and features that precisely fit Vezeeta markets. Muhammad has
+          8 years of experience in the Technology and Telecom industries. His
+          distinction lies in his ability to identify growth opportunities and
+          winning strategies and he has a strong track record of generating
+          game-changing ideas with successful implementation. Prior to Vezeeta,
+          Muhammad was Small and Medium Businesses Marketing Manager at Vodafone
+          and Research Consultant at the Technology Practice at Nielsen. He
+          holds a Masters of International Business from Hult University, San
+          Francisco and a Bachelor in Pharmacy and Biotechnology from the German
+          University in Cairo.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 

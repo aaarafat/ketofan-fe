@@ -64,7 +64,10 @@
   .our-team {
     .team-member {
       display: flex;
+      margin-bottom: 1em;
       .photo {
+        height: 300px;
+        overflow: hidden;
         img {
           width: 200px;
         }
