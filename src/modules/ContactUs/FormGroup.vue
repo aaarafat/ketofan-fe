@@ -21,66 +21,56 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { useField } from "vee-validate";
+import { defineProps } from "vue";
 
-export default {
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-    type: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    value: {
-      type: String,
-      required: true,
-    },
-    placeholder: {
-      type: String,
-      default: "",
-    },
-    required: {
-      type: [Boolean, String],
-      default: false,
-    },
-    input: {
-      type: String,
-      default: "input",
-    },
-    rows: {
-      type: Number,
-      default: 3,
-    },
+const props = defineProps({
+  label: {
+    type: String,
+    required: true,
   },
-  setup(props) {
-    const {
-      value: inputValue,
-      errorMessage,
-      handleBlur,
-      handleChange,
-      meta,
-    } = useField(props.name, undefined, {
-      validateOnValueUpdate: false,
-      label: props.label,
-      initialValue: props.value,
-    });
+  type: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  value: {
+    type: String,
+    required: true,
+  },
+  placeholder: {
+    type: String,
+    default: "",
+  },
+  required: {
+    type: [Boolean, String],
+    default: false,
+  },
+  input: {
+    type: String,
+    default: "input",
+  },
+  rows: {
+    type: Number,
+    default: 3,
+  },
+});
 
-    return {
-      handleChange,
-      handleBlur,
-      errorMessage,
-      inputValue,
-      meta,
-    };
-  },
-};
+const {
+  value: inputValue,
+  errorMessage,
+  handleBlur,
+  handleChange,
+  meta,
+} = useField(props.name, undefined, {
+  validateOnValueUpdate: false,
+  label: props.label,
+  initialValue: props.value,
+});
 </script>
 
 <style></style>
