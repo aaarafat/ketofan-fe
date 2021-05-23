@@ -60,7 +60,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$router.currentRoute._rawValue.name);
     this.selected = this.$router.currentRoute._rawValue.name;
   },
 };

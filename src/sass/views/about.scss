@@ -17,6 +17,13 @@
       line-height: normal;
       margin-bottom: 1em;
     }
+    ul {
+      list-style: circle;
+      padding-left: 2em;
+      padding-top: 0.5em;
+      margin-bottom: 1em;
+      line-height: normal;
+    }
   }
 
   .side {
@@ -60,17 +67,16 @@
       }
     }
   }
-
-  .our-team {
-    .team-member {
-      display: flex;
-      margin-bottom: 1em;
-      .photo {
-        height: 300px;
-        overflow: hidden;
-        img {
-          width: 200px;
-        }
+  h4 {
+    line-height: normal;
+    margin-bottom: 1em;
+  }
+  .team-member {
+    display: flex;
+    margin-bottom: 1em;
+    .photo {
+      img {
+        width: 200px;
       }
     }
   }
@@ -96,7 +102,6 @@
         .photo {
           img {
             margin-right: 20px;
-            width: 150px;
             float: left;
           }
         }
