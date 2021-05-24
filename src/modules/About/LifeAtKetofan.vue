@@ -36,13 +36,12 @@
       <h4>Ahmed Walid : Lead Engineer</h4>
       <p class="paragraph">
         My journey in Ketofan – which started in 2013 – is truly a journey of a
-        lifetime.<br />I started out as an Accountant, then Lead Accountant,
-        then Accounting Manager, and now Finance Manager.<br />This fast sprint
-        in my career could have never happened elsewhere.<br />What I have
-        reached in 5 years would have taken me 12-15 years in any other
-        company.<br />If you show passion and eagerness to learn, management
-        invests time and effort in you to grow and groom you to get promoted
-        irrespective of your age.
+        lifetime.<br />I started out as an Intern, then SWE, then Project
+        Manager, and now Lead Engineer.<br />This fast sprint in my career could
+        have never happened elsewhere.<br />What I have reached in 5 years would
+        have taken me 12-15 years in any other company.<br />If you show passion
+        and eagerness to learn, management invests time and effort in you to
+        grow and groom you to get promoted irrespective of your age.
       </p>
     </div>
   </div>
