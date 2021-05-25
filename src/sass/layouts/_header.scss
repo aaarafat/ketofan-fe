@@ -2,4 +2,15 @@
   background-color: $N3;
   width: 100%;
   min-height: 200px;
+  max-height: 200px;
+  position: relative;
+  overflow: hidden;
+  .bg {
+    img {
+      position: absolute;
+      height: clamp(100%, calc(100% + (100vw * 0.1)), 180%);
+
+      right: calc(0px + (100vw * 0.1));
+    }
+  }
 }
