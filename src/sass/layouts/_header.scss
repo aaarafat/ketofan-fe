@@ -7,7 +7,8 @@
   .bg {
     img {
       position: absolute;
-      height: clamp(100%, calc(100% + (5vw)), 180%);
+      height: clamp(100%, calc(100% + (10vw)), 220%);
+      top: calc(0px - (1vw));
       right: calc(0px + (2vw));
       z-index: -1;
     }
