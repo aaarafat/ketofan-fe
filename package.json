@@ -2,12 +2,14 @@
   "name": "ketofan-fe",
   "version": "0.0.0",
   "scripts": {
+    "mock": "json-server --watch src/static/db.json --port 3004 | vite",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "start": "npm run dev"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
     "vuex": "^4.0.0"
