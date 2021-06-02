@@ -40,19 +40,77 @@
   .search-bar {
     margin-top: 0.5em;
     width: 100%;
-    background-color: white;
     height: 58px;
-    border-radius: 25px;
     box-shadow: $N3 0px 0px 10px;
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
+
+    gap: 2px;
 
     .search-tab {
-      .content {
-        display: flex;
-        align-items: center;
-        height: 100%;
+      width: 20%;
+      position: relative;
+      cursor: pointer;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .title {
+        font-size: clamp(8px, calc(6px + (0.4vw)), 16px);
+        padding-bottom: 0.5em;
+        display: list-item;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .button {
+        padding-left: 5%;
+        width: 85%;
+
+        .content {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          line-height: 24px;
+          font-size: clamp(12px, calc(8px + (0.5vw)), 22px);
+          color: $B1;
+          .icon {
+            margin-right: 0.25em;
+          }
+          .placeholder {
+            display: list-item;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+    .search-input {
+      input {
+        &:focus {
+          outline: none;
+        }
+        border: none;
+        line-height: 24px;
+        font-size: clamp(12px, calc(8px + (0.5vw)), 22px);
         color: $B1;
+        color: $B1;
+      }
+    }
+    .search-button {
+      width: 20%;
+      background-color: $P2;
+      color: $N0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 400;
+      font-size: 22px;
+      cursor: pointer;
+      .icon {
+        font-size: 36px;
+        transform: scaleX(-1);
+        padding-left: 0.5em;
       }
     }
   }
