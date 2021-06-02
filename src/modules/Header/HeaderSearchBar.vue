@@ -1,9 +1,15 @@
 <template>
-  <div class="search-bar"></div>
+  <div class="search-bar">
+    <HeaderSearchTab />
+    <HeaderSearchTab />
+    <HeaderSearchTab />
+    <HeaderSearchTab />
+    <div class="search-button"></div>
+  </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+import HeaderSearchTab from "./HeaderSearchTab.vue";
 </script>
 
 <style></style>

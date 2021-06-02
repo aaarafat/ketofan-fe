@@ -44,5 +44,16 @@
     height: 58px;
     border-radius: 25px;
     box-shadow: $N3 0px 0px 10px;
+    display: grid;
+    grid-auto-flow: column;
+
+    .search-tab {
+      .content {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: $B1;
+      }
+    }
   }
 }
