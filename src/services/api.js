@@ -22,25 +22,23 @@ class ReadOnlyApiService extends BaseApiService {
   constructor(resource) {
     super(resource);
   }
+
   async fetch(config = {}) {
-    axios
-      .get(this.getUrl(), config)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        this.handleErrors(err);
-      });
+    try {
+      const response = await axios.get(this.getUrl(), config);
+      return response.data;
+    } catch (err) {
+      this.handleErrors(err);
+    }
   }
+
   async get(id, config = {}) {
-    axios
-      .get(this.getUrl(id), config)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        this.handleErrors(err);
-      });
+    try {
+      const response = await axios.get(this.getUrl(id), config);
+      return response.data;
+    } catch (err) {
+      this.handleErrors(err);
+    }
   }
 }
 
@@ -49,35 +47,28 @@ class ModelApiService extends ReadOnlyApiService {
     super(resource);
   }
   async post(data = {}, config = {}) {
-    axios
-      .post(this.getUrl(), data, config)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        this.handleErrors(err);
-      });
+    try {
+      const response = await axios.post(this.getUrl(), data, config);
+      return response.data;
+    } catch (err) {
+      this.handleErrors(err);
+    }
   }
   async put(id, data = {}, config = {}) {
-    axios
-      .put(this.getUrl(id), data, config)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((err) => {
-        this.handleErrors(err);
-      });
+    try {
+      const response = await axios.put(this.getUrl(id), data, config);
+      return response.data;
+    } catch (err) {
+      this.handleErrors(err);
+    }
   }
   async delete(id, config = {}) {
-    axios
-      .delete(this.getUrl(id), config)
-      .then((response) => {
-        return true;
-      })
-      .catch((err) => {
-        this.handleErrors(err);
-      });
-    if (!id) throw Error("Id is not provided");
+    try {
+      const response = await axios.delete(this.getUrl(id), config);
+      return true;
+    } catch (err) {
+      this.handleErrors(err);
+    }
   }
 }
 
