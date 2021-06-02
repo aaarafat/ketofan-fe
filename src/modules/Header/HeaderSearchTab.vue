@@ -35,7 +35,6 @@ export default {
       this.expand = !this.expand;
     },
     onClickOutside(event) {
-      console.log("Clicked outside. Event: ", event);
       if (this.expand) this.expand = false;
     },
   },

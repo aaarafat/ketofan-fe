@@ -112,22 +112,23 @@
       }
     }
     .search-button {
+      position: relative;
       background-color: $P2;
       color: $N0;
       display: flex;
       justify-content: center;
       align-items: center;
       font-weight: 400;
-
       font-size: clamp(14px, calc(14px + (0.4vw)), 22px);
       cursor: pointer;
       padding: 0 10px;
-      .text {
-        margin-left: clamp(0.2em, calc(0.2em + (0.4vw)), 0.5em);
-      }
+
       .icon {
         font-size: clamp(18px, calc(22px + (0.4vw)), 36px);
         transform: scaleX(-1);
+      }
+      .text {
+        margin-left: clamp(0.2em, calc(0.2em + (0.4vw)), 0.5em);
       }
     }
   }
