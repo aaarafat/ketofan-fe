@@ -1,5 +1,9 @@
 <template>
-  <div class="search-tab" @click="toggleDropdown">
+  <div
+    class="search-tab"
+    @click="toggleDropdown"
+    v-click-outside="onClickOutside"
+  >
     <div class="button">
       <div class="title">{{ tab.title }}</div>
       <div class="content">
@@ -15,7 +19,11 @@
 </template>
 
 <script>
+import vClickOutside from "click-outside-vue3";
+
 export default {
+  directives: { clickOutside: vClickOutside.directive },
+
   data() {
     return {
       expand: false,
@@ -25,6 +33,10 @@ export default {
   methods: {
     toggleDropdown() {
       this.expand = !this.expand;
+    },
+    onClickOutside(event) {
+      console.log("Clicked outside. Event: ", event);
+      if (this.expand) this.expand = false;
     },
   },
   mounted() {},
