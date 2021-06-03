@@ -17,6 +17,52 @@
           </div>
         </div>
       </div>
+
+      <div class="details-wrapper">
+        <div class="details">
+          <div class="detail">
+            <span class="material-icons"> volunteer_activism </span>
+            <div>
+              <h2>All your healthcare needs</h2>
+              <span>
+                Search and book a clinic visit, home visit, or a
+                teleconsultation. Order your medicine and book a service or
+                operation.
+              </span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="material-icons"> how_to_reg </span>
+            <div>
+              <h2>Verified patient reviews</h2>
+              <span>
+                Doctor ratings are from patients who booked and visited the
+                doctor through Vezeeta.
+              </span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="material-icons"> event_available </span>
+            <div>
+              <h2>Your booking is confirmed</h2>
+              <span>
+                Your booking is automatically confirmed, as the doctor specifies
+                his working hours and is notified of the booking details.
+              </span>
+            </div>
+          </div>
+          <div class="detail">
+            <span class="material-icons"> gpp_good </span>
+            <div>
+              <h2>Book for free, and pay in the clinic</h2>
+              <span>
+                The consultation fees stated on Vezeeta are the actual doctor's
+                fees with no extra charges.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +71,7 @@
 import { computed, inject, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import HomeHeader from "../modules/Home/HomeHeader.vue";
+import ChooseTopSpecialties from "../modules/Home/ChooseTopSpecialties.vue";
 
 const api = inject("api");
 const store = useStore();
