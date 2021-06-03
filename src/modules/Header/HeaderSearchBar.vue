@@ -1,6 +1,6 @@
 <template>
   <div class="search-bar">
-    <div v-for="(tab, i) in tabs" class="" :key="tab.title">
+    <div v-for="(tab, i) in tabs" :key="tab.title" class="tab-wrapper">
       <HeaderSearchTab
         :tab="tab"
         :data="data[i]"

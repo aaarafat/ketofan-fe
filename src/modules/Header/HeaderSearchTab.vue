@@ -12,7 +12,7 @@
         <span class="placeholder">{{ tab.placeholder }}</span>
       </div>
     </div>
-    <div>
+    <div class="down-icon">
       <span class="material-icons"> arrow_drop_down </span>
     </div>
     <div v-if="expand" class="dropdown">
