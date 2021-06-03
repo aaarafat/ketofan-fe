@@ -3,7 +3,7 @@
     <div v-for="(tab, i) in tabs" class="" :key="tab.title">
       <HeaderSearchTab
         :tab="tab"
-        :data="data[0]"
+        :data="data[i]"
         :index="i"
         @select-element="handleSelect"
       />
@@ -58,6 +58,12 @@ const data = ref([{}, {}, {}, {}]);
 onMounted(() => {
   store.dispatch("fetchSpecialties").then(() => {
     data.value[0] = store.getters.allSpecialties;
+  });
+  store.dispatch("fetchCities").then(() => {
+    data.value[1] = store.getters.allCities;
+  });
+  store.dispatch("fetchInsurances").then(() => {
+    data.value[2] = store.getters.allInsurances;
   });
 });
 </script>

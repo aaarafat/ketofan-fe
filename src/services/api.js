@@ -74,4 +74,6 @@ class ModelApiService extends ReadOnlyApiService {
 
 export const $api = {
   specialties: new ModelApiService("specialties"),
+  cities: new ModelApiService("cities"),
+  insurances: new ModelApiService("insurances"),
 };

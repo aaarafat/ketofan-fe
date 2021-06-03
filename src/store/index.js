@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 //import about from "./modules/about";
 import specialties from "./modules/specialties";
+import cities from "./modules/cities";
+import insurances from "./modules/insurances";
 import storePlugins from "../plugins/storePlugins";
 const state = {};
 
@@ -14,6 +16,6 @@ export default createStore({
   getters,
   actions,
   mutations,
-  modules: { specialties },
+  modules: { specialties, cities, insurances },
   plugins: [storePlugins],
 });
