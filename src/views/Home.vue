@@ -1,13 +1,13 @@
 <template>
-  <h1>Home</h1>
-  <h2>{{ specialties }}</h2>
-  <router-link to="about">about</router-link>
-  <button @click="fetcho">fetch</button>
+  <div class="home">
+    <HomeHeader />
+  </div>
 </template>
 
 <script setup>
 import { computed, inject, onMounted, ref } from "vue";
 import { useStore } from "vuex";
+import HomeHeader from "../modules/Home/HomeHeader.vue";
 
 const api = inject("api");
 const store = useStore();
