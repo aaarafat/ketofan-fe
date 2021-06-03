@@ -1,6 +1,7 @@
 <template>
   <div
     class="search-tab"
+    :class="{ selected: expand }"
     @click="toggleDropdown"
     v-click-outside="onClickOutside"
   >

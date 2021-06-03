@@ -122,6 +122,7 @@
         }
       }
     }
+
     .search-input {
       input {
         &:focus {
@@ -132,6 +133,18 @@
         font-size: clamp(12px, calc(8px + (0.5vw)), 22px);
         color: $B1;
       }
+      ::placeholder {
+        color: $B1;
+        opacity: 1;
+      }
+      ::-ms-input-placeholder {
+        color: $B1;
+        opacity: 1;
+      }
+    }
+    .selected {
+      background-color: $B4;
+      color: $N0;
     }
     .search-button {
       position: relative;
