@@ -51,7 +51,7 @@
     box-shadow: $N3 0px 0px 10px;
     display: flex;
     display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 2px;
 
     .search-tab {
@@ -94,10 +94,32 @@
       }
       .dropdown {
         position: absolute;
-        width: 200px;
-        height: 200px;
+        width: 300%;
+        height: 400px;
         background-color: white;
         top: 110%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+        z-index: 50;
+        border-color: rgba(0, 0, 0, 0.23);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px !important;
+        overflow-y: scroll;
+        padding: 10px 40px 30px;
+        ul {
+          column-count: 2;
+          column-gap: 10px;
+          list-style: outside none none;
+          padding: 0px 7px;
+        }
+        .element {
+          &:hover {
+            background: $N2;
+          }
+          padding: 0.5em;
+          margin: 0.5em;
+          color: $B1;
+        }
       }
     }
     .search-input {

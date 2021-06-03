@@ -14,7 +14,13 @@
     <div>
       <span class="material-icons"> arrow_drop_down </span>
     </div>
-    <div v-if="expand" class="dropdown"></div>
+    <div v-if="expand" class="dropdown">
+      <ul>
+        <li v-for="d in data" :key="d" class="element" @click="handleChoose">
+          {{ d }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -29,13 +35,16 @@ export default {
       expand: false,
     };
   },
-  props: ["tab"],
+  props: ["tab", "data", "index"],
   methods: {
     toggleDropdown() {
       this.expand = !this.expand;
     },
     onClickOutside(event) {
       if (this.expand) this.expand = false;
+    },
+    handleChoose(e) {
+      this.$emit("select-element", e.target.innerText, this.index);
     },
   },
   mounted() {},

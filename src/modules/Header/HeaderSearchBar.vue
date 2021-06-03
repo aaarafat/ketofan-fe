@@ -1,7 +1,12 @@
 <template>
   <div class="search-bar">
-    <div v-for="tab in tabs" class="" :key="tab.title">
-      <HeaderSearchTab :tab="tab" />
+    <div v-for="(tab, i) in tabs" class="" :key="tab.title">
+      <HeaderSearchTab
+        :tab="tab"
+        :data="data[0]"
+        :index="i"
+        @select-element="handleSelect"
+      />
     </div>
     <HeaderSearchInputTab :doctor="doctor" @input="handleInput" />
     <div class="search-button" @click="handleSearch">
@@ -14,9 +19,12 @@
 <script setup>
 import HeaderSearchTab from "./HeaderSearchTab.vue";
 import HeaderSearchInputTab from "./HeaderSearchInputTab.vue";
-import { ref } from "vue";
+import { ref, onMounted, inject } from "vue";
+import { useStore } from "vuex";
+
 const doctor = ref("");
-const tabs = [
+const queries = ref(["all", "egypt", "", ""]);
+const tabs = ref([
   {
     title: "Select a speciality",
     icon: "healing",
@@ -28,22 +36,30 @@ const tabs = [
     placeholder: "Choose city",
   },
   {
-    title: "In this area",
-    icon: "place",
-    placeholder: "Choose area",
-  },
-  {
     title: "My insurance is",
     icon: "health_and_safety",
     placeholder: "Choose insurance",
   },
-];
+]);
 const handleSearch = (e) => {
-  console.log(doctor.value);
+  console.log(
+    `${queries.value[0]}/${queries.value[1]}/${queries.value[2]}/${doctor.value}`
+  );
 };
 const handleInput = (e) => {
   doctor.value = e.target.value;
 };
+const handleSelect = (e, i) => {
+  tabs.value[i].placeholder = e;
+  queries.value[i] = e;
+};
+const store = useStore();
+const data = ref([{}, {}, {}, {}]);
+onMounted(() => {
+  store.dispatch("fetchSpecialties").then(() => {
+    data.value[0] = store.getters.allSpecialties;
+  });
+});
 </script>
 
 <style></style>
