@@ -2,6 +2,7 @@ import axios from "axios";
 
 class BaseApiService {
   baseUrl = import.meta.env.VITE_ROOT_API;
+  mode = import.meta.env.MODE;
   resource;
 
   constructor(resource) {
@@ -29,7 +30,9 @@ class ReadOnlyApiService extends BaseApiService {
     };
     try {
       const response = await axios.get(this.getUrl(), config);
-      return response.data;
+      const data =
+        this.mode === "development" ? response.data : response.data.data;
+      return data;
     } catch (err) {
       this.handleErrors(err);
     }
@@ -41,7 +44,9 @@ class ReadOnlyApiService extends BaseApiService {
     };
     try {
       const response = await axios.get(this.getUrl(id), config);
-      return response.data;
+      const data =
+        this.mode === "development" ? response.data : response.data.data;
+      return data;
     } catch (err) {
       this.handleErrors(err);
     }
@@ -58,7 +63,9 @@ class ModelApiService extends ReadOnlyApiService {
     };
     try {
       const response = await axios.post(this.getUrl(), data, config);
-      return response.data;
+      const data =
+        this.mode === "development" ? response.data : response.data.data;
+      return data;
     } catch (err) {
       this.handleErrors(err);
     }
@@ -69,7 +76,9 @@ class ModelApiService extends ReadOnlyApiService {
     };
     try {
       const response = await axios.put(this.getUrl(id), data, config);
-      return response.data;
+      const data =
+        this.mode === "development" ? response.data : response.data.data;
+      return data;
     } catch (err) {
       this.handleErrors(err);
     }
