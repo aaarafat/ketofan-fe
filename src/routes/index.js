@@ -65,6 +65,76 @@ const routes = [
       },
     ],
   },
+  // {
+  //   path: "/press",
+  //   name: "press",
+  //   component: Press,
+  // },
+  // {
+  //   path: "/speciality",
+  //   name: "speciality",
+  //   component: Speciality,
+  // },
+  // {
+  //   path: "/area",
+  //   name: "area",
+  //   component: Area,
+  // },
+  // {
+  //   path: "/insurance",
+  //   name: "insurance",
+  //   component: Insurance,
+  // },
+  // {
+  //   path: "/hospital",
+  //   name: "hospital",
+  //   component: Hospital,
+  // },
+  // {
+  //   path: "/center",
+  //   name: "center",
+  //   component: Center,
+  // },
+  // {
+  //   path: "/join-us",
+  //   name: "join-us",
+  //   component: JoinUs,
+  // },
+  // {
+  //   path: "/contact-us",
+  //   name: "contact-us",
+  //   component: ContactUs,
+  // },
+  // {
+  //   path: "/terms",
+  //   name: "terms",
+  //   component: Terms,
+  // },
+  // {
+  //   path: "/terms",
+  //   name: "terms",
+  //   component: Terms,
+  // },
+  // {
+  //   path: "/privacy-policy",
+  //   name: "privacy-policy",
+  //   component: PrivacyPolicy,
+  // },
+  // {
+  //   path: "/doctors-privacy-policy",
+  //   name: "doctors-privacy-policy",
+  //   component: DoctorsPrivacyPolicy,
+  // },
+  // {
+    //   path: "/login",
+    //   name: "login",
+    //   component: Login,
+    // },
+    // {
+    //   path: "/signup",
+    //   name: "signup",
+    //   component: Signup,
+    // },
 ];
 
 const router = createRouter({
