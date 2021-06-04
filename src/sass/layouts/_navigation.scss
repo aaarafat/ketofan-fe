@@ -1,5 +1,161 @@
-.navbar {
-  width: 100%;
-  height: 60px;
-  background-color: $B1;
+.navbar{
+  
+  nav{
+    background: $B1;
+    height: 60px;
+    width: 100%;
+    .logo{
+      color: white;
+      font-size: 35px;
+      line-height: 60px;
+      padding: 0 5%;
+      font-weight: bold;
+    }
+    ul{
+      float: right;
+      margin-right: 20px;
+      hr{
+        display: none;
+      }
+      .bar{
+        color: white;
+        line-height: 31px;
+        margin: 0px 5.5px;
+      }
+      
+      li{
+        display: inline-block;
+        line-height: 60px;
+        margin: 0.5px 2px 0px;
+        color: white;
+        font-size: 13px;
+        padding: 7px 5px;
+        .icons{
+          display: none;
+        }
+        a{
+          color: white;
+          font-size: 13px;
+          text-decoration: none;
+        
+        }
+        a:hover{
+          text-decoration: underline;
+          transition: .5s;
+        }
+      }
+    }
+    .checkbtn{
+      font-size: 30px;
+      color: white;
+      float: right;
+      line-height: 60px;
+      margin-right: 40px;
+      cursor: pointer;
+      display: none;
+    }
+    #navCheck, #navHome{
+      display: none;
+    }
+    
+    
+  }
+}
+
+
+
+@media (max-width: $BP0){
+  .navbar{
+    .overlay{
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba($color: #000000, $alpha: .5);
+      z-index: 2;
+    }
+    nav{
+      color: white;
+      .checkbtn{
+        display: block;
+      }
+      .sidebar{
+        right: -3%;
+        z-index: 1000;
+      }
+      ul{
+        position: fixed;
+        width: clamp(100px, 30%, 300px);
+        height: 100%;
+        background: $B1;
+        top: 0px;
+        right: -105%;
+        text-align: center;
+        transition: all .6s;
+        hr{
+          display: block;
+          opacity: 0.5;
+        }
+        .bar{
+          display: none;
+        }
+        
+        #arrow{
+          padding-right: 30px;
+          margin-top: 10px;
+          margin-bottom: 40px;
+          text-align: right;
+        }
+        li{
+          display: flex;
+          margin: 15px 0px;
+          line-height: 30px;
+          font-size: 16px;
+          text-align: left;
+          width:100%;
+          .icons{
+            margin-right: 20px;
+            width:20px;
+            margin-left: 10px;
+            
+          }
+          .icons{
+            display: inline-block;
+          }
+          .checkbtn{
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 20px;
+            margin-right: 0px;
+            cursor: pointer;
+            width: 100%;
+            
+          }
+          
+          a{
+            font-size: 16px;
+            border-bottom: 5px;
+            border-color: white;
+          }
+        }
+      }
+      label.logo{
+        font-size: 30px;
+        
+      }
+      #navEgypt, #navEgyptFlag{
+        display: none;
+      }
+  
+      #navHome{
+        display:block;
+      }
+    }
+  }
+  
+  
+  // #navCheck:checked ~ ul{
+  //   right: -3%;
+  //   z-index: 1000;
+  // }
 }

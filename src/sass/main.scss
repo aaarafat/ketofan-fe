@@ -11,11 +11,15 @@
 /* Layout */
 @import "layouts/navigation";
 @import "layouts/footer";
+@import "layouts/home-header";
 @import "layouts/header";
+@import "layouts/layouts";
 /* Components */
 
 /* Views */
 @import "views/home";
 @import "views/about";
+@import "views/search-by";
+
 @import "views/login";
 @import "views/signup";
