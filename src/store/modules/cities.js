@@ -23,7 +23,6 @@ const actions = {
     } else {
       let cities = await this.$api.cities.fetch();
       cities = cities.map((s) => s.name);
-      console.log(cities);
       state.cities = cities;
       commit("SET_CITIES", cities);
     }

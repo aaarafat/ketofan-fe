@@ -23,7 +23,6 @@ const actions = {
     } else {
       let specialties = await this.$api.specialties.fetch();
       specialties = specialties.map((s) => s.name);
-      console.log(specialties);
       state.specialties = specialties;
       commit("SET_SPECIALTIES", specialties);
     }
