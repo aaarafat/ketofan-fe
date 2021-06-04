@@ -17,12 +17,12 @@
     <div class="footerSub">
       <div class="footerElement">
         <p class="footerTitles">Are You A Doctor</p>
-        <router-link to="join-us">Join Vezeeta Doctors</router-link>
+        <router-link to="">Join Vezeeta Doctors</router-link>
       </div>
 
       <div class="footerElement">
         <p class="footerTitles">Need Help?</p>
-        <router-link to="contact-us">Contact US</router-link>
+        <router-link to="">Contact US</router-link>
       </div>
     </div>
   </div>
