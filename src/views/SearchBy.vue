@@ -19,7 +19,7 @@ const store = useStore();
 console.log();
 const data = ref([]);
 onMounted(() => {
-  if (route.name === "specialties") {
+  if (route.name === "speciality") {
     store.dispatch("fetchSpecialties").then(() => {
       data.value = store.getters.allSpecialties;
     });
@@ -27,7 +27,7 @@ onMounted(() => {
     store.dispatch("fetchCities").then(() => {
       data.value = store.getters.allCities;
     });
-  } else if (route.name === "insurances") {
+  } else if (route.name === "insurance") {
     store.dispatch("fetchInsurances").then(() => {
       data.value = store.getters.allInsurances;
     });

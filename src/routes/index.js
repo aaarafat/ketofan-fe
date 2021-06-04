@@ -49,8 +49,8 @@ const routes = [
         ],
       },
       {
-        path: "/specialties",
-        name: "specialties",
+        path: "/speciality",
+        name: "speciality",
         component: SearchBy,
       },
       {
@@ -59,8 +59,8 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/insurances",
-        name: "insurances",
+        path: "/insurance",
+        name: "insurance",
         component: SearchBy,
       },
     ],
@@ -126,15 +126,15 @@ const routes = [
   //   component: DoctorsPrivacyPolicy,
   // },
   // {
-    //   path: "/login",
-    //   name: "login",
-    //   component: Login,
-    // },
-    // {
-    //   path: "/signup",
-    //   name: "signup",
-    //   component: Signup,
-    // },
+  //   path: "/login",
+  //   name: "login",
+  //   component: Login,
+  // },
+  // {
+  //   path: "/signup",
+  //   name: "signup",
+  //   component: Signup,
+  // },
 ];
 
 const router = createRouter({
