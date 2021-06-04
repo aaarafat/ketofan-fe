@@ -1,0 +1,23 @@
+.search-by {
+  margin: 1em auto;
+  width: 95%;
+  max-width: 1170px;
+  .container {
+    margin: 1em 0;
+    padding: 1em;
+    border-radius: 15px;
+    background-color: $N0;
+
+    .element {
+      line-height: normal;
+      margin: 1em 0;
+      padding: 0 1em;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 20px;
+      &:hover {
+        color: $B1;
+      }
+    }
+  }
+}
