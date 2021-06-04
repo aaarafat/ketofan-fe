@@ -23,7 +23,10 @@ class ReadOnlyApiService extends BaseApiService {
     super(resource);
   }
 
-  async fetch(config = {}) {
+  async fetch(token = "") {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     try {
       const response = await axios.get(this.getUrl(), config);
       return response.data;
@@ -32,7 +35,10 @@ class ReadOnlyApiService extends BaseApiService {
     }
   }
 
-  async get(id, config = {}) {
+  async get(id, token = "") {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     try {
       const response = await axios.get(this.getUrl(id), config);
       return response.data;
@@ -46,7 +52,10 @@ class ModelApiService extends ReadOnlyApiService {
   constructor(resource) {
     super(resource);
   }
-  async post(data = {}, config = {}) {
+  async post(data = {}, token = "") {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     try {
       const response = await axios.post(this.getUrl(), data, config);
       return response.data;
@@ -54,7 +63,10 @@ class ModelApiService extends ReadOnlyApiService {
       this.handleErrors(err);
     }
   }
-  async put(id, data = {}, config = {}) {
+  async put(id, data = {}, token = "") {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     try {
       const response = await axios.put(this.getUrl(id), data, config);
       return response.data;
@@ -62,7 +74,10 @@ class ModelApiService extends ReadOnlyApiService {
       this.handleErrors(err);
     }
   }
-  async delete(id, config = {}) {
+  async delete(id, token = "") {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
     try {
       const response = await axios.delete(this.getUrl(id), config);
       return true;
