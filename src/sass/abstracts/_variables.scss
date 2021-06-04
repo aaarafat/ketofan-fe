@@ -9,6 +9,7 @@ $N4: rgb(102, 102, 102); //FONT
 $B1: rgb(0, 112, 205); //MAIN BLUE
 $B2: rgb(59, 146, 223); //LIGHT BLUE
 $B3: rgba(59, 146, 223, 0.5); //BLOCKED BLUE
+$B4: rgba(59, 146, 223, 0.2); //BLOCKED BLUE
 
 $P2: rgb(239, 15, 15); // MAIN RED
 // === SECONDARY ===
@@ -17,3 +18,6 @@ $S2: rgb(255, 182, 36); //SPONSER & RATES
 
 // MEDIA
 $BP0: 768px;
+$NH0: 60px; //navbar height
+$HH0: 200px; //header height
+$FH0: 200px; //footer height

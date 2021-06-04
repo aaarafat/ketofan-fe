@@ -1,7 +1,9 @@
 <template>
   <Navbar />
   <Header />
-  <router-view></router-view>
+  <div class="hlayout-main-content">
+    <router-view></router-view>
+  </div>
   <Footer />
 </template>
 

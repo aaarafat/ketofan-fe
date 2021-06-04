@@ -1,5 +1,216 @@
 .header {
-  background-color: $N3;
+  background-color: rgba(0, 0, 0, 0.05);
   width: 100%;
   min-height: 200px;
+  padding-top: 1em;
+  position: relative;
+
+  .bg {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    img {
+      position: absolute;
+      height: clamp(100%, calc(100% + (10vw)), 220%);
+      top: calc(0px - (1vw));
+      right: calc(0px + (2vw));
+      z-index: -1;
+    }
+  }
+  .content {
+    z-index: 10;
+    width: 95%;
+    max-width: 1170px;
+    margin: auto;
+
+    .body {
+      .title {
+        margin-bottom: 0.5em 0;
+      }
+      line-height: 23px;
+      .paragraph {
+        display: flex;
+        align-items: center;
+        padding: 0.25em 0;
+        .call {
+          color: $P2;
+          margin: 0 0.25em;
+        }
+      }
+    }
+  }
+  .search-bar {
+    margin-top: 0.5em;
+    width: 100%;
+    height: 58px;
+    box-shadow: $N3 0px 0px 10px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 2px;
+    .tab-wrapper {
+      background-color: $N0;
+    }
+    .search-tab {
+      height: 100%;
+      position: relative;
+      cursor: pointer;
+      background-color: white;
+      display: grid;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 1fr);
+      align-items: center;
+      .title {
+        font-size: clamp(8px, calc(6px + (0.4vw)), 16px);
+        padding-bottom: 0.5em;
+        display: list-item;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .button {
+        padding-left: 5%;
+        width: 85%;
+
+        .content {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          line-height: 24px;
+          font-size: clamp(12px, calc(8px + (0.5vw)), 22px);
+          color: $B1;
+          .icon {
+            margin-right: 0.25em;
+          }
+          .placeholder {
+            display: list-item;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+      }
+      .down-icon {
+        display: flex;
+        justify-content: center;
+      }
+      .dropdown {
+        position: absolute;
+        width: 300%;
+        height: 400px;
+        background-color: white;
+        top: 110%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+        z-index: 50;
+        border-color: rgba(0, 0, 0, 0.23);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px !important;
+        overflow-y: scroll;
+        padding: 10px 40px 30px;
+        ul {
+          column-count: 2;
+          column-gap: 10px;
+          list-style: outside none none;
+          padding: 0px 7px;
+        }
+        .element {
+          &:hover {
+            background: $N2;
+          }
+          padding: 0.5em;
+          margin: 0.5em;
+          color: $B1;
+        }
+      }
+    }
+
+    .search-input {
+      input {
+        &:focus {
+          outline: none;
+        }
+        border: none;
+        line-height: 24px;
+        font-size: clamp(12px, calc(8px + (0.5vw)), 22px);
+        color: $B1;
+      }
+      ::placeholder {
+        color: $B1;
+        opacity: 1;
+      }
+      ::-ms-input-placeholder {
+        color: $B1;
+        opacity: 1;
+      }
+    }
+    .selected {
+      background-color: $B3;
+      color: $N0;
+    }
+    .search-button {
+      position: relative;
+      background-color: $P2;
+      color: $N0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 400;
+      font-size: clamp(14px, calc(14px + (0.4vw)), 22px);
+      cursor: pointer;
+      padding: 0 10px;
+
+      .icon {
+        font-size: clamp(18px, calc(22px + (0.4vw)), 36px);
+        transform: scaleX(-1);
+      }
+      .text {
+        margin-left: clamp(0.2em, calc(0.2em + (0.4vw)), 0.5em);
+      }
+    }
+  }
+}
+
+@media (max-width: $BP0) {
+  .header {
+    height: auto;
+    padding-bottom: 1em;
+    .bg {
+      display: none;
+    }
+
+    .search-bar {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      height: auto;
+      .search-tab {
+        padding: 0.2em 0;
+        .down-icon {
+          span {
+            font-size: clamp(12px, calc(12px + (0.5vw)), 22px);
+          }
+        }
+        .dropdown {
+          width: 100%;
+          height: 400px;
+          overflow-y: scroll;
+          padding: 1em 0;
+          ul {
+            column-count: 1;
+          }
+          .element {
+            &:hover {
+              background: $N2;
+            }
+            padding: 0.5em;
+            margin: 0.5em;
+            padding-left: 0.1em;
+            color: $B1;
+          }
+        }
+      }
+    }
+  }
 }

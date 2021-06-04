@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
+import SearchBy from "../views/SearchBy.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
-import AboutUs from "../modules/About/AboutUS.vue";
+import AboutUs from "../modules/About/AboutUs.vue";
 
 const routes = [
   {
@@ -46,6 +47,21 @@ const routes = [
             component: LifeAtKetofan,
           },
         ],
+      },
+      {
+        path: "/specialties",
+        name: "specialties",
+        component: SearchBy,
+      },
+      {
+        path: "/cities",
+        name: "cities",
+        component: SearchBy,
+      },
+      {
+        path: "/insurances",
+        name: "insurances",
+        component: SearchBy,
       },
     ],
   },
