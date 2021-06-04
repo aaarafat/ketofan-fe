@@ -18,6 +18,11 @@
         </div>
       </div>
 
+      <div class="choose-from">
+        <ChooseFrom :data="specialties" type="specialties" />
+        <ChooseFrom :data="cities" type="cities" />
+      </div>
+
       <div class="details-wrapper">
         <div class="details">
           <div class="detail">
@@ -72,13 +77,19 @@ import { computed, inject, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import HomeHeader from "../modules/Home/HomeHeader.vue";
 import ChooseTopSpecialties from "../modules/Home/ChooseTopSpecialties.vue";
+import ChooseFrom from "../modules/Home/ChooseFrom.vue";
 
 const api = inject("api");
 const store = useStore();
 const specialties = ref(null);
+const cities = ref(null);
 onMounted(() => {
+  console.log("mounteeeeeeeeed");
   store.dispatch("fetchSpecialties").then(() => {
-    specialties.value = store.getters.allSpecialties;
+    specialties.value = store.getters.allSpecialties.slice(0, 9);
+  });
+  store.dispatch("fetchCities").then(() => {
+    cities.value = store.getters.allCities.slice(0, 9);
   });
 });
 </script>
