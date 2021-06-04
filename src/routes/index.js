@@ -54,8 +54,8 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/cities",
-        name: "cities",
+        path: "/area",
+        name: "area",
         component: SearchBy,
       },
       {

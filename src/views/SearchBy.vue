@@ -23,7 +23,7 @@ onMounted(() => {
     store.dispatch("fetchSpecialties").then(() => {
       data.value = store.getters.allSpecialties;
     });
-  } else if (route.name === "cities") {
+  } else if (route.name === "area") {
     store.dispatch("fetchCities").then(() => {
       data.value = store.getters.allCities;
     });
