@@ -73,6 +73,7 @@
 </template>
 
 <script setup>
+import axios from "axios";
 import { computed, inject, onMounted, ref } from "vue";
 import { useStore } from "vuex";
 import HomeHeader from "../modules/Home/HomeHeader.vue";
@@ -84,7 +85,25 @@ const store = useStore();
 const specialties = ref(null);
 const cities = ref(null);
 onMounted(() => {
-  console.log("mounteeeeeeeeed");
+  console.log(import.meta.env.MODE, import.meta.env.VITE_ROOT_API);
+  var data = { email: "admin1@gmail.com", password: "12341234" };
+  const token = "";
+  axios
+    .post("http://localhost:9876/api/v1/auth/signin", data)
+    .then((res) => {
+      console.log(res.data.token);
+
+      return axios.get(
+        `http://localhost:9876/api/v1/contactUs?limit=3&offset=0`,
+        config
+      );
+    })
+    .then((res2) => {
+      console.log(res2.data);
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
   store.dispatch("fetchSpecialties").then(() => {
     specialties.value = store.getters.allSpecialties.slice(0, 9);
   });

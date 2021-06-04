@@ -4,6 +4,7 @@
   "scripts": {
     "mock": "json-server --watch src/static/db.json --port 3004 | vite",
     "dev": "vite",
+    "back": "vite --mode production",
     "build": "vite build",
     "serve": "vite preview",
     "start": "npm run dev"
