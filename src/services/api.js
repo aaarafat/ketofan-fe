@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class BaseApiService {
-  baseUrl = "http://localhost:3004";
+  baseUrl = import.meta.env.VITE_ROOT_API;
   resource;
 
   constructor(resource) {
@@ -14,7 +14,7 @@ class BaseApiService {
   }
 
   handleErrors(err) {
-    console.log({ message: "Errors is handled here", err });
+    console.log(err.response);
   }
 }
 
@@ -88,7 +88,7 @@ class ModelApiService extends ReadOnlyApiService {
 }
 
 export const $api = {
-  specialties: new ModelApiService("specialties"),
-  cities: new ModelApiService("cities"),
+  specialties: new ModelApiService("specializations"),
+  cities: new ModelApiService("areas"),
   insurances: new ModelApiService("insurances"),
 };

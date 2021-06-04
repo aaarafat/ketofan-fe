@@ -1,5 +1,5 @@
 {
-  "specialties": [
+  "specializations": [
     {
       "src": "https://cdn-dr-images.vezeeta.com/Specialties/Dermatology.png",
 
@@ -232,7 +232,7 @@
       "name": "Vascular Surgery"
     }
   ],
-  "cities": [
+  "areas": [
     { "name": "Cairo" },
     { "name": "Gize" },
     { "name": "Alexandria" },
