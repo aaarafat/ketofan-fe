@@ -40,7 +40,7 @@
             margin-bottom: 0.5em;
           }
           h2 {
-            height: 60px;
+            min-height: 60px;
             line-height: 30px;
             font-size: 22px;
             margin-bottom: 0.5em;
@@ -104,9 +104,10 @@
             }
             h2 {
               height: auto;
+              min-height: auto;
               line-height: normal;
               font-size: 18px;
-              margin-bottom: 0em;
+              margin-bottom: 0.5em;
             }
           }
         }
