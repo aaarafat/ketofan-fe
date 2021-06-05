@@ -44,7 +44,7 @@ const tabs = ref([
   },
 ]);
 const handleSearch = (e) => {
-  let string = `/doctors/${queries.value[0]}/${queries.value[1]}`;
+  let string = `/search/${queries.value[0]}/${queries.value[1]}`;
   string += queries.value[2] !== "" ? `/${queries.value[2]}` : "";
   string += doctor.value !== "" ? `?doctor=${doctor.value}/` : "";
   router.push(string);

@@ -19,8 +19,8 @@
       </div>
 
       <div class="choose-from">
-        <ChooseFrom :data="specialties" type="specialties" />
-        <ChooseFrom :data="cities" type="cities" />
+        <ChooseFrom :data="specialties" type="speciality" />
+        <ChooseFrom :data="cities" type="area" />
       </div>
 
       <div class="details-wrapper">

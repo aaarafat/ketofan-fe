@@ -15,17 +15,20 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: ["type", "data"],
-  methods: {
-    handleClick(e) {
-      console.log(e.target.innerHTML);
-    },
-    handleView(e) {
-      console.log(this.type);
-    },
-  },
+<script setup="props">
+import { defineProps, ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const props = defineProps({ type: String, data: Array });
+const params = ref({ area: "egypt", speciality: "all" });
+const handleClick = (e) => {
+  params.value[props.type] = e.target.innerHTML;
+  let string = `/search/${params.value["specialties"]}/${params.value["areas"]}`;
+  router.push(string);
+};
+const handleView = (e) => {
+  let string = `/${props.type}`;
+  router.push(string);
 };
 </script>
 
