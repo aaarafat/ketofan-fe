@@ -119,6 +119,9 @@
           &:hover {
             background: $N2;
           }
+          display: inline-block;
+          line-height: normal;
+          width: 100%;
           padding: 0.5em;
           margin: 0.5em;
           color: $B1;

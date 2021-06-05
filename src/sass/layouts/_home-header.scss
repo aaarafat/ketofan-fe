@@ -151,6 +151,9 @@
                 &:hover {
                   background: $N2;
                 }
+                display: inline-block;
+                line-height: normal;
+                width: 100%;
                 padding: 0.5em;
                 margin: 0.5em;
                 color: $B1;
@@ -214,7 +217,7 @@
       padding-bottom: 1em;
       .bg {
         img {
-          max-height: 100%;
+          max-height: calc(100% + 20vw);
           max-width: none;
           width: auto;
           height: auto;
