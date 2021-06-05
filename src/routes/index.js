@@ -2,13 +2,14 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import SearchBy from "../views/SearchBy.vue";
+import Search from "../views/Search.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
-import Login from '../views/Login.vue'
-import Signup from '../views/Signup.vue'
+import Login from "../views/Login.vue";
+import Signup from "../views/Signup.vue";
 const routes = [
   {
     path: "",
@@ -73,6 +74,11 @@ const routes = [
         path: "/insurance",
         name: "insurance",
         component: SearchBy,
+      },
+      {
+        path: "/doctors/:speciality/:area/:insurance?",
+        name: "search",
+        component: Search,
       },
     ],
   },
