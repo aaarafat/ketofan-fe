@@ -29,7 +29,7 @@
           :showIcon="showOverlay"
           linkText="Sign Up"
           iconType="app_registration"
-          path="signup"
+          path="/signup"
         />
 
         <span class="bar">|</span>
@@ -38,7 +38,7 @@
           :showIcon="showOverlay"
           linkText="Login"
           iconType="login"
-          path="login"
+          path="/login"
         />
 
         <span class="bar">|</span>
@@ -47,7 +47,7 @@
         <ListItem
           :showIcon="showOverlay"
           linkText="Contact Us"
-          path=""
+          path="/"
           iconType="phone"
         />
         <span class="bar">|</span>

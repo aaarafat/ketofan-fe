@@ -4,10 +4,12 @@
 </template>
 
 <script setup>
-import { useRoute, useRouter } from "vue-router";
+import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
 const route = useRoute();
-console.log(route.params);
-console.log(route.query);
+onBeforeRouteUpdate((to, from) => {
+  console.log(to.params);
+  //TODO call API
+});
 </script>
 
 <style></style>

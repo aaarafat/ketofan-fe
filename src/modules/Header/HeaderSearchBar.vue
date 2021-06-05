@@ -44,9 +44,6 @@ const tabs = ref([
   },
 ]);
 const handleSearch = (e) => {
-  console.log(
-    `${queries.value[0]}/${queries.value[1]}/${queries.value[2]}/${doctor.value}`
-  );
   let string = `/doctors/${queries.value[0]}/${queries.value[1]}`;
   string += queries.value[2] !== "" ? `/${queries.value[2]}` : "";
   string += doctor.value !== "" ? `?doctor=${doctor.value}/` : "";
