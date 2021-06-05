@@ -10,7 +10,7 @@
         <div>
           {{ date }}
         </div>
-        <div>
+        <div class="type">
           {{ appointment.type }}
         </div>
       </div>
