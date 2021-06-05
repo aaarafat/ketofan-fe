@@ -5,8 +5,11 @@ import About from "../views/About.vue";
 import SearchBy from "../views/SearchBy.vue";
 import Search from "../views/Search.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
+import DoctorLayout from "../layouts/DoctorLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
+import DoctorAppointments from "../modules/DoctorPanel/DoctorAppointments.vue";
+import DoctorWorkingHours from "../modules/DoctorPanel/DoctorWorkingHours.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
 import Login from "../views/Login.vue";
@@ -31,6 +34,23 @@ const routes = [
         path: "/signup",
         name: "signup",
         component: Signup,
+      },
+    ],
+  },
+  {
+    path: "/doctor",
+    name: "DoctorLayout",
+    component: DoctorLayout,
+    children: [
+      {
+        path: "working-hours",
+        name: "DoctorWorkingHours",
+        component: DoctorWorkingHours,
+      },
+      {
+        path: "appointments",
+        name: "DoctorAppointments",
+        component: DoctorAppointments,
       },
     ],
   },
