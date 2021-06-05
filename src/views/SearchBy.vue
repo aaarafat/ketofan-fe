@@ -2,7 +2,7 @@
   <div class="search-by">
     <h2>Find doctors by {{ route.name }}</h2>
     <div class="container">
-      <div class="element" v-for="d in data" :key="d.name">
+      <div class="element" v-for="d in data" :key="d.name" @click="handleClick">
         {{ d }}
       </div>
     </div>
@@ -16,7 +16,9 @@ import { useRouter, useRoute, onBeforeRouteUpdate } from "vue-router";
 
 const route = useRoute();
 const store = useStore();
+const router = useRouter();
 const data = ref([]);
+const params = ref({ area: "egypt", speciality: "all", insurance: "" });
 onMounted(() => {
   if (route.name === "speciality") {
     store.dispatch("fetchSpecialties").then(() => {
@@ -32,11 +34,9 @@ onMounted(() => {
     });
   }
 });
-onBeforeRouteUpdate((to, from) => {
-  console.log(to.name, from.name);
-});
 
 watch(route, () => {
+  params.value = { area: "egypt", speciality: "all", insurance: "" };
   if (route.name === "speciality") {
     store.dispatch("fetchSpecialties").then(() => {
       data.value = store.getters.allSpecialties;
@@ -52,6 +52,14 @@ watch(route, () => {
   }
   window.scrollTo(0, 0);
 });
+
+const handleClick = (e) => {
+  params.value[route.name] = e.target.innerHTML;
+  let string = `/search/${params.value.speciality}/${params.value.area}`;
+  string += params.value.insurance !== "" ? `/${params.value.insurance}` : "";
+
+  router.push(string);
+};
 </script>
 
 <style></style>
