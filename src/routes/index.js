@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import NotFound from "../views/NotFound.vue";
 import About from "../views/About.vue";
 import SearchBy from "../views/SearchBy.vue";
 import Search from "../views/Search.vue";
@@ -76,82 +77,17 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/doctors/:speciality/:area/:insurance?",
+        path: "/search/:speciality/:area/:insurance?",
         name: "search",
         component: Search,
       },
+      {
+        path: "/:catchAll(.*)",
+        name: "not-found",
+        component: NotFound,
+      },
     ],
   },
-  // {
-  //   path: "/press",
-  //   name: "press",
-  //   component: Press,
-  // },
-  // {
-  //   path: "/speciality",
-  //   name: "speciality",
-  //   component: Speciality,
-  // },
-  // {
-  //   path: "/area",
-  //   name: "area",
-  //   component: Area,
-  // },
-  // {
-  //   path: "/insurance",
-  //   name: "insurance",
-  //   component: Insurance,
-  // },
-  // {
-  //   path: "/hospital",
-  //   name: "hospital",
-  //   component: Hospital,
-  // },
-  // {
-  //   path: "/center",
-  //   name: "center",
-  //   component: Center,
-  // },
-  // {
-  //   path: "/join-us",
-  //   name: "join-us",
-  //   component: JoinUs,
-  // },
-  // {
-  //   path: "/contact-us",
-  //   name: "contact-us",
-  //   component: ContactUs,
-  // },
-  // {
-  //   path: "/terms",
-  //   name: "terms",
-  //   component: Terms,
-  // },
-  // {
-  //   path: "/terms",
-  //   name: "terms",
-  //   component: Terms,
-  // },
-  // {
-  //   path: "/privacy-policy",
-  //   name: "privacy-policy",
-  //   component: PrivacyPolicy,
-  // },
-  // {
-  //   path: "/doctors-privacy-policy",
-  //   name: "doctors-privacy-policy",
-  //   component: DoctorsPrivacyPolicy,
-  // },
-  // {
-  //   path: "/login",
-  //   name: "login",
-  //   component: Login,
-  // },
-  // {
-  //   path: "/signup",
-  //   name: "signup",
-  //   component: Signup,
-  // },
 ];
 
 const router = createRouter({
