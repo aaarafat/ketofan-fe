@@ -14,7 +14,7 @@
     <div class="info">
       <div class="name">{{ user.name }}</div>
       <div class="photo"></div>
-      <div class="logout">
+      <div class="logout" @click="handleLogout">
         <span class="material-icons"> logout </span>
         <span>Log out</span>
       </div>
@@ -25,10 +25,16 @@
 <script setup>
 import axios from "axios";
 import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 const store = useStore();
+const router = useRouter();
 const user = ref(store.getters.getUser);
+const handleLogout = () => {
+  store.dispatch("removeUser");
+  router.push("/");
+};
 </script>
 
 <style></style>

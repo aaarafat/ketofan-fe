@@ -39,8 +39,7 @@ const routes = [
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getUser().role === "doctor")
-        next({ name: "DoctorAppointments" });
+      if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
       else next();
     },
   },
@@ -49,7 +48,7 @@ const routes = [
     name: "DoctorLayout",
     component: DoctorLayout,
     redirect: (to) => {
-      return { path: "/search" };
+      return { path: "/doctor/appointments" };
     },
     children: [
       {
@@ -64,7 +63,7 @@ const routes = [
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getUser().role !== "doctor") next({ name: "Home" });
+      if ($auth.getRole() !== "doctor") next({ name: "Home" });
       else next();
     },
   },
@@ -122,8 +121,7 @@ const routes = [
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getUser().role === "doctor")
-        next({ name: "DoctorAppointments" });
+      if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
       else next();
     },
   },

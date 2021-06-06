@@ -58,7 +58,9 @@ const handleLogin = async () => {
   const res = await api.signin.post({ ...data });
   if (res) {
     store.dispatch("setUser", res);
-    router.push("/");
+
+    if (store.getters.isDoctor) router.push("/doctor");
+    else router.push("/");
   }
 };
 </script>
