@@ -1,0 +1,59 @@
+.working-hours {
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $N1;
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em 1em 1em;
+    border-bottom: 1px solid $N1;
+    .options {
+      display: flex;
+      .option {
+        margin-right: 0.5em;
+      }
+    }
+    .save {
+      background-color: $B1;
+      cursor: pointer;
+      padding: 1em;
+      color: $N0;
+    }
+  }
+  .body {
+    margin-top: 1em;
+    border-top: 1px solid $N1;
+    .working-day {
+      border: 1px solid $N1;
+      border-top: none;
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(245, 245, 245);
+        padding: 1em;
+      }
+      .details {
+        padding: 1em;
+        border-top: 1px solid $N1;
+        .options {
+          padding: 1em;
+          border-style: dashed;
+          border: 2px dashed $N1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .option {
+            display: flex;
+            flex-direction: column;
+            span {
+              margin-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
