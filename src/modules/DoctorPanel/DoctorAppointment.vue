@@ -14,7 +14,9 @@
           {{ appointment.type }}
         </div>
       </div>
-      <div class="options"></div>
+      <div class="options">
+        <span class="material-icons delete"> delete_forever </span>
+      </div>
     </div>
   </div>
 </template>
