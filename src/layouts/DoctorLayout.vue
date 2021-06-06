@@ -1,7 +1,9 @@
 <template>
-  <DoctorNavbar />
-  <div class="doclayout-main-content">
-    <router-view></router-view>
+  <div style="overflow-y: scroll; height: 100vh; position fixed">
+    <DoctorNavbar />
+    <div class="doclayout-main-content">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

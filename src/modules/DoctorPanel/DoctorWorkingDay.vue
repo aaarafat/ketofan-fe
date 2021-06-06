@@ -4,7 +4,14 @@
       <div>
         {{ day.name }}
       </div>
-      <div class="switch" @click="handleSwitch">switch</div>
+      <div class="switch" @click="handleSwitch">
+        <label
+          class="slider"
+          width="3em"
+          height="1.6em"
+          :class="{ active: day.working }"
+        ></label>
+      </div>
     </div>
     <div v-if="day.working" class="details">
       <div class="options">
@@ -112,7 +119,7 @@ const slots = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23,
   24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36,
 ];
-
+const working = ref(props.day.working);
 const handleSwitch = () => {
   emit("changeWorking", props.index);
 };
