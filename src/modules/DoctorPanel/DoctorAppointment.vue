@@ -14,7 +14,7 @@
           {{ appointment.type }}
         </div>
       </div>
-      <div class="options">
+      <div class="options" @click="handleDelete">
         <span class="material-icons delete"> delete_forever </span>
       </div>
     </div>
@@ -25,7 +25,9 @@
 import { computed, defineProps } from "vue";
 
 const props = defineProps({ appointment: Object });
-
+const handleDelete = () => {
+  //TODO call BE
+};
 const date = computed(() => {
   return new Date(props.appointment.date).toDateString();
 });
