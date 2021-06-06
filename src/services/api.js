@@ -63,9 +63,8 @@ class ModelApiService extends ReadOnlyApiService {
     };
     try {
       const response = await axios.post(this.getUrl(), data, config);
-      const data =
-        this.mode === "development" ? response.data : response.data.data;
-      return data;
+      const res = response.data;
+      return res;
     } catch (err) {
       this.handleErrors(err);
     }
@@ -76,9 +75,8 @@ class ModelApiService extends ReadOnlyApiService {
     };
     try {
       const response = await axios.put(this.getUrl(id), data, config);
-      const data =
-        this.mode === "development" ? response.data : response.data.data;
-      return data;
+      const res = response.data;
+      return res;
     } catch (err) {
       this.handleErrors(err);
     }
@@ -100,6 +98,6 @@ export const $api = {
   specialties: new ModelApiService("specializations"),
   cities: new ModelApiService("areas"),
   insurances: new ModelApiService("insurances"),
-  login: new ModelApiService("login"),
+  signin: new ModelApiService("auth/signin"),
   register: new ModelApiService("register"),
 };

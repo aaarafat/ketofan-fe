@@ -14,6 +14,8 @@ import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
+import { $auth } from "../services/auth";
+import auth from "../store/modules/auth";
 const routes = [
   {
     path: "",
@@ -36,14 +38,22 @@ const routes = [
         component: Signup,
       },
     ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getUser().role === "doctor")
+        next({ name: "DoctorAppointments" });
+      else next();
+    },
   },
   {
     path: "/doctor",
     name: "DoctorLayout",
     component: DoctorLayout,
+    redirect: (to) => {
+      return { path: "/search" };
+    },
     children: [
       {
-        path: "working-hours",
+        path: "appointments",
         name: "DoctorWorkingHours",
         component: DoctorWorkingHours,
       },
@@ -53,6 +63,10 @@ const routes = [
         component: DoctorAppointments,
       },
     ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getUser().role !== "doctor") next({ name: "Home" });
+      else next();
+    },
   },
   {
     path: "",
@@ -107,9 +121,13 @@ const routes = [
         component: NotFound,
       },
     ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getUser().role === "doctor")
+        next({ name: "DoctorAppointments" });
+      else next();
+    },
   },
 ];
-
 const router = createRouter({
   history: createWebHistory(),
   routes,
