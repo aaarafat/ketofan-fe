@@ -29,7 +29,6 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const user = ref(store.getters.getUser);
-console.log(store.getters.isLogined);
 </script>
 
 <style></style>

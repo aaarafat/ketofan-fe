@@ -3,7 +3,7 @@
     <div class="head">
       <span class="material-icons-outlined"> calendar_today </span>
       <span>{{ appointment.patient }}</span>
-      <span class="material-icons-outlined note"> sticky_note_2 </span>
+      <!-- <span class="material-icons-outlined note"> sticky_note_2 </span> -->
     </div>
     <div class="body">
       <div class="details">
@@ -23,7 +23,7 @@
 import { computed, defineProps } from "vue";
 
 const props = defineProps({ appointment: Object });
-console.log(Date.toString(props.appointment.date));
+
 const date = computed(() => {
   return new Date(props.appointment.date).toDateString();
 });

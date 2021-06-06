@@ -87,3 +87,13 @@
     }
   }
 }
+
+@media (max-width: $BP0) {
+  .doc-nav {
+    .navigation {
+      .logo {
+        display: none;
+      }
+    }
+  }
+}

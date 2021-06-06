@@ -94,3 +94,34 @@
     }
   }
 }
+
+@media (max-width: $BP0) {
+  .working-hours {
+    .heading {
+      .options {
+        display: flex;
+        .option {
+        }
+      }
+    }
+    .body {
+      .working-day {
+        .head {
+        }
+        .details {
+          .options {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: unset;
+            .option {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
