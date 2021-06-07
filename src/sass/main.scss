@@ -10,7 +10,9 @@
 
 /* Layout */
 @import "layouts/navigation";
+@import "layouts/doctor-nav";
 @import "layouts/footer";
+@import "layouts/home-header";
 @import "layouts/header";
 @import "layouts/layouts";
 /* Components */
@@ -19,3 +21,9 @@
 @import "views/home";
 @import "views/about";
 @import "views/contact-us";
+@import "views/search-by";
+@import "views/doctor-appointments";
+@import "views/doctor-workhours";
+
+@import "views/login";
+@import "views/signup";

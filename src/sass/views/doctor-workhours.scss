@@ -1,0 +1,118 @@
+.working-hours {
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $N1;
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em 1em 1em;
+    border-bottom: 1px solid $N1;
+    .options {
+      display: flex;
+      .option {
+        margin-right: 0.5em;
+      }
+    }
+    .save {
+      background-color: $B1;
+      cursor: pointer;
+      padding: 1em;
+      color: $N0;
+    }
+  }
+  .body {
+    margin-top: 1em;
+    border-top: 1px solid $N1;
+    .working-day {
+      border: 1px solid $N1;
+      border-top: none;
+      .head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(245, 245, 245);
+        padding: 1em;
+        .slider {
+          transition: all 0.4s ease 0s;
+          background: rgb(224, 224, 224);
+          border: 1px solid rgb(245, 245, 245);
+          border-radius: 2em;
+          cursor: pointer;
+          display: block;
+          outline: 0px;
+          padding: 2px;
+          position: relative;
+          user-select: none;
+          width: 3em;
+          height: 1.6em;
+          &::after {
+            box-shadow: rgb(0 0 0 / 10%) 0px 0px 0px 1px,
+              rgb(0 0 0 / 8%) 0px 4px 0px;
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s,
+              right 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s,
+              padding 0.3s ease 0s, margin 0.3s ease 0s;
+            background-color: rgb(255, 255, 255);
+            border-radius: 2em;
+            box-sizing: initial;
+            content: "";
+            display: block;
+            height: 100%;
+            left: 0px;
+            right: 0px;
+            position: relative;
+            width: 50%;
+          }
+        }
+        .active {
+          background-color: $B1;
+          &::after {
+            left: 50%;
+          }
+        }
+      }
+      .details {
+        padding: 1em;
+        border-top: 1px solid $N1;
+        .options {
+          padding: 1em;
+          border-style: dashed;
+          border: 2px dashed $N1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .option {
+            display: flex;
+            flex-direction: column;
+            span {
+              margin-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $BP0) {
+  .working-hours {
+    .body {
+      .working-day {
+        .details {
+          .options {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: unset;
+            .option {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

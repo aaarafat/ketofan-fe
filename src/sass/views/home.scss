@@ -1,0 +1,117 @@
+.home {
+  .body {
+    .corona-wrapper {
+      background-color: $N0;
+      .corona {
+        margin: 0 auto;
+        padding: 1em 0;
+        display: flex;
+        width: 95%;
+        max-width: 1170px;
+        align-items: center;
+        .img {
+          img {
+            height: 75px;
+          }
+        }
+        .content {
+          line-height: normal;
+        }
+      }
+    }
+    .details-wrapper {
+      background-color: $N0;
+      .details {
+        margin: 0 auto;
+        padding: 1em 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 95%;
+        max-width: 1170px;
+
+        .detail {
+          line-height: normal;
+          padding: 1em;
+          .material-icons {
+            font-size: 28px;
+            color: $B1;
+            padding-bottom: 0.25em;
+            border-bottom: 2px solid $P2;
+            margin-bottom: 0.5em;
+          }
+          h2 {
+            min-height: 60px;
+            line-height: 30px;
+            font-size: 22px;
+            margin-bottom: 0.5em;
+          }
+        }
+      }
+    }
+    .choose-from {
+      margin: 0 auto;
+      padding: 1em 0;
+      width: 95%;
+      max-width: 1170px;
+      line-height: normal;
+      display: flex;
+      .container {
+        width: 50%;
+        margin: 1em;
+        h3 {
+          height: 48px;
+          line-height: 24px;
+          margin-bottom: 0.5em;
+        }
+        .element {
+          line-height: 24px;
+          background-color: $N0;
+          font-size: 14px;
+          display: inline-block;
+          padding: 5px 8px;
+          border-radius: 4px;
+          text-decoration: none;
+          margin: 5px 8px 5px 0px;
+          cursor: pointer;
+          &:hover {
+            background-color: $N1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $BP0) {
+  .home {
+    .body {
+      .choose-from {
+        display: block;
+        .container {
+          width: 100%;
+        }
+      }
+      .details-wrapper {
+        .details {
+          grid-template-columns: repeat(1, minmax(0, 1fr));
+
+          .detail {
+            display: flex;
+            align-items: center;
+            .material-icons {
+              font-size: 36px;
+              margin-right: 0.75em;
+            }
+            h2 {
+              height: auto;
+              min-height: auto;
+              line-height: normal;
+              font-size: 18px;
+              margin-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

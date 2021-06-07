@@ -2,4 +2,60 @@
   width: 100%;
   background-color: $B1;
   min-height: 200px;
+  display: flex;
+  color: white;
+  padding: 30px 5% 20px;
+  margin-top: auto;
+  a{
+    display: block;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+  }
+  a:visited{
+    color: white;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  p{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+}
+//
+.footerSub{
+  display: flex;
+  width: 50%;
+}
+
+.footerElement{
+  width: 50%;
+}
+
+#footerTitle{
+  font-size: 30px;
+  font-weight: 500;
+
+}
+
+.footerTitles{
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+@media (max-width: $BP0) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    .footerSub{
+      display: flex;
+      width: 100%;
+    }
+    
+  }
 }

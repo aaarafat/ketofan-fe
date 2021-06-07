@@ -2,7 +2,9 @@
   "name": "ketofan-fe",
   "version": "0.0.0",
   "scripts": {
+    "mock": "json-server --watch src/static/db.json --port 3004 | vite",
     "dev": "vite",
+    "back": "vite --mode production",
     "build": "vite build",
     "serve": "vite preview",
     "start": "npm run dev"
@@ -10,6 +12,11 @@
   "dependencies": {
     "vee-validate": "^4.4.0-alpha.2",
     "yup": "^0.29.3",
+    "axios": "^0.21.1",
+    "click-outside-vue3": "^4.0.1",
+    "json-server": "^0.16.3",
+    "jwt-decode": "^3.1.2",
+    "swiper": "^6.7.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.6",
     "vuex": "^4.0.0"

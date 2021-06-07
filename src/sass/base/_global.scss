@@ -2,4 +2,19 @@ body {
   font-family: $font-stack;
   background-color: $N2;
   color: $N4;
+  ::-webkit-input-placeholder {
+    font-family: $font-stack;
+  }
+
+  :-ms-input-placeholder {
+    font-family: $font-stack;
+  }
+
+  :-moz-placeholder {
+    font-family: $font-stack;
+  }
+
+  ::-moz-placeholder {
+    font-family: $font-stack;
+  }
 }

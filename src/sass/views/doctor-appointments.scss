@@ -1,0 +1,65 @@
+.doctor-appointments {
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $N1;
+  .heading {
+    color: $N3;
+    display: flex;
+    align-items: center;
+    .seprator {
+      height: 1px;
+      width: 30px;
+      background-color: $N1;
+    }
+    .time {
+      margin: 0 1em;
+    }
+    .line {
+      height: 1px;
+      width: 100%;
+      background-color: $N1;
+    }
+  }
+  .appointment {
+    width: 100%;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    border: 1px solid $N1;
+    .head {
+      color: $B1;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $N1;
+      line-height: normal;
+      margin-bottom: 1em;
+      span {
+        font-size: 22px;
+        margin-right: 1em;
+      }
+      .note {
+        cursor: pointer;
+      }
+    }
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .options {
+        .delete {
+          transition: 0.5s;
+          cursor: pointer;
+          &:hover {
+            color: $P2;
+          }
+        }
+      }
+    }
+    .type {
+      margin-top: 0.2em;
+      font-size: 16px;
+      color: $N3;
+    }
+  }
+}
