@@ -84,7 +84,7 @@
       }
       ul{
         position: fixed;
-        width: clamp(100px, 30%, 300px);
+        width: clamp(200px, 30%, 300px);
         height: 100%;
         background: $B1;
         top: 0px;
@@ -116,7 +116,7 @@
             margin-right: 20px;
             width:20px;
             margin-left: 10px;
-            
+            box-shadow: red 3px 7px 0px -5px;
           }
           .icons{
             display: inline-block;
