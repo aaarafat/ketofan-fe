@@ -47,7 +47,7 @@
         <ListItem
           :showIcon="showOverlay"
           linkText="Contact Us"
-          path="/"
+          path="/contact-us"
           iconType="phone"
         />
         <span class="bar">|</span>
