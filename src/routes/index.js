@@ -8,9 +8,12 @@ import ContactUs from "../views/ContactUs.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import DoctorLayout from "../layouts/DoctorLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
+import AdminLayout from "../layouts/AdminLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
 import DoctorAppointments from "../modules/DoctorPanel/DoctorAppointments.vue";
 import DoctorWorkingHours from "../modules/DoctorPanel/DoctorWorkingHours.vue";
+import DoctorsRequests from "../modules/AdminPanel/DoctorsRequests.vue";
+import Feedbacks from "../modules/AdminPanel/Feedbacks.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
 import Login from "../views/Login.vue";
@@ -66,6 +69,31 @@ const routes = [
     ],
     beforeEnter: (to, from, next) => {
       if ($auth.getRole() !== "doctor") next({ name: "Home" });
+      else next();
+    },
+  },
+  {
+    path: "/admin",
+    name: "AdminLayout",
+    component: AdminLayout,
+    redirect: (to) => {
+      return { path: "/admin/feedbacks" };
+    },
+    children: [
+      {
+        path: "feedbacks",
+        name: "Feedbacks",
+        component: Feedbacks,
+      },
+      {
+        path: "doctors-requests",
+        name: "DoctorsRequests",
+        component: DoctorsRequests,
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getRole() !== "admin" && $auth.getRole() !== "super_admin")
+        next({ name: "Home" });
       else next();
     },
   },

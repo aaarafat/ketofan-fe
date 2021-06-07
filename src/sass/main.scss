@@ -11,6 +11,7 @@
 /* Layout */
 @import "layouts/navigation";
 @import "layouts/doctor-nav";
+@import "layouts/admin-nav";
 @import "layouts/footer";
 @import "layouts/home-header";
 @import "layouts/header";
@@ -24,6 +25,8 @@
 @import "views/search-by";
 @import "views/doctor-appointments";
 @import "views/doctor-workhours";
+@import "views/admin-feedbacks";
+@import "views/admin-requests";
 
 @import "views/login";
 @import "views/signup";
