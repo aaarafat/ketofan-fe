@@ -100,4 +100,6 @@ export const $api = {
   insurances: new ModelApiService("insurances"),
   signin: new ModelApiService("auth/signin"),
   register: new ModelApiService("register"),
+  contactUs: new ModelApiService("contactUs"),
+  doctorsRequests: new ModelApiService("doctors/request"),
 };
