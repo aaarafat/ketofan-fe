@@ -196,7 +196,8 @@
           border-bottom: 1px solid #58595b;
           padding-bottom: 5px;
           display: flex;
-          input {
+          input,
+          textarea {
             width: 100%;
             background-color: transparent;
             border: 0;
@@ -204,6 +205,12 @@
             font-weight: 500;
             line-height: normal;
             outline: 0;
+            font-family: inherit;
+            font-size: 13.5px;
+            resize: vertical;
+          }
+          textarea::placeholder {
+            line-height: 1.5;
           }
         }
         p {

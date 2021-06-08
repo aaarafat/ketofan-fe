@@ -21,6 +21,7 @@
           @input="handleChange"
           @blur="handleBlur"
           @focus="handleFocus"
+          autocomplete="off"
         />
       </div>
       <span class="material-icons-outlined drop-down-btn"> expand_more </span>
