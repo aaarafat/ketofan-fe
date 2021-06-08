@@ -1,5 +1,6 @@
 <template>
   <router-view></router-view>
+  <FlashMessage position="right bottom" />
 </template>
 
 <script setup>
