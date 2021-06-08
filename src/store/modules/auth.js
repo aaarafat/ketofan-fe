@@ -1,5 +1,5 @@
 const state = {
-  isLogined: false,
+  isLogined: true,
   isAdmin: false,
   isDoctor: false,
   isUser: false,

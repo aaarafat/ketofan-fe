@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
 
-    <div v-if="showOverlay" @click="toggleSidebar" class='overlay'>
+    <div v-if="data.showOverlay" @click="toggleSidebar" class='overlay'>
     </div>
 
     <nav>
@@ -9,10 +9,13 @@
       <label for="navCheck" class="checkbtn">
         <i @click="toggleSidebar" class="material-icons">menu</i>
       </label>
-      <label class="logo">Ketofan</label>
-      <ul :class="{sidebar: showOverlay}">
+      <label class="logo"><router-link  
+            to= "/">
+            Ketofan
+        </router-link></label>
+      <ul :class="{sidebar: data.showOverlay}">
 
-        <li v-if="showOverlay" id='arrow'>
+        <li v-if="data.showOverlay" id='arrow'>
           <input type="checkbox" id="navCheck">
           <label  @click="toggleSidebar" for="navCheck" class="checkbtn">
             <i class="material-icons">arrow_forward</i>
@@ -21,77 +24,107 @@
 
 
         <ListItem 
-          v-if="showOverlay"
+          v-if="data.showOverlay"
           linkText="Home"
           iconType = "home"
           path = "/"
           linkId="navHome"/>
-
+        
         <hr>
         <ListItem 
-          :showIcon="showOverlay"
+          v-if="!store.getters.isLogined"
+          :showIcon="data.showOverlay"
           linkText="Sign Up"
           iconType = "app_registration"
           path = "signup"
           />
         
-        <span class="bar">|</span>
-        <hr>
+        
+        <li v-if="store.getters.isLogined && data.showOverlay" @click="toggleSidebar">
+          <span class="material-icons icons">
+              person
+          </span>
+         <router-link to="profile"> My Profile </router-link>
+        </li>
+        <hr/>
+        
+        <li v-if="store.getters.isLogined && data.showOverlay" @click="toggleSidebar">
+          <span class="material-icons icons">
+              date_range
+          </span>
+          <router-link to="appointments"> My Appointments </router-link>
+        </li>
+
+        <!-- to be revisited -->
+        <li v-if="store.getters.isLogined && !data.showOverlay" @click="toggleMenu">
+          {{store.getters.getUser.name}}
+          <span id="dropDownArrow" class="material-icons icon">
+              arrow_drop_down
+          </span>
+        </li>
+
+        <Menu v-if="!data.showOverlay && data.showMenu && store.getters.isLogined"
+        :show="toggleMenu"/>
+
+        <span v-if="!store.getters.isLogined" class="bar">|</span>
         <ListItem 
-          :showIcon="showOverlay"
+          v-if="!store.getters.isLogined"
+          :showIcon="data.showOverlay"
           linkText="Login"
           iconType = "login"
           path = "login"
           />
-      
+
+         
         <span class="bar">|</span>
         <hr>
 
         <ListItem 
-          :showIcon="showOverlay"
+          :showIcon="data.showOverlay"
           linkText="Contact Us"
           path = "contact-us"
           iconType = "phone"
           />
-        <span class="bar">|</span>
-
-        <li>
-        <img id="navEgyptFlag" alt="egypt flag" src="https://d1aovdz1i2nnak.cloudfront.net/vezeeta-web-reactjs/27353/_next/static/images/Egypt.png"/>
-
+        <hr v-if="store.getters.isLogined">
+        <li v-if="store.getters.isLogined && data.showOverlay" @click="logout">
+          <span class="material-icons icons">
+              logout
+          </span>
+          Logout
         </li>
         
-        <li id="navEgypt">
-          <p>
-          Egypt</p>
-        </li>
       </ul>
     </nav>
   </div>
 </template>
 
-<script >
+<script setup>
 import ListItem from '../../modules/Navbar/ListItem.vue'
-  export default{
-  data(){
-    return{
-      signedIn:null,
-      sidebar:null,
-      showOverlay:false
-    }
-  },
-  methods: {
-    toggleSidebar(){
-      this.toggleOverlay()
-    },
-    toggleOverlay(){
+import Menu from '../../modules/Navbar/Menu.vue'
+import { inject, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+  
+  const data = ref({showOverlay:false, showMenu:false})
+  const store = useStore()
+  const router = useRouter()
+  const api = inject("api")
 
-        setTimeout(() => {  this.showOverlay = !this.showOverlay }, 150);
-    }
-  },
-  components: {
-    'ListItem': ListItem
+  const toggleSidebar = ()=>{
+    toggleOverlay()
   }
-}  
+  const toggleOverlay = ()=>{
+    console.log("toggleSidebar")
+    setTimeout(() => {  data.value.showOverlay = !data.value.showOverlay }, 150);
+  }
+  const toggleMenu = ()=>{
+    data.value.showMenu = !data.value.showMenu;
+  }
+  const logout = ()=>{
+    store.dispatch("removeUser")  
+    router.push("/");
+    data.value.showOverlay = !data.value.showOverlay
+  }
 //to-do
 //rerouting to login using token
 //

@@ -39,6 +39,16 @@ const routes = [
         name: "signup",
         component: Signup,
       },
+      // {
+      //   path: "/appointments",
+      //   name: "appointments",
+      //   component: Appointments,
+      // },
+      // {
+      //   path: "/profile",
+      //   name: "profile",
+      //   component: Profile,
+      // },
     ],
     beforeEnter: (to, from, next) => {
       if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
