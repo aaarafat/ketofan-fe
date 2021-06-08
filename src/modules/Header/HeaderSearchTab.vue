@@ -18,7 +18,7 @@
     <div v-if="expand" class="dropdown">
       <ul>
         <li v-for="d in data" :key="d" class="element" @click="handleChoose">
-          {{ d }}
+          {{ d.name }}
         </li>
       </ul>
     </div>
