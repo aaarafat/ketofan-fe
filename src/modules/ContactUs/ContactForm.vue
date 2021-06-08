@@ -17,7 +17,7 @@
         required="true"
         label="Mobile Number"
         type="phone"
-        name="mobile"
+        name="mobileNumber"
         value=""
         placeholder="Mobile Number"
       ></FormGroup>
@@ -47,15 +47,47 @@
 <script setup>
 import FormGroup from "./FormGroup.vue";
 import { Form } from "vee-validate";
+import { flashMessage } from "@smartweb/vue-flash-message";
+import { inject } from "vue";
 import * as Yup from "yup";
-function onSubmit(values) {
-  alert(JSON.stringify(values, null, 2));
+
+const api = inject("api");
+
+async function onSubmit(values, { resetForm, setErrors }) {
+  try {
+    const response = await api.contactUs.post(values, "", true);
+    flashMessage.show({
+      type: "success",
+      title: "Feedback Sent Successfully",
+      text: "Thank you for your time.",
+    });
+    resetForm(); //success
+  } catch (err) {
+    console.log(err.response.data);
+    if (err.response.data.status === 400) {
+      const errors = err.response.data.errors.reduce(
+        (errs, currentError) => ({
+          [currentError.param]: currentError.msg,
+          ...errs,
+        }),
+        {}
+      );
+      console.log(errors);
+      setErrors(errors);
+    } else {
+      flashMessage.show({
+        type: "error",
+        title: "Something Wrong Happened.",
+        text: "Please try again later.",
+      });
+    }
+  }
 }
 
 const schema = Yup.object().shape({
   name: Yup.string().required().label("Name"),
   email: Yup.string().email().required().label("Email Address"),
-  mobile: Yup.string()
+  mobileNumber: Yup.string()
     .matches(/^((\+2)|2)?01[0125]\d{8}$/, "Mobile Number is invalid")
     .required()
     .label("Mobile Number"),
