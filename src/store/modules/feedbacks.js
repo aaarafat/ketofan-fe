@@ -21,14 +21,15 @@ const actions = {
     if (state.hasFeedbacks) {
       return;
     } else {
-      let feedbacks = await this.$api.contactUs.fetch();
+      let feedbacks = await this.$api.contactUs.fetch(this.$auth.getToken());
+      console.log(feedbacks);
       feedbacks = feedbacks.contactUs;
       state.feedbacks = feedbacks;
       commit("SET_FEEDBACKS", feedbacks);
     }
   },
   async removeFeedback({ commit }, id) {
-    this.$api.contactUs.delete(id).then(() => {
+    this.$api.contactUs.delete(id, this.$auth.getToken()).then(() => {
       commit("REMOVE_FEEDBACK", id);
     });
   },
