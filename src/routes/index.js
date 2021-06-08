@@ -15,6 +15,7 @@ import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
+import ChangeProfile from '../views/ChangeProfile.vue'
 import { $auth } from "../services/auth";
 import auth from "../store/modules/auth";
 
@@ -38,6 +39,11 @@ const routes = [
         path: "/signup",
         name: "signup",
         component: Signup,
+      },
+      {
+        path: "/profile",
+        name: "profile",
+        component: ChangeProfile,
       },
     ],
     beforeEnter: (to, from, next) => {
