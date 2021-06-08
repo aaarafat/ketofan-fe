@@ -1,12 +1,17 @@
 <template>
-  <div class="search">
-    <div v-for="r in results" :key="r.id"></div>
+  <div class="search-wrapper">
+    <div class="search">
+      <div v-for="r in results" :key="r.id">
+        <SearchResult :result="r" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, inject } from "vue";
 import { onBeforeRouteUpdate, useRoute, useRouter } from "vue-router";
+import SearchResult from "../modules/Search/SearchResult.vue";
 const route = useRoute();
 const api = inject("api");
 const results = ref([]);
@@ -26,7 +31,8 @@ const fetchSearch = (query) => {
   if (query.insurance === "") delete query.insurance;
   console.log(query);
   api.search.fetch(query).then((res) => {
-    results.value = res;
+    results.value = res.doctors;
+    console.log(res);
   });
 };
 </script>
