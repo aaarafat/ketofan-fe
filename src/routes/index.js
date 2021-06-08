@@ -140,7 +140,7 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/search/:speciality/:area/:insurance?",
+        path: "/search/:specialization/:area/:insurance?",
         name: "search",
         component: Search,
       },

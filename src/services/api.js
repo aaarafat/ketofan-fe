@@ -24,10 +24,11 @@ class ReadOnlyApiService extends BaseApiService {
     super(resource);
   }
 
-  async fetch(token = "") {
-    token = $auth.getToken();
+  async fetch(params = {}) {
+    const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
+      params,
     };
     try {
       const response = await axios.get(this.getUrl(), config);
@@ -39,10 +40,11 @@ class ReadOnlyApiService extends BaseApiService {
     }
   }
 
-  async get(id, token = "") {
-    token = $auth.getToken();
+  async get(id, params = {}) {
+    const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
+      params,
     };
     try {
       const response = await axios.get(this.getUrl(id), config);
@@ -106,4 +108,5 @@ export const $api = {
   register: new ModelApiService("register"),
   contactUs: new ModelApiService("contactUs"),
   doctorsRequests: new ModelApiService("doctors/request"),
+  search: new ModelApiService("doctors"),
 };
