@@ -15,11 +15,11 @@
       <div class="name">{{ user.name }}</div>
       <div class="navigation home" @click="handleHome">
         <span class="material-icons-outlined icon"> home </span>
-        <span>Home</span>
+        <span class="text">Home</span>
       </div>
       <div class="navigation logout" @click="handleLogout">
         <span class="material-icons icon"> logout </span>
-        <span>Log out</span>
+        <span class="text">Log out</span>
       </div>
     </div>
   </div>

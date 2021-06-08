@@ -3,6 +3,9 @@
     <div v-for="f in feedbacks" :key="f.id">
       <Feedback :feedback="f" />
     </div>
+    <div v-if="feedbacks.length === 0">
+      <h1>No Feedbacks</h1>
+    </div>
   </div>
 </template>
 

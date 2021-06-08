@@ -101,9 +101,14 @@
 }
 
 @media (max-width: $BP0) {
-  .doc-nav {
+  .admin-nav {
     .navigation {
       .logo {
+        display: none;
+      }
+    }
+    .info {
+      .text {
         display: none;
       }
     }
