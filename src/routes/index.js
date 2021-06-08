@@ -141,8 +141,8 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: '/search/:speciality/:area/:insurance?',
-        name: 'search',
+        path: "/search/:specialization/:area/:insurance?",
+        name: "search",
         component: Search,
       },
       {

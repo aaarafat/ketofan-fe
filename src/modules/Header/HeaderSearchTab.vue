@@ -17,7 +17,12 @@
     </div>
     <div v-if="expand" class="dropdown">
       <ul>
-        <li v-for="d in data" :key="d" class="element" @click="handleChoose">
+        <li
+          v-for="d in data"
+          :key="d"
+          class="element"
+          @click="handleChoose($event, d)"
+        >
           {{ d.name }}
         </li>
       </ul>
@@ -44,8 +49,9 @@ export default {
     onClickOutside(event) {
       if (this.expand) this.expand = false;
     },
-    handleChoose(e) {
-      this.$emit("select-element", e.target.innerText, this.index);
+    handleChoose(e, d) {
+      console.log(d);
+      this.$emit("select-element", e.target.innerText, this.index, d.id);
     },
   },
   mounted() {},
