@@ -18,16 +18,14 @@ const actions = {
     if (state.hasDoctorsRequests) {
       return;
     } else {
-      let doctorsRequests = await this.$api.doctorsRequests.fetch(
-        this.$auth.getToken()
-      );
+      let doctorsRequests = await this.$api.doctorsRequests.fetch();
       doctorsRequests = doctorsRequests.doctorRequests;
       state.doctorsRequests = doctorsRequests;
       commit("SET_DOCTORS_REQUESTS", doctorsRequests);
     }
   },
   async removeFeedback({ commit }, id) {
-    this.$api.contactUs.delete(id, this.$auth.getToken()).then(() => {
+    this.$api.contactUs.delete(id).then(() => {
       commit("REMOVE_DOCTOR_REQUEST", id);
     });
   },

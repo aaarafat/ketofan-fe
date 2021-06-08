@@ -21,7 +21,7 @@ const actions = {
     if (state.hasFeedbacks) {
       return;
     } else {
-      let feedbacks = await this.$api.contactUs.fetch(this.$auth.getToken());
+      let feedbacks = await this.$api.contactUs.fetch();
       console.log(feedbacks);
       feedbacks = feedbacks.contactUs;
       state.feedbacks = feedbacks;
@@ -29,7 +29,7 @@ const actions = {
     }
   },
   async removeFeedback({ commit }, id) {
-    this.$api.contactUs.delete(id, this.$auth.getToken()).then(() => {
+    this.$api.contactUs.delete(id).then(() => {
       commit("REMOVE_FEEDBACK", id);
     });
   },
