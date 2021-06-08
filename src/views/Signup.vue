@@ -3,7 +3,7 @@
         <div class="loginTitle">
             Sign Up
         </div>
-        <div id="signupTop" class="formBody ">
+        <!-- <div id="signupTop" class="formBody ">
          <button id="conWFacebook" class='loginButton loginInput'>
             <span id="facebookIcon" class="material-icons">
                 facebook
@@ -14,7 +14,7 @@
         <div class="formSeparator">
             <hr>
             <div id="loginOr">or</div>
-        </div>
+        </div> -->
         <div class="formBody signupFormBody">
             <div class="formField">
                 <label for="">Your Name</label>
