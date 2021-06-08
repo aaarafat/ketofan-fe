@@ -23,7 +23,6 @@ const actions = {
     } else {
       let insurances = await this.$api.insurances.fetch();
       insurances = insurances.insurances;
-      insurances = insurances.map((s) => s.name);
       state.insurances = insurances;
       commit("SET_INSURANCES", insurances);
     }

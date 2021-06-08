@@ -5,6 +5,7 @@
     <router-view></router-view>
   </div>
   <Footer />
+  <FlashMessage position="right bottom" />
 </template>
 
 <script setup>

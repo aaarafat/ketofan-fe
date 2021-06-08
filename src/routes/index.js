@@ -18,6 +18,9 @@ import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 import { $auth } from '../services/auth';
 import auth from '../store/modules/auth';
+import AdminLayout from "../layouts/AdminLayout.vue";
+import DoctorsRequests from "../modules/AdminPanel/DoctorsRequests.vue";
+import Feedbacks from "../modules/AdminPanel/Feedbacks.vue";
 
 const routes = [
   {
@@ -71,8 +74,33 @@ const routes = [
     },
   },
   {
-    path: '',
-    name: 'HeaderLayout',
+    path: "/admin",
+    name: "AdminLayout",
+    component: AdminLayout,
+    redirect: (to) => {
+      return { path: "/admin/feedbacks" };
+    },
+    children: [
+      {
+        path: "feedbacks",
+        name: "Feedbacks",
+        component: Feedbacks,
+      },
+      {
+        path: "doctors-requests",
+        name: "DoctorsRequests",
+        component: DoctorsRequests,
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getRole() !== "admin" && $auth.getRole() !== "super_admin")
+        next({ name: "Home" });
+      else next();
+    },
+  },
+  {
+    path: "",
+    name: "HeaderLayout",
     component: HeaderLayout,
     children: [
       {

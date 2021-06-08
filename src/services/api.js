@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { $auth } from "./auth";
 class BaseApiService {
   baseUrl = import.meta.env.VITE_ROOT_API;
   mode = import.meta.env.MODE;
@@ -25,6 +25,7 @@ class ReadOnlyApiService extends BaseApiService {
   }
 
   async fetch(token = "") {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -39,6 +40,7 @@ class ReadOnlyApiService extends BaseApiService {
   }
 
   async get(id, token = "") {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -58,6 +60,7 @@ class ModelApiService extends ReadOnlyApiService {
     super(resource);
   }
   async post(data = {}, token = "") {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -70,6 +73,7 @@ class ModelApiService extends ReadOnlyApiService {
     }
   }
   async put(id, data = {}, token = "") {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -100,5 +104,6 @@ export const $api = {
   insurances: new ModelApiService("insurances"),
   signin: new ModelApiService("auth/signin"),
   register: new ModelApiService("register"),
-  request: new ModelApiService("doctors/request"),
+  contactUs: new ModelApiService("contactUs"),
+  doctorsRequests: new ModelApiService("doctors/request"),
 };

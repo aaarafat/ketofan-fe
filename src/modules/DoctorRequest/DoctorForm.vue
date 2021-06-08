@@ -3,8 +3,8 @@
   <div class="title-container">
     <h2 class="title">Enter your personal info</h2>
     <span class="details">
-      This is your personal account information, you will be prompted next for
-      your clinic/hospital information.
+      This is your personal account information, We will review your request.<br />
+      In case of acceptance we are going to send your password by email.
     </span>
   </div>
   <Form class="form-container" @submit="onSubmit" :validation-schema="schema">
@@ -38,14 +38,15 @@
           placeholder="Mobile Number"
           icon="phone"
         />
-        <!-- Specialty drop down -->
         <DropDown
           required="true"
           name="specialty"
           label="Specialty"
           icon="biotech"
           placeholder="Specialty"
-          :options="store.getters.allSpecialties"
+          :options="specialities"
+          valueProp="id"
+          labelProp="name"
         />
         <DropDown
           required="true"
@@ -53,7 +54,9 @@
           label="Area"
           icon="place"
           placeholder="City"
-          :options="store.getters.allCities"
+          :options="cities"
+          valueProp="id"
+          labelProp="name"
         />
         <FormGroup
           required="true"
@@ -93,19 +96,21 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { inject, ref, onMounted } from "vue";
 import FormGroup from "./FormGroup.vue";
 import UploadPhoto from "./UploadPhoto.vue";
 import DropDown from "./DropDown.vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import { Form } from "vee-validate";
+import { flashMessage } from "@smartweb/vue-flash-message";
 import * as Yup from "yup";
 
 const api = inject("api");
 const SUPPORTED_FILE = ["image/jpeg", "image/jpg", "image/png"];
 const store = useStore();
 
-function onSubmit(values) {
+async function onSubmit(values, { resetForm }) {
   let formData = new FormData();
   formData.append("profileImage", values["doctor-picture"][0]);
   formData.append("document", values["practice-license"][0]);
@@ -114,12 +119,40 @@ function onSubmit(values) {
   formData.append("gender", "M");
   formData.append("dateOfBirth", "1999-10-19");
   formData.append("bio", values.bio);
-  formData.append("specializationId", values.specialty);
-  formData.append("areaId", "1");
+  formData.append("specializationId", values.specialty.id);
+  formData.append("areaId", values.area.id);
   formData.append("mobileNumber", values.mobile);
 
-  api.request.post(formData);
+  const response = await api.doctorsRequests.post(formData);
+
+  if (response) {
+    flashMessage.show({
+      type: "success",
+      title: "Request Sent Successfully",
+      text: "Your request is being reviewed, Thanks",
+    });
+    resetForm(); //success
+    router.push("/");
+  } else {
+    flashMessage.show({
+      type: "error",
+      title: "Something Wrong Happened.",
+      text: "Please try again later.",
+    });
+  }
 }
+
+const specialities = ref([]);
+const cities = ref([]);
+onMounted(() => {
+  store.dispatch("fetchSpecialties").then(() => {
+    specialities.value = store.getters.allSpecialties;
+    console.log(store.getters.allSpecialties);
+  });
+  store.dispatch("fetchCities").then(() => {
+    cities.value = store.getters.allCities;
+  });
+});
 
 const schema = Yup.object().shape({
   "first-name": Yup.string().required().label("First Name"),
@@ -130,15 +163,28 @@ const schema = Yup.object().shape({
     .matches(/^((\+2)|2)?01[0125]\d{8}$/, "Mobile Number is invalid")
     .required()
     .label("Mobile Number"),
-  specialty: Yup.string()
-    .required()
-    .test("SelectedSpecialty", "Select a speciality", (value) =>
-      store.getters.allSpecialties.find((d) => value === d)
+  specialty: Yup.object()
+    .shape({
+      id: Yup.number(),
+      name: Yup.string(),
+    })
+    .nullable()
+    .test(
+      "SelectedSpecialty",
+      "Select a speciality",
+      (value) =>
+        value && store.getters.allSpecialties.find((d) => value.id === d.id)
     ),
-  area: Yup.string()
-    .required()
-    .test("SelectedArea", "Select area", (value) =>
-      store.getters.allCities.find((d) => value === d)
+  area: Yup.object()
+    .shape({
+      id: Yup.number(),
+      name: Yup.string(),
+    })
+    .nullable()
+    .test(
+      "SelectedArea",
+      "Select area",
+      (value) => value && store.getters.allCities.find((d) => value.id === d.id)
     ),
   "doctor-picture": Yup.mixed()
     .required("Photo required")

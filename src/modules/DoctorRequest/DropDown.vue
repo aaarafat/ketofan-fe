@@ -3,7 +3,7 @@
     <div
       class="drop-wrapper"
       @click="() => setIsListOpen(!isListOpen)"
-      v-click-outside="() => setIsListOpen(false)"
+      v-click-outside-new="() => setIsListOpen(false)"
     >
       <div class="drop-input-field">
         <span
@@ -17,7 +17,7 @@
           :id="name"
           :name="name"
           :placeholder="computedPlaceholder"
-          :value="inputValue"
+          :value="inputValue[labelProp]"
           @input="handleChange"
           @blur="handleBlur"
           @focus="handleFocus"
@@ -33,12 +33,12 @@
         <li
           v-for="(option, index) in filteredOptions"
           :key="index"
-          @click="handleChangeVeeValidate(option)"
-          :class="{ selected: option == inputValue }"
+          @click="handleChangeVeeValidate({ ...option })"
+          :class="{ selected: option[valueProp] == inputValue[valueProp] }"
           tabindex="0"
           role="button"
         >
-          {{ option }}
+          {{ option[labelProp] }}
         </li>
       </ul>
       <ul v-show="isListOpen" v-else class="drop-down-list no-options">
@@ -54,7 +54,7 @@
 
 <script setup>
 import { useField } from "vee-validate";
-import { computed, defineProps, ref } from "vue";
+import { computed, watch, defineProps, ref } from "vue";
 
 const props = defineProps({
   icon: {
@@ -85,6 +85,14 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  valueProp: {
+    type: String,
+    required: true,
+  },
+  labelProp: {
+    type: String,
+    required: true,
+  },
 });
 
 const {
@@ -102,7 +110,7 @@ const {
 const isListOpen = ref(false);
 function handleChange(e) {
   isListOpen.value = true;
-  handleChangeVeeValidate(e);
+  handleChangeVeeValidate({ [props.labelProp]: e.target.value });
 }
 function setIsListOpen(value) {
   isListOpen.value = value;
@@ -121,11 +129,12 @@ const focused = ref(false);
 const computedPlaceholder = ref(
   props.required ? props.placeholder + "*" : props.placeholder
 );
-
 const filteredOptions = computed(() => {
   if (!inputValue.value) return props.options;
   return props.options.filter((o) =>
-    o.match(new RegExp("^" + inputValue.value, "i"))
+    o[props.labelProp].match(
+      new RegExp("^" + inputValue.value[props.labelProp], "i")
+    )
   );
 });
 </script>

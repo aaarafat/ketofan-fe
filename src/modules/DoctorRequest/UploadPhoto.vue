@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-    <div class="upload-photo-container" @click="handleClick()">
-      <div class="upload-photo">
+    <div class="upload-photo-container">
+      <label class="upload-photo" :for="name">
         <img
           v-show="imageUrl"
           :src="imageUrl"
@@ -34,14 +34,13 @@
           style="display: none"
           type="file"
           accept=".png, .jpg, .jpeg"
-          ref="inputFileRef"
           :id="name"
           :name="name"
           @input="handleChange"
           @blur="handleBlur"
         />
-      </div>
-      <label :for="name">{{ label + (required ? "*" : "") }}</label>
+      </label>
+      <div>{{ label + (required ? "*" : "") }}</div>
     </div>
       <p :style="{ visibility: !!errorMessage ? 'visible' : 'hidden' }">
         {{ errorMessage }}
@@ -77,11 +76,6 @@ const {
   validateOnValueUpdate: false,
   label: props.name,
 });
-
-const inputFileRef = ref(null);
-function handleClick(e) {
-  inputFileRef.value.click();
-}
 
 const imageUrl = computed(() => {
   if (!meta.valid || !inputValue.value) {
