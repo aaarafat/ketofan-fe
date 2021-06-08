@@ -100,5 +100,5 @@ export const $api = {
   insurances: new ModelApiService("insurances"),
   signin: new ModelApiService("auth/signin"),
   register: new ModelApiService("register"),
-  request: new ModelApiService("request"),
+  request: new ModelApiService("doctors/request"),
 };

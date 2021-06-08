@@ -118,7 +118,7 @@ function onSubmit(values) {
   formData.append("areaId", "1");
   formData.append("mobileNumber", values.mobile);
 
-  api.post(formData);
+  api.request.post(formData);
 }
 
 const schema = Yup.object().shape({
