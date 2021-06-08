@@ -99,5 +99,5 @@ export const $api = {
   cities: new ModelApiService("areas"),
   insurances: new ModelApiService("insurances"),
   signin: new ModelApiService("auth/signin"),
-  register: new ModelApiService("register"),
+  register: new ModelApiService("auth/signup"),
 };
