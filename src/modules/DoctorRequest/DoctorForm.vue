@@ -108,9 +108,20 @@ import * as Yup from "yup";
 
 const api = inject("api");
 const SUPPORTED_FILE = ["image/jpeg", "image/jpg", "image/png"];
+const BACK_TO_FRONT_MAP = {
+  profileImage: "doctor-picture",
+  document: "practice-license",
+  name: "first-name",
+  email: "email",
+  bio: "bio",
+  specializationId: "specialty",
+  areaId: "area",
+  mobileNumber: "mobile",
+};
 const store = useStore();
+const router = useRouter();
 
-async function onSubmit(values, { resetForm }) {
+async function onSubmit(values, { resetForm, setErrors }) {
   let formData = new FormData();
   formData.append("profileImage", values["doctor-picture"][0]);
   formData.append("document", values["practice-license"][0]);
@@ -122,23 +133,34 @@ async function onSubmit(values, { resetForm }) {
   formData.append("specializationId", values.specialty.id);
   formData.append("areaId", values.area.id);
   formData.append("mobileNumber", values.mobile);
-
-  const response = await api.doctorsRequests.post(formData);
-
-  if (response) {
+  try {
+    const response = await api.doctorsRequests.post(formData, "", true);
+    router.push("/");
     flashMessage.show({
       type: "success",
       title: "Request Sent Successfully",
       text: "Your request is being reviewed, Thanks",
     });
     resetForm(); //success
-    router.push("/");
-  } else {
-    flashMessage.show({
-      type: "error",
-      title: "Something Wrong Happened.",
-      text: "Please try again later.",
-    });
+  } catch (err) {
+    console.log(err.response.data);
+    if (err.response.data.status === 400) {
+      const errors = err.response.data.errors.reduce(
+        (errs, currentError) => ({
+          [BACK_TO_FRONT_MAP[currentError.param]]: currentError.msg,
+          ...errs,
+        }),
+        {}
+      );
+      console.log(errors);
+      setErrors(errors);
+    } else {
+      flashMessage.show({
+        type: "error",
+        title: "Something Wrong Happened.",
+        text: "Please try again later.",
+      });
+    }
   }
 }
 
