@@ -19,7 +19,7 @@
 <script setup>
 import HeaderSearchTab from "./HeaderSearchTab.vue";
 import HeaderSearchInputTab from "./HeaderSearchInputTab.vue";
-import { ref, onMounted, inject } from "vue";
+import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
@@ -46,7 +46,7 @@ const tabs = ref([
 const handleSearch = (e) => {
   let string = `/search/${queries.value[0]}/${queries.value[1]}`;
   string += queries.value[2] !== "" ? `/${queries.value[2]}` : "";
-  string += doctor.value !== "" ? `?doctor=${doctor.value}` : "";
+  string += doctor.value !== "" ? `?name=${doctor.value}` : "";
   router.push(string);
 };
 const handleInput = (e) => {
