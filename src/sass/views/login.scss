@@ -26,7 +26,7 @@
             display: block;
             margin: 17px 0px 8px;
         }
-
+       
         .formField{
             margin-bottom: 15px;
             height: 60px;
@@ -38,6 +38,11 @@
                 display: inline;
                 margin-right: 10px;
                 font-size: 14px;
+            }
+            .error{
+                color:$P2;
+                font-size: 12px;
+                font-weight: 600;
             }
         }
         .loginInput{
@@ -144,5 +149,9 @@
     .gender{
         display: inline !important;
         margin-right: 20px !important;;
+    }
+    #radioField{
+        padding-top:10px;
+        height: 40px;
     }
 }

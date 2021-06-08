@@ -3,52 +3,49 @@
         <div class="loginTitle">
             Sign Up
         </div>
-        <!-- <div id="signupTop" class="formBody ">
-         <button id="conWFacebook" class='loginButton loginInput'>
-            <span id="facebookIcon" class="material-icons">
-                facebook
-            </span>
-            Connect With Facebook
-        </button>
-        </div>
-        <div class="formSeparator">
-            <hr>
-            <div id="loginOr">or</div>
-        </div> -->
+
         <div class="formBody signupFormBody">
             <div class="formField">
                 <label for="">Your Name</label>
-                <input class="loginInput" name="name" type="name" placeholder="First and Last name" v-model="data.name">
+                <input @change="handleChange" class="loginInput" name="name" type="name" placeholder="First and Last name" v-model="data.name">
+                <p v-if="error.name.show" class="error">{{error.name.message}}</p>
             </div>
+            
 
-            <div class="formField" >
+            <div class="formField " id="radioField">
                 <label class="gender" for="">Gender</label>
                 <div class="gender loginInput">
                     <label class="radio" for="male">Male</label>
-                    <input class="radio" type="radio" id="male" name="gender" value="M" v-model="data.gender">
+                    <input @change="handleChange" class="radio" type="radio" id="male" name="gender" value="M" v-model="data.gender">
                     <label class="radio" for="female">Female</label>
-                    <input class="radio" type="radio" id="female" name="gender" value="F" v-model="data.gender">
+                    <input @change="handleChange" class="radio" type="radio" id="female" name="gender" value="F" v-model="data.gender">
                 </div>
+                <p v-if="error.gender.show" class="error">{{error.gender.message}}</p>
             </div>
+            
             <div class="formField">
                 <label for="">Mobile Number</label>
-                <input class="loginInput" name="phone" type="number" placeholder="Mobile Number" v-model="data.phone">
+                <input @change="handleChange" class="loginInput" name="phone" placeholder="Mobile Number" v-model="data.phone">
+                <p v-if="error.phone.show" class="error">{{error.phone.message}}</p>
             </div>
             
             <div class="formField">
                 <label for="">Email</label>
-                <input class="loginInput" name="email" type="email" placeholder="example@domain.com" v-model="data.email">
+                <input @change="handleChange" class="loginInput" name="email" type="email" placeholder="example@domain.com" v-model="data.email">
+                <p v-if="error.email.show" class="error">{{error.email.message}}</p>
             </div>
             
             <div class="formField">
                 <label for="">
                     Birthdate
                 </label>
-                <input class="loginInput" name="Birthdate" type="date" v-model="data.birthdate">
+                <input @change="handleChange" class="loginInput" name="Birthdate" type="date" v-model="data.birthdate">
+                <p v-if="error.birthdate.show" class="error">{{error.birthdate.message}}</p>
             </div>
             <div class="formField">
                 <label for="">Password</label>
-                <input class="loginInput" name="password" type="password" placeholder="Password" v-model="data.password">
+                <input @change="handleChange" class="loginInput" name="password" type="password" placeholder="Password" v-model="data.password">
+                <p v-if="error.password.show" class="error">{{error.password.message}}</p>
             </div>
             <button @click="handleSubmit" class='loginButton loginInput'>Join Now</button>
         </div>
@@ -63,7 +60,6 @@
                 </span>
             </div>
         </div>
-
     </div>
         
 </template>
@@ -83,16 +79,66 @@ const data = reactive({
     birthdate:"",
     name:"",
 });
+let enableSubmit = false;
+const emptyFieldError = "Plaease Enter Your "
+const error = reactive({ 
+    email : {
+        show:false,
+        message: 'Please Enter A Valid Email'
+    },
+    password: {
+        show:false,
+        message: emptyFieldError +'Password'
+    },
+    gender : {
+        show:false,
+        message: emptyFieldError +'Gender'
+    },
+    phone : {
+        show:false,
+        message: 'Please Enter A Valid Phone'
+    },
+    birthdate : {
+        show:false,
+        message: emptyFieldError +'Birthdate'
+    },
+    name : {
+        show:false,
+        message: emptyFieldError +'Name'
+    },
+})
 const handleSubmit = async () => {
-  console.log(data.male);
-  const res = await api.register.post({ ...data });
-  if (res) {
+    handleChange()
+    console.log(data);
+    if(!enableSubmit){
+        return
+    }
+    const res = await api.register.post({ ...data });
+    if (res) {
     store.dispatch("setUser", res);
 
     if (store.getters.isDoctor) router.push("/doctor");
     else router.push("/");
-  }
+    }
 };
+
+const handleChange = ()=>{
+    error.email.show = data.email.includes("@") ?false:true
+    error.password.show = data.password === ""?true:false
+    error.gender.show = data.gender === ""?true:false
+    error.phone.show = /^((\+2)|2)?01[0125]\d{8}$/.test(data.phone)?false:true
+    error.birthdate.show = data.birthdate === ""?true:false
+    error.name.show = data.name === ""?true:false
+  if( 
+      !(error.name.show ||
+      error.birthdate.show ||
+      error.phone.show ||
+      error.gender.show ||
+      error.password.show ||
+      error.email.show )){
+          enableSubmit = true
+      }
+}
 </script>
 
 <style scoped>
