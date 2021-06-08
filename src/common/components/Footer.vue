@@ -22,7 +22,7 @@
 
       <div class="footerElement">
         <p class="footerTitles">Need Help?</p>
-        <router-link to="">Contact US</router-link>
+        <router-link to="/contact-us">Contact US</router-link>
       </div>
     </div>
   </div>

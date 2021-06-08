@@ -50,9 +50,11 @@
           class="loginInput"
           name="phone"
           placeholder="Mobile Number"
-          v-model="data.phone"
+          v-model="data.mobileNumber"
         />
-        <p v-if="error.phone.show" class="error">{{ error.phone.message }}</p>
+        <p v-if="error.mobileNumber.show" class="error">
+          {{ error.mobileNumber.message }}
+        </p>
       </div>
 
       <div class="formField">
@@ -75,10 +77,10 @@
           class="loginInput"
           name="Birthdate"
           type="date"
-          v-model="data.birthdate"
+          v-model="data.dateOfBirth"
         />
-        <p v-if="error.birthdate.show" class="error">
-          {{ error.birthdate.message }}
+        <p v-if="error.dateOfBirth.show" class="error">
+          {{ error.dateOfBirth.message }}
         </p>
       </div>
       <div class="formField">
@@ -122,13 +124,13 @@ const data = reactive({
   email: "",
   password: "",
   gender: "",
-  phone: "",
-  birthdate: "",
+  mobileNumber: "",
+  dateOfBirth: "",
   name: "",
 });
 let enableSubmit = false;
 const emptyFieldError = "Plaease Enter Your ";
-const error = reactive({
+const error = ref({
   email: {
     show: false,
     message: "Please Enter A Valid Email",
@@ -141,11 +143,11 @@ const error = reactive({
     show: false,
     message: emptyFieldError + "Gender",
   },
-  phone: {
+  mobileNumber: {
     show: false,
     message: "Please Enter A Valid Phone",
   },
-  birthdate: {
+  dateOfBirth: {
     show: false,
     message: emptyFieldError + "Birthdate",
   },
@@ -154,20 +156,14 @@ const error = reactive({
     message: emptyFieldError + "Name",
   },
 });
-const BACK_TO_FRONT_MAP = {
-  password: "password",
-  email: "email",
-  name: "name",
-  gender: "gender",
-  dateOfBirth: "birthdate",
-  mobileNumber: "phone",
-};
+
 const handleSubmit = async () => {
   handleChange();
   console.log(data);
   if (!enableSubmit) {
     return;
   }
+
   api.register
     .post({ ...data }, "", true)
     .then((res) => {
@@ -180,39 +176,33 @@ const handleSubmit = async () => {
     })
     .catch((err) => {
       if (err.response.data.status === 400) {
-        const errors = err.response.data.errors.reduce(
-          (errs, currentError) => ({
-            [BACK_TO_FRONT_MAP[currentError.param]]: currentError.msg,
-            ...errs,
-          }),
-          {}
-        );
-        for (const key in errors) {
-          error[key].messege = errors[key];
-          error[key].show = true;
-        }
-        console.log(error);
+        err.response.data.errors.forEach((e) => {
+          error.value[e.param].message = e.msg;
+          error.value[e.param].show = true;
+        });
       }
     });
 };
 
 const handleChange = () => {
-  error.email.show = data.email.includes("@") ? false : true;
-  error.password.show = data.password === "" ? true : false;
-  error.gender.show = data.gender === "" ? true : false;
-  error.phone.show = /^((\+2)|2)?01[0125]\d{8}$/.test(data.phone)
+  error.value.email.show = data.email.includes("@") ? false : true;
+  error.value.password.show = data.password === "" ? true : false;
+  error.value.gender.show = data.gender === "" ? true : false;
+  error.value.mobileNumber.show = /^((\+2)|2)?01[0125]\d{8}$/.test(
+    data.mobileNumber
+  )
     ? false
     : true;
-  error.birthdate.show = data.birthdate === "" ? true : false;
-  error.name.show = data.name === "" ? true : false;
+  error.value.dateOfBirth.show = data.dateOfBirth === "" ? true : false;
+  error.value.name.show = data.name === "" ? true : false;
   if (
     !(
-      error.name.show ||
-      error.birthdate.show ||
-      error.phone.show ||
-      error.gender.show ||
-      error.password.show ||
-      error.email.show
+      error.value.name.show ||
+      error.value.dateOfBirth.show ||
+      error.value.mobileNumber.show ||
+      error.value.gender.show ||
+      error.value.password.show ||
+      error.value.email.show
     )
   ) {
     enableSubmit = true;

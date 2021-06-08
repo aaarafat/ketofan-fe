@@ -8,7 +8,7 @@
         :key="d.name"
         @click="handleClick"
       >
-        {{ d }}
+        {{ d.name }}
       </span>
       <span class="element" @click="handleView">View more...</span>
     </div>

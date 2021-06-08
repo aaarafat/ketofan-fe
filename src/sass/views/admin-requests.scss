@@ -1,0 +1,96 @@
+.doctors-requests {
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $N1;
+
+  .doctor-request {
+    width: 100%;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    border: 1px solid $N1;
+    .head {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $N1;
+      line-height: normal;
+      padding-bottom: 1em;
+      justify-content: space-between;
+      .profile {
+        display: flex;
+        align-items: center;
+        .picture {
+          height: 100px;
+          width: 100px;
+          overflow: hidden;
+          border-radius: 5px;
+          margin-right: 1em;
+          img {
+            width: 100%;
+          }
+        }
+        .info {
+          height: 100px;
+          line-height: normal;
+          .name {
+            font-size: 22px;
+            margin-right: 1em;
+            color: $B1;
+          }
+        }
+      }
+    }
+    .options {
+      color: $N4;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .icon {
+        transition: 0.5s;
+        cursor: pointer;
+        margin-right: 1em;
+      }
+      .reject {
+        &:hover {
+          color: $P2;
+        }
+      }
+      .accept {
+        &:hover {
+          color: $B1;
+        }
+      }
+    }
+    .body {
+      display: flex;
+      flex-direction: column;
+      .details {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .bio {
+        padding: 1em;
+        margin: 1em;
+        border: 1px dashed $N3;
+        line-height: normal;
+      }
+      .document {
+        padding: 1em;
+        .picture {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .time {
+      margin-top: 0.2em;
+      font-size: 16px;
+      color: $N3;
+    }
+  }
+}
