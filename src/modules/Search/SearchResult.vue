@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <div class="bookings" v-if="loaded">
+    <div class="search-bookings" v-if="loaded">
       <BookingTable :days="days" :doctorId="props.result.id" />
       <p>Appointments reservation</p>
     </div>
