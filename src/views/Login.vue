@@ -25,13 +25,13 @@
       <button class="loginButton loginInput" @click="handleLogin">Login</button>
     </div>
 
-    <div class="formSeparator">
+    <!-- <div class="formSeparator">
       <hr />
       <div id="loginOr">or</div>
-    </div>
+    </div>-->
     <div class="formBody">
-      <!--
-      <button id="conWFacebook" class="loginButton loginInput">
+      
+     <!-- <button id="conWFacebook" class="loginButton loginInput">
         <span id="facebookIcon" class="material-icons"> facebook </span>
         Connect With Facebook
       </button> -->

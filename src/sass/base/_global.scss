@@ -18,3 +18,8 @@ body {
     font-family: $font-stack;
   }
 }
+
+._vue-flash-msg-body {
+  max-width: fit-content;
+  padding: 15px;
+}

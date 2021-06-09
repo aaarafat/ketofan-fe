@@ -14,8 +14,9 @@ class BaseApiService {
     return `${this.baseUrl}/${this.resource}/${id}`;
   }
 
-  handleErrors(err) {
+  handleErrors(err, throwError=false) {
     console.log(err.response);
+    if(throwError) throw err;
   }
 }
 
@@ -24,7 +25,7 @@ class ReadOnlyApiService extends BaseApiService {
     super(resource);
   }
 
-  async fetch(params = {}) {
+  async fetch(params = {}, throwError=false) {
     const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -36,11 +37,11 @@ class ReadOnlyApiService extends BaseApiService {
         this.mode === "development" ? response.data : response.data.data;
       return data;
     } catch (err) {
-      this.handleErrors(err);
+      this.handleErrors(err, throwError);
     }
   }
 
-  async get(id, params = {}) {
+  async get(id, params = {}, throwError=false) {
     const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -52,7 +53,7 @@ class ReadOnlyApiService extends BaseApiService {
         this.mode === "development" ? response.data : response.data.data;
       return data;
     } catch (err) {
-      this.handleErrors(err);
+      this.handleErrors(err, throwError);
     }
   }
 }
@@ -61,7 +62,7 @@ class ModelApiService extends ReadOnlyApiService {
   constructor(resource) {
     super(resource);
   }
-  async post(data = {}, token = "") {
+  async post(data = {}, token = "", throwError=false) {
     token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -71,10 +72,10 @@ class ModelApiService extends ReadOnlyApiService {
       const res = response.data;
       return res;
     } catch (err) {
-      this.handleErrors(err);
+      this.handleErrors(err, throwError);
     }
   }
-  async put(id, data = {}, token = "") {
+  async put(id, data = {}, token = "", throwError=false) {
     token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -84,10 +85,10 @@ class ModelApiService extends ReadOnlyApiService {
       const res = response.data;
       return res;
     } catch (err) {
-      this.handleErrors(err);
+      this.handleErrors(err, throwError);
     }
   }
-  async delete(id, token = "") {
+  async delete(id, token = "", throwError=false) {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -95,7 +96,7 @@ class ModelApiService extends ReadOnlyApiService {
       const response = await axios.delete(this.getUrl(id), config);
       return true;
     } catch (err) {
-      this.handleErrors(err);
+      this.handleErrors(err, throwError);
     }
   }
 }
@@ -105,7 +106,7 @@ export const $api = {
   cities: new ModelApiService("areas"),
   insurances: new ModelApiService("insurances"),
   signin: new ModelApiService("auth/signin"),
-  register: new ModelApiService("register"),
+  register: new ModelApiService("auth/signup"),
   contactUs: new ModelApiService("contactUs"),
   doctorsRequests: new ModelApiService("doctors/request"),
   search: new ModelApiService("doctors"),

@@ -10,6 +10,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@smartweb/vue-flash-message": "^1.0.0-alpha.12",
     "axios": "^0.21.1",
     "click-outside-vue3": "^4.0.1",
     "json-server": "^0.16.3",

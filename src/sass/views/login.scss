@@ -26,13 +26,23 @@
             display: block;
             margin: 17px 0px 8px;
         }
-
+       
         .formField{
             margin-bottom: 15px;
             height: 60px;
             input{
                 display:block;
                 padding: 6px 12px;
+            }
+            .radio{
+                display: inline;
+                margin-right: 10px;
+                font-size: 14px;
+            }
+            .error{
+                color:$P2;
+                font-size: 12px;
+                font-weight: 600;
             }
         }
         .loginInput{
@@ -135,5 +145,13 @@
         width: 85%;
         height: 95%;
         margin: 20px auto;
+    }
+    .gender{
+        display: inline !important;
+        margin-right: 20px !important;;
+    }
+    #radioField{
+        padding-top:10px;
+        height: 40px;
     }
 }
