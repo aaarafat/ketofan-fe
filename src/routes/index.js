@@ -13,14 +13,14 @@ import LifeAtKetofan from '../modules/About/LifeAtKetofan.vue';
 import DoctorAppointments from '../modules/DoctorPanel/DoctorAppointments.vue';
 import DoctorWorkingHours from '../modules/DoctorPanel/DoctorWorkingHours.vue';
 import OurTeam from '../modules/About/OurTeam.vue';
-import AboutUs from '../modules/About/AboutUS.vue';
+import AboutUs from '../modules/About/AboutUs.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
 import { $auth } from '../services/auth';
 import auth from '../store/modules/auth';
-import AdminLayout from "../layouts/AdminLayout.vue";
-import DoctorsRequests from "../modules/AdminPanel/DoctorsRequests.vue";
-import Feedbacks from "../modules/AdminPanel/Feedbacks.vue";
+import AdminLayout from '../layouts/AdminLayout.vue';
+import DoctorsRequests from '../modules/AdminPanel/DoctorsRequests.vue';
+import Feedbacks from '../modules/AdminPanel/Feedbacks.vue';
 
 const routes = [
   {
@@ -74,33 +74,33 @@ const routes = [
     },
   },
   {
-    path: "/admin",
-    name: "AdminLayout",
+    path: '/admin',
+    name: 'AdminLayout',
     component: AdminLayout,
     redirect: (to) => {
-      return { path: "/admin/feedbacks" };
+      return { path: '/admin/feedbacks' };
     },
     children: [
       {
-        path: "feedbacks",
-        name: "Feedbacks",
+        path: 'feedbacks',
+        name: 'Feedbacks',
         component: Feedbacks,
       },
       {
-        path: "doctors-requests",
-        name: "DoctorsRequests",
+        path: 'doctors-requests',
+        name: 'DoctorsRequests',
         component: DoctorsRequests,
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getRole() !== "admin" && $auth.getRole() !== "super_admin")
-        next({ name: "Home" });
+      if ($auth.getRole() !== 'admin' && $auth.getRole() !== 'super_admin')
+        next({ name: 'Home' });
       else next();
     },
   },
   {
-    path: "",
-    name: "HeaderLayout",
+    path: '',
+    name: 'HeaderLayout',
     component: HeaderLayout,
     children: [
       {
@@ -141,8 +141,8 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/search/:specialization/:area/:insurance?",
-        name: "search",
+        path: '/search/:specialization/:area/:insurance?',
+        name: 'search',
         component: Search,
       },
       {
