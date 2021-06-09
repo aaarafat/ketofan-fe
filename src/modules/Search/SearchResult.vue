@@ -55,8 +55,17 @@ api.search.get(props.result.id + "/bookings").then((res) => {
   let date = "";
   Object.keys(b).forEach((d) => {
     let offset = (weekDays[d] - today + 7) % 7;
-    if (offset === 0) date = "Today";
-    else if (offset === 1) date = "Tomorrow";
+
+    if (offset === 0) {
+      date = "Today";
+      const now = new Date();
+      const timeNow = [now.getHours(), now.getMinutes(), now.getSeconds()].join(
+        ":"
+      );
+      b[d].forEach((slot) => {
+        if (slot.time < timeNow) slot.available = false;
+      });
+    } else if (offset === 1) date = "Tomorrow";
     else date = moment().add(offset, "d").format("ddd DD/MM ");
     temp.push({
       offset,
