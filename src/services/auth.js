@@ -14,6 +14,9 @@ class AuthenticationService {
   getUser() {
     return this.user;
   }
+  getToken() {
+    return this.token;
+  }
   setUser(payload) {
     this.user = payload.data.user;
     this.token = payload.token;

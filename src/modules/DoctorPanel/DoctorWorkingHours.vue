@@ -12,14 +12,19 @@
           <label for="one">On Appointment</label>
         </div>
         <div class="option">
-          <input type="radio" id="two" value="fifo" v-model="workhours.type" />
+          <input
+            type="radio"
+            id="two"
+            value="fifo"
+            v-model="workingDays.type"
+          />
           <label for="two">Fifo</label>
         </div>
       </div>
       <div class="save" @click="handleSave">Save Changes</div>
     </div>
     <div class="body">
-      <div v-for="(d, i) in workhours.days" :key="d.name">
+      <div v-for="(d, i) in workingDays.days" :key="d.name">
         <DoctorWorkingDay
           :day="d"
           :type="workhours.type"
@@ -34,23 +39,28 @@
 
 <script setup>
 import DoctorWorkingDay from "./DoctorWorkingDay.vue";
-import { ref } from "vue";
-
+import { inject, ref } from "vue";
+const api = inject("api");
+const workingDays = ref([]);
+api.workingDays.fetch().then((res) => {
+  console.log(res.workingDays);
+  workingDays.value = res.workingDays;
+});
 const handleSave = () => {
-  console.log(workhours.value);
+  api.workingDays.post({ ...workingDays.value });
 };
 
 const handleChangeWorking = (i) => {
-  workhours.value.days[i].working = !workhours.value.days[i].working;
+  workingDays.value.days[i].working = !workingDays.value.days[i].working;
 };
 const handleChangeTimings = (i, type, data) => {
-  workhours.value.days[i][type] = data;
+  workingDays.value.days[i][type] = data;
 };
 const workhours = ref({
   type: "reserve",
   days: [
     {
-      name: "Saturday",
+      day: "Saturday",
       from: "",
       to: "",
       slots: "",
@@ -58,7 +68,7 @@ const workhours = ref({
       working: true,
     },
     {
-      name: "Sunday",
+      day: "Sunday",
       from: "",
       to: "",
       slots: "",
@@ -66,7 +76,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Monday",
+      day: "Monday",
       from: "",
       to: "",
       slots: "",
@@ -74,7 +84,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Tuesday",
+      day: "Tuesday",
       from: "",
       to: "",
       slots: "",
@@ -82,7 +92,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Wedensday",
+      day: "Wedensday",
       from: "",
       to: "",
       slots: "",
@@ -90,7 +100,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Thursday",
+      day: "Thursday",
       from: "",
       to: "",
       slots: "",
@@ -98,7 +108,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Friday",
+      day: "Friday",
       from: "",
       to: "",
       slots: "",

@@ -1,0 +1,51 @@
+.booking-table {
+  width: 400px;
+
+  .column {
+    font-size: 12px;
+    width: 80px;
+    margin: 0 1em;
+    display: flex;
+    flex-direction: column;
+    background: $N0;
+    align-items: center;
+    border-bottom: 1px solid $N3;
+    transition: 0.5s;
+    margin: 1em 0;
+    margin-bottom: 2em;
+    .cell {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid $N3;
+      border-left: 1px solid $N3;
+      cursor: pointer;
+      padding: 0.5em;
+      &:hover {
+        background-color: $N2;
+      }
+    }
+    .reserved {
+      color: red;
+      text-decoration-line: line-through;
+      cursor: not-allowed;
+      &:hover {
+        background-color: $N0;
+      }
+    }
+    .head {
+      cursor: auto;
+      background-color: $B1;
+      color: $N0;
+      padding: 0.5em;
+
+      border-radius: 5px 5px 0 0;
+      border-right: 1px solid $B1;
+      border-left: 1px solid $B1;
+      &:hover {
+        background-color: $B1;
+      }
+    }
+  }
+}
