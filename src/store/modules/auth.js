@@ -10,7 +10,7 @@ const mutations = {
   SET_USER(state, user) {
     state.user = user;
     state.isLogined = true;
-    state.isAdmin = user.role === "admin";
+    state.isAdmin = user.role === "admin" || user.role === "super_admin";
     state.isDoctor = user.role === "doctor";
     state.isUser = user.role === "patient";
   },
