@@ -134,7 +134,7 @@ async function onSubmit(values, { resetForm, setErrors }) {
   formData.append("areaId", values.area.id);
   formData.append("mobileNumber", values.mobile);
   try {
-    const response = await api.doctorsRequests.post(formData, "", true);
+    const response = await api.doctorsRequests.post(formData, true);
     router.push("/");
     flashMessage.show({
       type: "success",
