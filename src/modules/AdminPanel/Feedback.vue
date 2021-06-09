@@ -25,11 +25,17 @@
 </template>
 
 <script setup>
-import { computed, defineProps } from "vue";
+import { computed, defineEmit, defineProps } from "vue";
+import { useStore } from "vuex";
 
+const store = useStore();
+const emit = defineEmit(["deleteFeedback"]);
 const props = defineProps({ feedback: Object });
 const handleDelete = () => {
   //TODO call BE
+  store.dispatch("removeFeedback", props.feedback.id).then(() => {
+    emit("deleteFeedback", props.feedback.id);
+  });
 };
 </script>
 
