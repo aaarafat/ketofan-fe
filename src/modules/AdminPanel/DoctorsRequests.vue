@@ -17,8 +17,9 @@ import { useStore } from "vuex";
 import DoctorRequest from "./DoctorRequest.vue";
 const store = useStore();
 const doctorsRequests = ref([]);
-store.dispatch("fetchDoctorsRequests").then(() => {
-  doctorsRequests.value = store.getters.allDoctorsRequests;
+const api = inject("api");
+api.doctorsRequests.fetch().then((res) => {
+  doctorsRequests.value = res.doctorRequests;
   console.log(store.getters.allDoctorsRequests);
 });
 
