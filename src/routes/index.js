@@ -64,7 +64,7 @@ const routes = [
     },
     children: [
       {
-        path: "appointments",
+        path: "workingHours",
         name: "DoctorWorkingHours",
         component: DoctorWorkingHours,
       },
