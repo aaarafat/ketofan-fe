@@ -112,6 +112,6 @@ export const $api = {
   doctorApps: new ModelApiService("doctors/appointments"),
   workingDays: new ModelApiService("doctors/workingDays"),
   search: new ModelApiService("doctors"),
-  profile: new ModelApiService("profile"),
+  profile: new ModelApiService("users/me"),
   appointments: new ModelApiService("doctors/appointments"),
 };

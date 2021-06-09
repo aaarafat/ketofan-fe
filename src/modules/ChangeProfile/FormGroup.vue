@@ -15,6 +15,7 @@
         :rows="rows"
         @input="handleChange"
         @blur="handleBlur"
+        :disabled="disabled !== 'off'"
       />
       <p v-show="name !== 'date' && errorMessage">{{ errorMessage }}</p>
        <p v-show="name === 'date' && errorMessage">Please Enter Date of Birth</p>
@@ -24,7 +25,7 @@
 
 <script setup>
 import { useField } from "vee-validate";
-import { defineProps } from "vue";
+import { defineProps, watch } from "vue";
 
 const props = defineProps({
   label: {
@@ -59,6 +60,10 @@ const props = defineProps({
     type: Number,
     default: 3,
   },
+  disabled: {
+    type: String,
+    default: "off"
+  }
 });
 
 const {
@@ -70,7 +75,7 @@ const {
 } = useField(props.name, undefined, {
   validateOnValueUpdate: false,
   label: props.label,
-  initialValue: props.value,
+  // initialValue: props.value,
 });
 </script>
 
