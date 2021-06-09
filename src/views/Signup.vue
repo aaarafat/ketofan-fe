@@ -160,28 +160,22 @@ const error = ref({
 const handleSubmit = async () => {
   handleChange();
   console.log(data);
-  if (!enableSubmit) {
-    return;
+  if (!enableSubmit) return;
+
+  try {
+    const res = await api.register.post({ ...data }, true);
+    store.dispatch("setUser", res);
+    if (store.getters.isDoctor) router.push("/doctor");
+    else router.push("/");
+  } catch (err) {
+    console.log(err);
+    if (err.response.data.status === 400) {
+      err.response.data.errors.forEach((e) => {
+        error.value[e.param].message = e.msg;
+        error.value[e.param].show = true;
+      });
+    }
   }
-
-  api.register
-    .post({ ...data }, "", true)
-    .then((res) => {
-      if (res) {
-        store.dispatch("setUser", res);
-
-        if (store.getters.isDoctor) router.push("/doctor");
-        else router.push("/");
-      }
-    })
-    .catch((err) => {
-      if (err.response.data.status === 400) {
-        err.response.data.errors.forEach((e) => {
-          error.value[e.param].message = e.msg;
-          error.value[e.param].show = true;
-        });
-      }
-    });
 };
 
 const handleChange = () => {

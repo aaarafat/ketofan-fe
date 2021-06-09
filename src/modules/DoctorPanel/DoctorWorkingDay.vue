@@ -33,7 +33,7 @@
           <span>Duration</span>
           <select v-model="data.duration" @change="handleSelect" id="duration">
             <option disabled value="">Please select one</option>
-            <option v-for="d in duration" :key="d">{{ d }}</option>
+            <option v-for="d in duration" :key="d" :value="d">{{ d + " Minutes" }}</option>
           </select>
         </div>
         <div class="option" v-if="type === 'fifo'">
@@ -50,6 +50,7 @@
 
 <script setup>
 import { defineEmit, defineProps, ref } from "vue";
+import moment from "moment";
 const props = defineProps({ day: Object, type: String, index: Number });
 const data = ref({
   from: "",
@@ -57,6 +58,15 @@ const data = ref({
   duration: "",
   slots: "",
 });
+
+function isInvalid(to, from) {
+  if(!from) return false;
+  const fromMoment = moment(from, "hh:mm a");
+  const toMoment = moment(to, "hh:mm a");
+  console.log(fromMoment.isBefore(toMoment));
+  return fromMoment.isBefore(toMoment);
+}
+
 const emit = defineEmit(["changeWorking", "changeTimings"]);
 const hours = [
   "12:00 AM",
@@ -108,13 +118,7 @@ const hours = [
   "11:00 PM",
   "11:30 PM",
 ];
-const duration = [
-  "15 Minutes",
-  "30 Minutes",
-  "60 Minutes",
-  "90 Minutes",
-  "120 Minutes",
-];
+const duration = [15, 30, 60, 90, 120];
 const slots = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23,
   24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36,
