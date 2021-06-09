@@ -1,186 +1,190 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import NotFound from '../views/NotFound.vue';
-import About from '../views/About.vue';
-import SearchBy from '../views/SearchBy.vue';
-import Search from '../views/Search.vue';
-import ContactUs from '../views/ContactUs.vue';
-import ConfirmBooking from '../views/ConfirmBooking.vue';
-import DefaultLayout from '../layouts/DefaultLayout.vue';
-import DoctorLayout from '../layouts/DoctorLayout.vue';
-import HeaderLayout from '../layouts/HeaderLayout.vue';
-import AdminLayout from '../layouts/AdminLayout.vue';
-import LifeAtKetofan from '../modules/About/LifeAtKetofan.vue';
-import DoctorAppointments from '../modules/DoctorPanel/DoctorAppointments.vue';
-import DoctorWorkingHours from '../modules/DoctorPanel/DoctorWorkingHours.vue';
-import DoctorsRequests from '../modules/AdminPanel/DoctorsRequests.vue';
-import Feedbacks from '../modules/AdminPanel/Feedbacks.vue';
-import OurTeam from '../modules/About/OurTeam.vue';
-import AboutUs from '../modules/About/AboutUs.vue';
-import Login from '../views/Login.vue';
-import Signup from '../views/Signup.vue';
-import ChangeProfile from '../views/ChangeProfile.vue';
-import Appointments from '../views/Appointments.vue';
-import DoctorRequest from '../views/DoctorRequest.vue';
-import { $auth } from '../services/auth';
-import auth from '../store/modules/auth';
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "../views/Home.vue";
+import NotFound from "../views/NotFound.vue";
+import About from "../views/About.vue";
+import SearchBy from "../views/SearchBy.vue";
+import Search from "../views/Search.vue";
+import ContactUs from "../views/ContactUs.vue";
+import ConfirmBooking from "../views/ConfirmBooking.vue";
+import DefaultLayout from "../layouts/DefaultLayout.vue";
+import DoctorLayout from "../layouts/DoctorLayout.vue";
+import HeaderLayout from "../layouts/HeaderLayout.vue";
+import AdminLayout from "../layouts/AdminLayout.vue";
+import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
+import DoctorAppointments from "../modules/DoctorPanel/DoctorAppointments.vue";
+import DoctorWorkingHours from "../modules/DoctorPanel/DoctorWorkingHours.vue";
+import DoctorsRequests from "../modules/AdminPanel/DoctorsRequests.vue";
+import Feedbacks from "../modules/AdminPanel/Feedbacks.vue";
+import OurTeam from "../modules/About/OurTeam.vue";
+import AboutUs from "../modules/About/AboutUs.vue";
+import Login from "../views/Login.vue";
+import Signup from "../views/Signup.vue";
+import ChangeProfile from "../views/ChangeProfile.vue";
+import Appointments from "../views/Appointments.vue";
+import DoctorRequest from "../views/DoctorRequest.vue";
+import { $auth } from "../services/auth";
+import auth from "../store/modules/auth";
 
 const routes = [
   {
-    path: '',
-    name: 'DefaultLayout',
+    path: "",
+    name: "DefaultLayout",
     component: DefaultLayout,
     children: [
       {
-        path: '',
-        name: 'Home',
+        path: "",
+        name: "Home",
         component: Home,
       },
       {
-        path: '/login',
-        name: 'login',
+        path: "/login",
+        name: "login",
         component: Login,
       },
       {
-        path: '/signup',
-        name: 'signup',
+        path: "/signup",
+        name: "signup",
         component: Signup,
       },
       {
-        path: '/confirm/:doctorId/:id',
-        name: 'confirmBooking',
+        path: "/confirm/:doctorId/:id",
+        name: "confirmBooking",
         component: ConfirmBooking,
+        beforeEnter: (to, from, next) => {
+          if ($auth.getRole() !== "patient") next({ name: "login" });
+          else next();
+        },
       },
       {
-        path: '/profile',
-        name: 'profile',
+        path: "/profile",
+        name: "profile",
         component: ChangeProfile,
       },
       {
-        path: '/appointments',
-        name: 'appointments',
+        path: "/appointments",
+        name: "appointments",
         component: Appointments,
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getRole() === 'doctor') next({ name: 'DoctorAppointments' });
+      if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
       else next();
     },
   },
   {
-    path: '/doctor',
-    name: 'DoctorLayout',
+    path: "/doctor",
+    name: "DoctorLayout",
     component: DoctorLayout,
     redirect: (to) => {
-      return { path: '/doctor/appointments' };
+      return { path: "/doctor/appointments" };
     },
     children: [
       {
-        path: 'workingHours',
-        name: 'DoctorWorkingHours',
+        path: "workingHours",
+        name: "DoctorWorkingHours",
         component: DoctorWorkingHours,
       },
       {
-        path: 'appointments',
-        name: 'DoctorAppointments',
+        path: "appointments",
+        name: "DoctorAppointments",
         component: DoctorAppointments,
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getRole() !== 'doctor') next({ name: 'Home' });
+      if ($auth.getRole() !== "doctor") next({ name: "Home" });
       else next();
     },
   },
   {
-    path: '/admin',
-    name: 'AdminLayout',
+    path: "/admin",
+    name: "AdminLayout",
     component: AdminLayout,
     redirect: (to) => {
-      return { path: '/admin/feedbacks' };
+      return { path: "/admin/feedbacks" };
     },
     children: [
       {
-        path: 'feedbacks',
-        name: 'Feedbacks',
+        path: "feedbacks",
+        name: "Feedbacks",
         component: Feedbacks,
       },
       {
-        path: 'doctors-requests',
-        name: 'DoctorsRequests',
+        path: "doctors-requests",
+        name: "DoctorsRequests",
         component: DoctorsRequests,
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getRole() !== 'admin' && $auth.getRole() !== 'super_admin')
-        next({ name: 'Home' });
+      if ($auth.getRole() !== "admin" && $auth.getRole() !== "super_admin")
+        next({ name: "Home" });
       else next();
     },
   },
   {
-    path: '',
-    name: 'HeaderLayout',
+    path: "",
+    name: "HeaderLayout",
     component: HeaderLayout,
     children: [
       {
-        path: '/about',
-        name: 'aboutLayout',
+        path: "/about",
+        name: "aboutLayout",
         component: About,
         children: [
           {
-            path: '',
-            name: 'about',
+            path: "",
+            name: "about",
             component: AboutUs,
           },
           {
-            path: '/our-team',
-            name: 'our-team',
+            path: "/our-team",
+            name: "our-team",
             component: OurTeam,
           },
           {
-            path: '/life-at-ketofan',
-            name: 'life-at-ketofan',
+            path: "/life-at-ketofan",
+            name: "life-at-ketofan",
             component: LifeAtKetofan,
           },
         ],
       },
       {
-        path: '/speciality',
-        name: 'speciality',
+        path: "/speciality",
+        name: "speciality",
         component: SearchBy,
       },
       {
-        path: '/area',
-        name: 'area',
+        path: "/area",
+        name: "area",
         component: SearchBy,
       },
       {
-        path: '/insurance',
-        name: 'insurance',
+        path: "/insurance",
+        name: "insurance",
         component: SearchBy,
       },
       {
-        path: '/search/:specialization/:area/:insurance?',
-        name: 'search',
+        path: "/search/:specialization/:area/:insurance?",
+        name: "search",
         component: Search,
       },
       {
-        path: '/contact-us',
-        name: 'contact-us',
+        path: "/contact-us",
+        name: "contact-us",
         component: ContactUs,
       },
       {
-        path: '/doctor-request',
-        name: 'doctor-request',
+        path: "/doctor-request",
+        name: "doctor-request",
         component: DoctorRequest,
       },
       {
-        path: '/:catchAll(.*)',
-        name: 'not-found',
+        path: "/:catchAll(.*)",
+        name: "not-found",
         component: NotFound,
       },
     ],
     beforeEnter: (to, from, next) => {
-      if ($auth.getRole() === 'doctor') next({ name: 'DoctorAppointments' });
+      if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
       else next();
     },
   },
