@@ -6,8 +6,8 @@
           <input
             type="radio"
             id="one"
-            value="reserve"
-            v-model="workhours.type"
+            value="reservation"
+            v-model="workingDays.type"
           />
           <label for="one">On Appointment</label>
         </div>
