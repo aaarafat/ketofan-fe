@@ -39,12 +39,20 @@
 </template>
 
 <script setup>
-import { computed, defineProps, inject } from "vue";
+import { computed, defineProps, inject, defineEmit } from "vue";
 const api = inject("api");
 const props = defineProps({ doctorRequest: Object });
+const emit = defineEmit(["deleteRequest"]);
 const url = import.meta.env.VITE_ROOT_API + "/images/";
 const handleReject = () => {
-  api.doctorsRequests.put(props.doctorRequest.id + "/reject");
+  api.doctorsRequests.put(props.doctorRequest.id + "/reject").then(() => {
+    emit("deleteRequest", props.doctorRequest.id);
+  });
+};
+const handleAccept = () => {
+  api.doctorsRequests.put(props.doctorRequest.id + "/approve").then(() => {
+    emit("deleteRequest", props.doctorRequest.id);
+  });
 };
 </script>
 

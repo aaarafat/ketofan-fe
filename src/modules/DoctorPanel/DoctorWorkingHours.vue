@@ -27,7 +27,7 @@
       <div v-for="(d, i) in workingDays.days" :key="d.name">
         <DoctorWorkingDay
           :day="d"
-          :type="workhours.type"
+          :type="workingDays.type"
           :index="i"
           @changeWorking="handleChangeWorking"
           @changeTimings="handleChangeTimings"
