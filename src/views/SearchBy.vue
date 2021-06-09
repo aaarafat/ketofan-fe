@@ -2,8 +2,13 @@
   <div class="search-by">
     <h2>Find doctors by {{ route.name }}</h2>
     <div class="container">
-      <div class="element" v-for="d in data" :key="d.name" @click="handleClick">
-        {{ d }}
+      <div
+        class="element"
+        v-for="d in data"
+        :key="d.name"
+        @click="handleClick($event, d.id)"
+      >
+        {{ d.name }}
       </div>
     </div>
   </div>
@@ -53,8 +58,8 @@ watch(route, () => {
   window.scrollTo(0, 0);
 });
 
-const handleClick = (e) => {
-  params.value[route.name] = e.target.innerHTML;
+const handleClick = (e, id) => {
+  params.value[route.name] = id;
   let string = `/search/${params.value.speciality}/${params.value.area}`;
   string += params.value.insurance !== "" ? `/${params.value.insurance}` : "";
 

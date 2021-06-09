@@ -6,7 +6,7 @@
         class="element"
         v-for="d in data"
         :key="d.name"
-        @click="handleClick"
+        @click="handleClick($event, d.id)"
       >
         {{ d.name }}
       </span>
@@ -21,9 +21,10 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const props = defineProps({ type: String, data: Array });
 const params = ref({ area: "egypt", speciality: "all" });
-const handleClick = (e) => {
-  params.value[props.type] = e.target.innerHTML;
-  let string = `/search/${params.value["specialties"]}/${params.value["areas"]}`;
+const handleClick = (e, id) => {
+  params.value[props.type] = id;
+  console.log(props.type, id);
+  let string = `/search/${params.value["speciality"]}/${params.value["area"]}`;
   router.push(string);
 };
 const handleView = (e) => {
