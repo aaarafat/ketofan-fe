@@ -3,6 +3,8 @@
     width: 95%;
     max-width: 1170px;
     color:$B1;
+    max-height:70vh;
+    overflow: auto;
     .head{
         display: flex;
         justify-content: space-evenly;

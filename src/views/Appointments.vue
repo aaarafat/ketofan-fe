@@ -30,7 +30,7 @@
 
 <script setup>
     import Appointment from '../modules/Appointments/Appointment.vue'
-    import { inject, reactive, ref } from "vue";
+    import { inject, reactive, ref, onMounted } from "vue";
     import { useRouter } from "vue-router";
     import { useStore } from "vuex";
     const api = inject("api");
@@ -60,6 +60,41 @@
     //     status:"confirmed"
     //     },
     //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"12/6/2021",
+    //     status:"cancelled",
+    //     },
+    //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"23/6/2022",
+    //     status:"confirmed",
+    //     },
+    //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"12/6/2021",
+    //     status:"cancelled",
+    //     },
+    //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"23/6/2022",
+    //     status:"confirmed",
+    //     },
+    //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"12/6/2021",
+    //     status:"cancelled",
+    //     },
+    //     {
+    //     name:"Ahmed",
+    //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
+    //     date:"23/6/2022",
+    //     status:"confirmed",
+    //     },{
     //     name:"Ahmed",
     //     place:"Ahmed fdgfdgr dghedrtg dergergt ergter",
     //     date:"12/6/2021",
