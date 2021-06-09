@@ -89,6 +89,7 @@ class ModelApiService extends ReadOnlyApiService {
     }
   }
   async delete(id, token = "", throwError = false) {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -113,5 +114,5 @@ export const $api = {
   workingDays: new ModelApiService("doctors/workingDays"),
   search: new ModelApiService("doctors"),
   profile: new ModelApiService("users/me"),
-  appointments: new ModelApiService("doctors/appointments"),
+  appointments: new ModelApiService("patients/appointments"),
 };

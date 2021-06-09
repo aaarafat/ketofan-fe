@@ -2,7 +2,12 @@
   <div class="profile">
     <div class="title">Change Profile</div>
     <div class="formBody">
-      <Form @submit="onSubmit" :validation-schema="schema" ref="formRef" :initial-values="user.user">
+      <Form
+        @submit="onSubmit"
+        :validation-schema="schema"
+        ref="formRef"
+        :initial-values="user.user"
+      >
         <FormGroup
           required="true"
           label="Your Name"
@@ -49,6 +54,7 @@ import FormGroup from "../modules/ChangeProfile/FormGroup.vue";
 import { Form } from "vee-validate";
 import * as Yup from "yup";
 import { inject, reactive, ref, onMounted } from "vue";
+import { flashMessage } from "@smartweb/vue-flash-message";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
@@ -75,7 +81,7 @@ const handleCancel = () => {
   router.push("/");
 };
 
-const onSubmit = async (values) => {
+const onSubmit = async (values, { setErrors }) => {
   const data = {
     name: values.name,
     gender: "M",
@@ -83,9 +89,33 @@ const onSubmit = async (values) => {
     mobileNumber: values.mobileNumber,
   };
   console.log(data);
-  const res = await api.profile.put(user.id, { ...data });
-  if (res) {
-    store.dispatch("setUser", res);
+  try {
+    const res = await api.profile.put(user.id, { ...data }, "", true);
+    if (res) {
+      store.dispatch("setUser", res);
+    }
+    flashMessage.show({
+      type: "success",
+      title: "Updated Successfully",
+    });
+  } catch (err) {
+    if (err.response.data.status === 400) {
+      const errors = err.response.data.errors.reduce(
+        (errs, currentError) => ({
+          [currentError.param]: currentError.msg,
+          ...errs,
+        }),
+        {}
+      );
+      console.log(errors);
+      setErrors(errors);
+    } else {
+      flashMessage.show({
+        type: "error",
+        title: "Something Wrong Happened.",
+        text: "Please try again later.",
+      });
+    }
   }
 };
 </script>
