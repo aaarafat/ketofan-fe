@@ -1,5 +1,5 @@
 <template>
-  <div class="doctor-appointments">
+  <div class="doctor-appointments" v-if="appointments.length">
     <div class="heading">
       <div class="seprator"></div>
       <div class="time">Today</div>
@@ -16,6 +16,9 @@
     <div v-for="app in upcomingApps" :key="app.id" :appointment="app">
       <DoctorAppointment :appointment="app" />
     </div>
+  </div>
+  <div class="doctor-appointments" v-if="!appointments.length">
+    <h2>No Appointments</h2>
   </div>
 </template>
 
