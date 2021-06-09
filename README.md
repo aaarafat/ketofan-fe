@@ -129,6 +129,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ![image](https://user-images.githubusercontent.com/35429211/121375871-59b4a400-c941-11eb-8f3a-022e368a14eb.png)
 
+![image](https://user-images.githubusercontent.com/35429211/121376126-8d8fc980-c941-11eb-9b13-22715084c83a.png)
+
+![image](https://user-images.githubusercontent.com/35429211/121377668-d300c680-c942-11eb-80ad-656a24245c8e.png)
+
+![image](https://user-images.githubusercontent.com/35429211/121378062-270bab00-c943-11eb-853f-5ccf8bde84ba.png)
+
 ## Contributers
 
 <table>

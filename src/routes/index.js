@@ -5,22 +5,25 @@ import About from '../views/About.vue';
 import SearchBy from '../views/SearchBy.vue';
 import Search from '../views/Search.vue';
 import ContactUs from '../views/ContactUs.vue';
-import DoctorRequest from '../views/DoctorRequest.vue';
+import ConfirmBooking from '../views/ConfirmBooking.vue';
 import DefaultLayout from '../layouts/DefaultLayout.vue';
 import DoctorLayout from '../layouts/DoctorLayout.vue';
 import HeaderLayout from '../layouts/HeaderLayout.vue';
+import AdminLayout from '../layouts/AdminLayout.vue';
 import LifeAtKetofan from '../modules/About/LifeAtKetofan.vue';
 import DoctorAppointments from '../modules/DoctorPanel/DoctorAppointments.vue';
 import DoctorWorkingHours from '../modules/DoctorPanel/DoctorWorkingHours.vue';
+import DoctorsRequests from '../modules/AdminPanel/DoctorsRequests.vue';
+import Feedbacks from '../modules/AdminPanel/Feedbacks.vue';
 import OurTeam from '../modules/About/OurTeam.vue';
 import AboutUs from '../modules/About/AboutUs.vue';
 import Login from '../views/Login.vue';
 import Signup from '../views/Signup.vue';
+import ChangeProfile from '../views/ChangeProfile.vue';
+import Appointments from '../views/Appointments.vue';
+import DoctorRequest from '../views/DoctorRequest.vue';
 import { $auth } from '../services/auth';
 import auth from '../store/modules/auth';
-import AdminLayout from '../layouts/AdminLayout.vue';
-import DoctorsRequests from '../modules/AdminPanel/DoctorsRequests.vue';
-import Feedbacks from '../modules/AdminPanel/Feedbacks.vue';
 
 const routes = [
   {
