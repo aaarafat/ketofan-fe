@@ -1,5 +1,5 @@
 .confirm-booking {
-  margin: 2em auto;
+  margin: 5em auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,6 +94,7 @@
 
 @media (max-width: $BP0) {
   .confirm-booking {
+    margin-top: 5em;
     .wrapper {
       .pic-wrapper {
         left: 50%;
