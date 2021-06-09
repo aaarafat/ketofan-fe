@@ -1,0 +1,58 @@
+.bookings{
+    margin: 2em auto;
+    width: 95%;
+    max-width: 1170px;
+    color:$B1;
+    max-height:70vh;
+    overflow: auto;
+    .head{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: rgb(241, 240, 238);
+        color: $B1;
+        font-size: 15px;
+        font-weight: 700;
+        height: 70px;
+
+        .column{
+            width:15%
+        }
+    }
+    .appointment{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height:100px;
+        border-bottom: solid $N2 2px;
+        background-color: white;
+        .column{
+            width:15%;
+            .cancel-text{
+                
+                font-size: 12px;
+            }
+            .cancel{
+                border:solid 2px;
+                width:30px;
+                border-radius: 50%;
+                .x{
+                    position: relative;
+                    left:1px;
+                    top:1px;
+                }
+            }
+            
+        }
+        .red{
+            color:red;
+            cursor: pointer;
+        }
+        .gray{
+            color:gray;
+            cursor:not-allowed;
+        }
+    }
+}
+
+

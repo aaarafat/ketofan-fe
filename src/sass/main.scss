@@ -16,18 +16,24 @@
 @import "layouts/home-header";
 @import "layouts/header";
 @import "layouts/layouts";
+
 /* Components */
+@import "components/booking-table";
 
 /* Views */
 @import "views/home";
 @import "views/about";
 @import "views/contact-us";
 @import "views/search-by";
+@import "views/search";
 @import "views/doctor-appointments";
 @import "views/doctor-workhours";
 @import "views/doctor-request";
 @import "views/admin-feedbacks";
 @import "views/admin-requests";
+@import "views/confirm-booking.scss";
 
+@import "views/profile.scss";
 @import "views/login";
 @import "views/signup";
+@import "views/appointments.scss";

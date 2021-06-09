@@ -13,7 +13,7 @@
     </div>
     <div class="info">
       <div class="name">{{ user.name }}</div>
-      <div class="photo"></div>
+
       <div class="logout" @click="handleLogout">
         <span class="material-icons"> logout </span>
         <span>Log out</span>
@@ -24,13 +24,21 @@
 
 <script setup>
 import axios from "axios";
-import { ref, watch } from "vue";
+import { ref, watch, inject } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 
 const store = useStore();
 const router = useRouter();
 const user = ref(store.getters.getUser);
+const url = ref("");
+const api = inject("api");
+api.search.get(user.value.id).then((res) => {
+  console.log(res);
+  url.value =
+    import.meta.env.VITE_ROOT_API + "/images/" + res.doctor.profileImage;
+});
+
 const handleLogout = () => {
   store.dispatch("removeUser");
   router.push("/");

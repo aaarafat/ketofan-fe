@@ -43,6 +43,21 @@ const routes = [
         name: 'signup',
         component: Signup,
       },
+      {
+        path: '/confirm/:doctorId/:id',
+        name: 'confirmBooking',
+        component: ConfirmBooking,
+      },
+      {
+        path: '/profile',
+        name: 'profile',
+        component: ChangeProfile,
+      },
+      {
+        path: '/appointments',
+        name: 'appointments',
+        component: Appointments,
+      },
     ],
     beforeEnter: (to, from, next) => {
       if ($auth.getRole() === 'doctor') next({ name: 'DoctorAppointments' });
@@ -58,7 +73,7 @@ const routes = [
     },
     children: [
       {
-        path: 'appointments',
+        path: 'workingHours',
         name: 'DoctorWorkingHours',
         component: DoctorWorkingHours,
       },

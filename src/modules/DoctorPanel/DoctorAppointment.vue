@@ -8,10 +8,10 @@
     <div class="body">
       <div class="details">
         <div>
-          {{ date }}
+          {{ appointment.day + " " + appointment.date }}
         </div>
         <div class="type">
-          {{ appointment.type }}
+          {{ appointment.time.slice(0, 5) }}
         </div>
       </div>
       <div class="options" @click="handleDelete">

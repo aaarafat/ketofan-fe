@@ -14,9 +14,9 @@ class BaseApiService {
     return `${this.baseUrl}/${this.resource}/${id}`;
   }
 
-  handleErrors(err, throwError=false) {
+  handleErrors(err, throwError = false) {
     console.log(err.response);
-    if(throwError) throw err;
+    if (throwError) throw err;
   }
 }
 
@@ -25,7 +25,7 @@ class ReadOnlyApiService extends BaseApiService {
     super(resource);
   }
 
-  async fetch(params = {}, throwError=false) {
+  async fetch(params = {}, throwError = false) {
     const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -41,7 +41,7 @@ class ReadOnlyApiService extends BaseApiService {
     }
   }
 
-  async get(id, params = {}, throwError=false) {
+  async get(id, params = {}, throwError = false) {
     const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -62,8 +62,8 @@ class ModelApiService extends ReadOnlyApiService {
   constructor(resource) {
     super(resource);
   }
-  async post(data = {}, token = "", throwError=false) {
-    token = $auth.getToken();
+  async post(data = {}, throwError = false) {
+    const token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -75,7 +75,7 @@ class ModelApiService extends ReadOnlyApiService {
       this.handleErrors(err, throwError);
     }
   }
-  async put(id, data = {}, token = "", throwError=false) {
+  async put(id, data = {}, token = "", throwError = false) {
     token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -88,7 +88,8 @@ class ModelApiService extends ReadOnlyApiService {
       this.handleErrors(err, throwError);
     }
   }
-  async delete(id, token = "", throwError=false) {
+  async delete(id, token = "", throwError = false) {
+    token = $auth.getToken();
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -109,5 +110,9 @@ export const $api = {
   register: new ModelApiService("auth/signup"),
   contactUs: new ModelApiService("contactUs"),
   doctorsRequests: new ModelApiService("doctors/request"),
+  doctorApps: new ModelApiService("doctors/appointments"),
+  workingDays: new ModelApiService("doctors/workingDays"),
   search: new ModelApiService("doctors"),
+  profile: new ModelApiService("users/me"),
+  appointments: new ModelApiService("patients/appointments"),
 };
