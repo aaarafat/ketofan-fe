@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="loginTitle">Login</div>
-    <div class="error" :class="{ visible: error}">
+    <div class="error-login" :class="{ visible: error}">
       The credentials you entered is invalid.<br>
       New user? <router-link to="signup">Create an account.</router-link>
     </div>

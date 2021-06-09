@@ -159,16 +159,16 @@ const error = ref({
 
 const handleSubmit = async () => {
   handleChange();
-  console.log(data);
   if (!enableSubmit) return;
 
   try {
     const res = await api.register.post({ ...data }, true);
+    console.log(res);
     store.dispatch("setUser", res);
     if (store.getters.isDoctor) router.push("/doctor");
     else router.push("/");
   } catch (err) {
-    console.log(err);
+    console.log(err.response);
     if (err.response.data.status === 400) {
       err.response.data.errors.forEach((e) => {
         error.value[e.param].message = e.msg;
