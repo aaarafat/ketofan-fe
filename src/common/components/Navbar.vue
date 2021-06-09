@@ -38,7 +38,7 @@
           @click="toggleSidebar"
         >
           <span class="material-icons icons"> person </span>
-          <router-link to="profile"> My Profile </router-link>
+          <router-link to="/profile"> My Profile </router-link>
         </li>
         <hr />
 
@@ -47,10 +47,9 @@
           @click="toggleSidebar"
         >
           <span class="material-icons icons"> date_range </span>
-          <router-link to="appointments"> My Appointments </router-link>
+          <router-link to="/appointments"> My Appointments </router-link>
         </li>
 
-        <!-- to be revisited -->
         <li
           v-if="store.getters.isLogined && !data.showOverlay"
           @click="toggleMenu"
