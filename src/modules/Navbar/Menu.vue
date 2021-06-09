@@ -1,17 +1,24 @@
 <template>
   <div class="dropdownMenu">
-        <div @click="hide">
+        <div v-if="!store.getters.isAdmin">
             <span class="material-icons icon">
                 person
             </span>
-           <router-link to="profile">My Profile</router-link> 
+           <router-link  @click="hide"  to="/profile">My Profile</router-link> 
         </div>
-        <div @click="hide">
+        <div v-if="!store.getters.isAdmin">
             <span class="material-icons icon">
                 date_range
             </span>
             
-            <router-link to="appointments">My Appointments</router-link> 
+            <router-link  @click="hide" to="/appointments">My Appointments</router-link> 
+        </div>
+        <div v-if="store.getters.isAdmin">
+            <span class="material-icons icon">
+                admin_panel_settings
+            </span>
+            
+            <router-link @click="hide" to="/admin">Admin Panel</router-link> 
         </div>
         <div @click="logout">
             <span class="material-icons icon">

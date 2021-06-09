@@ -9,7 +9,8 @@
       <label for="navCheck" class="checkbtn">
         <i @click="toggleSidebar" class="material-icons">menu</i>
       </label>
-      <label class="logo"><router-link  
+      <label class="logo">
+        <router-link  
             to= "/">
             Ketofan
         </router-link></label>
@@ -36,7 +37,7 @@
           :showIcon="data.showOverlay"
           linkText="Sign Up"
           iconType = "app_registration"
-          path = "signup"
+          path = "/signup"
           />
         
         
@@ -52,7 +53,7 @@
           <span class="material-icons icons">
               date_range
           </span>
-          <router-link to="appointments"> My Appointments </router-link>
+          <router-link to="/appointments"> My Appointments </router-link>
         </li>
 
         <!-- to be revisited -->
@@ -72,7 +73,7 @@
           :showIcon="data.showOverlay"
           linkText="Login"
           iconType = "login"
-          path = "login"
+          path = "/login"
           />
 
          
@@ -82,7 +83,7 @@
         <ListItem 
           :showIcon="data.showOverlay"
           linkText="Contact Us"
-          path = "contact-us"
+          path = "/contact-us"
           iconType = "phone"
           />
         <hr v-if="store.getters.isLogined">
