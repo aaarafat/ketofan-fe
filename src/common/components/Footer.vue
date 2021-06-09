@@ -17,7 +17,7 @@
     <div class="footerSub">
       <div class="footerElement">
         <p class="footerTitles">Are You A Doctor</p>
-        <router-link to="">Join Vezeeta Doctors</router-link>
+        <router-link to="/doctor-request">Join Ketofan Doctors</router-link>
       </div>
 
       <div class="footerElement">
