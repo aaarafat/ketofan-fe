@@ -69,6 +69,7 @@ const schema = Yup.object().shape({
 });
 
 const api = inject("api");
+const auth = inject("auth");
 const store = useStore();
 const router = useRouter();
 const user = ref({});
@@ -91,6 +92,8 @@ const onSubmit = async (values, { setErrors }) => {
   console.log(data);
   try {
     const res = await api.profile.put(user.id, { ...data }, "", true);
+    auth.setUser(res);
+    console.log(res);
     if (res) {
       store.dispatch("setUser", res);
     }
@@ -99,6 +102,7 @@ const onSubmit = async (values, { setErrors }) => {
       title: "Updated Successfully",
     });
   } catch (err) {
+    console.log(err);
     if (err.response.data.status === 400) {
       const errors = err.response.data.errors.reduce(
         (errs, currentError) => ({
