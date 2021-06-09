@@ -91,3 +91,21 @@
     }
   }
 }
+
+@media (max-width: $BP0) {
+  .confirm-booking {
+    .wrapper {
+      .pic-wrapper {
+        left: 50%;
+        border-radius: 50%;
+        background-color: $N2;
+        border: 1px solid $N1;
+        margin: 1em;
+      }
+      .profile {
+        display: flex;
+        margin-left: 0px;
+      }
+    }
+  }
+}
