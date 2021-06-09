@@ -42,11 +42,13 @@ import DoctorWorkingDay from "./DoctorWorkingDay.vue";
 import { inject, ref } from "vue";
 const api = inject("api");
 const workingDays = ref([]);
+
 api.workingDays.fetch().then((res) => {
   console.log(res.workingDays);
   workingDays.value = res.workingDays;
 });
 const handleSave = () => {
+  console.log(workingDays);
   api.workingDays.post({ ...workingDays.value });
 };
 
