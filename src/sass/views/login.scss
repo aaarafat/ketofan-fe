@@ -6,6 +6,16 @@
     color: $N4; 
     background-color: white;
     border-radius: 11px;
+    .error {
+        padding: 20px;
+        margin: 20px 45px 0;
+        color: white;
+        visibility: hidden;
+        background-color: rgb(248, 69, 69);
+        a, a:visited {
+            color: white;
+        }
+    }
     .loginTitle{
         color: white;
         background-color: $B1;
@@ -19,7 +29,7 @@
         display: block;
         margin: auto;
         width: 100%;
-        padding: 20px 45px;
+        padding: 10px 45px 20px;
          
         label{
             display: block;

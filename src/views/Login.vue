@@ -1,6 +1,10 @@
 <template>
   <div class="login">
     <div class="loginTitle">Login</div>
+    <div class="error" :class="{ visible: error}">
+      The credentials you entered is invalid.<br>
+      New user? <router-link to="signup">Create an account.</router-link>
+    </div>
     <div class="formBody">
       <div class="formField">
         <label for="">Mobile or Email</label>
@@ -30,8 +34,7 @@
       <div id="loginOr">or</div>
     </div>-->
     <div class="formBody">
-      
-     <!-- <button id="conWFacebook" class="loginButton loginInput">
+      <!-- <button id="conWFacebook" class="loginButton loginInput">
         <span id="facebookIcon" class="material-icons"> facebook </span>
         Connect With Facebook
       </button> -->
@@ -53,6 +56,7 @@ const api = inject("api");
 const store = useStore();
 const router = useRouter();
 const data = reactive({ email: "", password: "" });
+const error = ref(false);
 const handleLogin = async () => {
   console.log(data.email, data.password);
   const res = await api.signin.post({ ...data });
@@ -61,6 +65,14 @@ const handleLogin = async () => {
 
     if (store.getters.isDoctor) router.push("/doctor");
     else router.push("/");
+  } else {
+    error.value = true;
   }
 };
 </script>
+
+<style scoped>
+.visible {
+  visibility: visible;
+}
+</style>
