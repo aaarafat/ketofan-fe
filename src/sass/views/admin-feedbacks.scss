@@ -1,0 +1,60 @@
+.feedbacks {
+  padding: 1em;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid $N1;
+
+  .feedback {
+    width: 100%;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    border: 1px solid $N1;
+    .head {
+      color: $B1;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid $N1;
+      line-height: normal;
+      margin-bottom: 1em;
+      justify-content: space-between;
+      span {
+        font-size: 22px;
+        margin-right: 1em;
+      }
+      .note {
+        cursor: pointer;
+      }
+    }
+    .options {
+      color: $N4;
+      .delete {
+        transition: 0.5s;
+        cursor: pointer;
+        &:hover {
+          color: $P2;
+        }
+      }
+    }
+    .body {
+      display: flex;
+      flex-direction: column;
+      .details {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .message {
+        padding: 1em;
+        margin: 1em;
+        border: 1px dashed $N3;
+        line-height: normal;
+      }
+    }
+    .time {
+      margin-top: 0.2em;
+      font-size: 16px;
+      color: $N3;
+    }
+  }
+}

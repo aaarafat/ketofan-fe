@@ -5,16 +5,21 @@ import About from "../views/About.vue";
 import SearchBy from "../views/SearchBy.vue";
 import Search from "../views/Search.vue";
 import ContactUs from "../views/ContactUs.vue";
+import ConfirmBooking from "../views/ConfirmBooking.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import DoctorLayout from "../layouts/DoctorLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
+import AdminLayout from "../layouts/AdminLayout.vue";
 import LifeAtKetofan from "../modules/About/LifeAtKetofan.vue";
 import DoctorAppointments from "../modules/DoctorPanel/DoctorAppointments.vue";
 import DoctorWorkingHours from "../modules/DoctorPanel/DoctorWorkingHours.vue";
+import DoctorsRequests from "../modules/AdminPanel/DoctorsRequests.vue";
+import Feedbacks from "../modules/AdminPanel/Feedbacks.vue";
 import OurTeam from "../modules/About/OurTeam.vue";
 import AboutUs from "../modules/About/AboutUS.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
+import DoctorRequest from "../views/DoctorRequest.vue";
 import { $auth } from "../services/auth";
 import auth from "../store/modules/auth";
 
@@ -39,16 +44,11 @@ const routes = [
         name: "signup",
         component: Signup,
       },
-      // {
-      //   path: "/appointments",
-      //   name: "appointments",
-      //   component: Appointments,
-      // },
-      // {
-      //   path: "/profile",
-      //   name: "profile",
-      //   component: Profile,
-      // },
+      {
+        path: "/confirm/:doctorId/:id",
+        name: "confirmBooking",
+        component: ConfirmBooking,
+      },
     ],
     beforeEnter: (to, from, next) => {
       if ($auth.getRole() === "doctor") next({ name: "DoctorAppointments" });
@@ -76,6 +76,31 @@ const routes = [
     ],
     beforeEnter: (to, from, next) => {
       if ($auth.getRole() !== "doctor") next({ name: "Home" });
+      else next();
+    },
+  },
+  {
+    path: "/admin",
+    name: "AdminLayout",
+    component: AdminLayout,
+    redirect: (to) => {
+      return { path: "/admin/feedbacks" };
+    },
+    children: [
+      {
+        path: "feedbacks",
+        name: "Feedbacks",
+        component: Feedbacks,
+      },
+      {
+        path: "doctors-requests",
+        name: "DoctorsRequests",
+        component: DoctorsRequests,
+      },
+    ],
+    beforeEnter: (to, from, next) => {
+      if ($auth.getRole() !== "admin" && $auth.getRole() !== "super_admin")
+        next({ name: "Home" });
       else next();
     },
   },
@@ -122,19 +147,24 @@ const routes = [
         component: SearchBy,
       },
       {
-        path: "/search/:speciality/:area/:insurance?",
+        path: "/search/:specialization/:area/:insurance?",
         name: "search",
         component: Search,
-      },
-      {
-        path: "/:catchAll(.*)",
-        name: "not-found",
-        component: NotFound,
       },
       {
         path: "/contact-us",
         name: "contact-us",
         component: ContactUs,
+      },
+      {
+        path: "/doctor-request",
+        name: "doctor-request",
+        component: DoctorRequest,
+      },
+      {
+        path: "/:catchAll(.*)",
+        name: "not-found",
+        component: NotFound,
       },
     ],
     beforeEnter: (to, from, next) => {

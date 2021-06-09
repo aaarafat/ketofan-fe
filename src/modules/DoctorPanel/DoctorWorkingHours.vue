@@ -50,7 +50,7 @@ const workhours = ref({
   type: "reserve",
   days: [
     {
-      name: "Saturday",
+      day: "Saturday",
       from: "",
       to: "",
       slots: "",
@@ -58,7 +58,7 @@ const workhours = ref({
       working: true,
     },
     {
-      name: "Sunday",
+      day: "Sunday",
       from: "",
       to: "",
       slots: "",
@@ -66,7 +66,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Monday",
+      day: "Monday",
       from: "",
       to: "",
       slots: "",
@@ -74,7 +74,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Tuesday",
+      day: "Tuesday",
       from: "",
       to: "",
       slots: "",
@@ -82,7 +82,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Wedensday",
+      day: "Wedensday",
       from: "",
       to: "",
       slots: "",
@@ -90,7 +90,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Thursday",
+      day: "Thursday",
       from: "",
       to: "",
       slots: "",
@@ -98,7 +98,7 @@ const workhours = ref({
       working: false,
     },
     {
-      name: "Friday",
+      day: "Friday",
       from: "",
       to: "",
       slots: "",
