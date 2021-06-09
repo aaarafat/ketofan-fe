@@ -37,20 +37,19 @@
     const store = useStore();
     const router = useRouter();
 
-    const res = await api.appointments.get();
     const data = ref(null)
      const handelCancel=(idx)=>{
         console.log(idx)
         let id = data[idx].id;
         api.appointments.delete(id).then(()=>{
             api.appointments.get().then((res)=>{
-                data = ref(res.data)
+                data.value = res.data
             })
         })
     }
     onMounted(() => {
         api.appointments.get().then((res)=>{
-            data = ref(res.data)
+            data.value = res.data
         })
     })
 
