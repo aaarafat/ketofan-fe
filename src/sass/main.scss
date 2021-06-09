@@ -16,7 +16,9 @@
 @import "layouts/home-header";
 @import "layouts/header";
 @import "layouts/layouts";
+
 /* Components */
+@import "components/booking-table";
 
 /* Views */
 @import "views/home";
