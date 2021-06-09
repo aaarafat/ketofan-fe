@@ -1,5 +1,5 @@
 <template>
-  <div class="doctor-appointments">
+  <div class="doctor-appointments" v-if="appointments.length">
     <div class="heading">
       <div class="seprator"></div>
       <div class="time">Today</div>
@@ -17,28 +17,20 @@
       <DoctorAppointment :appointment="app" />
     </div>
   </div>
+  <div class="doctor-appointments" v-if="!appointments.length">
+    <h2>No Appointments</h2>
+  </div>
 </template>
 
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, inject } from "vue";
 import DoctorAppointment from "./DoctorAppointment.vue";
-
-const appointments = ref([
-  {
-    id: 1,
-    patient: "احمد وليد",
-    notes: "راجل كبير في السن",
-    date: Date.now(),
-    type: "examination",
-  },
-  {
-    id: 2,
-    patient: "Hassan",
-    notes: "None",
-    date: Date.now() + 864000000,
-    type: "examination",
-  },
-]);
+const api = inject("api");
+api.doctorApps.fetch().then((res) => {
+  console.log(res);
+  appointments.value = res.appointments;
+});
+const appointments = ref([]);
 const todayApps = computed(() => {
   return appointments.value.filter((app) => {
     const day = new Date(Date.now()).getDay();
