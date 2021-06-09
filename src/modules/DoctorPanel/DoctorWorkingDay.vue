@@ -29,11 +29,13 @@
             <option v-for="h in hours" :key="h">{{ h }}</option>
           </select>
         </div>
-        <div class="option" v-if="type === 'reserve'">
+        <div class="option" v-if="type === 'reservation'">
           <span>Duration</span>
           <select v-model="data.duration" @change="handleSelect" id="duration">
             <option disabled value="">Please select one</option>
-            <option v-for="d in duration" :key="d" :value="d">{{ d + " Minutes" }}</option>
+            <option v-for="d in duration" :key="d" :value="d">
+              {{ d + " Minutes" }}
+            </option>
           </select>
         </div>
         <div class="option" v-if="type === 'fifo'">
@@ -60,7 +62,7 @@ const data = ref({
 });
 
 function isInvalid(to, from) {
-  if(!from) return false;
+  if (!from) return false;
   const fromMoment = moment(from, "hh:mm a");
   const toMoment = moment(to, "hh:mm a");
   console.log(fromMoment.isBefore(toMoment));
