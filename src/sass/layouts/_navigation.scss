@@ -1,19 +1,67 @@
 .navbar{
-  
+
   nav{
     background: $B1;
     height: 60px;
     width: 100%;
+    padding-right: 100px;
+    
+    .dropdownMenu{
+      position: absolute;
+      top: 50px;
+      right: unset;
+      // left: 0px;
+      display: block;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: rgb(0 0 0 / 20%) 0px 8px 16px 0px;
+      z-index: 50;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgba(0, 0, 0, 0.23);
+      box-sizing: border-box;
+      padding: 8px;
+      width: unset;
+      direction: inherit;
+      border-radius: 3px !important;
+      div{
+        margin: 5px;
+        color: $B1;
+        height: 30px;
+        cursor: pointer;
+        .icon{
+          position: relative;
+          top: 5px;
+          margin-right: 5px;
+        }
+        a{
+          text-decoration: none;
+          color: $B1;
+          margin-left: 4px;
+        }
+      }
+    }
     .logo{
       color: white;
       font-size: 35px;
       line-height: 60px;
       padding: 0 5%;
       font-weight: bold;
+      a{
+        text-decoration: none;
+      }
+      a:hover{
+        text-decoration: none;
+        color: white;
+      }
+      a:visited{
+        text-decoration: none;
+        color: white;
+      }
     }
     ul{
       float: right;
-      margin-right: 20px;
+      margin-right: 70px;
       hr{
         display: none;
       }
@@ -30,6 +78,8 @@
         color: white;
         font-size: 13px;
         padding: 7px 5px;
+        cursor: pointer;
+        
         .icons{
           display: none;
         }
@@ -62,7 +112,10 @@
   }
 }
 
-
+#dropDownArrow{
+  position: relative;
+  top: 8px;
+}
 
 @media (max-width: $BP0){
   .navbar{
@@ -79,12 +132,12 @@
         display: block;
       }
       .sidebar{
-        right: -3%;
+        right: -69px;
         z-index: 1000;
       }
       ul{
         position: fixed;
-        width: clamp(100px, 30%, 300px);
+        width: clamp(200px, 30%, 300px);
         height: 100%;
         background: $B1;
         top: 0px;
@@ -116,7 +169,7 @@
             margin-right: 20px;
             width:20px;
             margin-left: 10px;
-            
+            box-shadow: red 3px 7px 0px -5px;
           }
           .icons{
             display: inline-block;

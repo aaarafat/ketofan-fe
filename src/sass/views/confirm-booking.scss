@@ -1,0 +1,93 @@
+.confirm-booking {
+  margin: 2em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  max-width: 1170px;
+  min-height: calc(100vh - #{$NH0} - #{$FH0});
+  align-items: center;
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    background: $N0;
+    border-radius: 15px;
+    .pic-wrapper {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background-color: $N2;
+      border: 1px solid $N1;
+      img {
+        width: 100%;
+      }
+      margin: 1em;
+    }
+    .profile {
+      display: flex;
+      margin-left: 150px;
+      .info {
+        padding: 2em;
+        width: 100%;
+        .name {
+          color: $B1;
+          text-transform: uppercase;
+          font-size: larger;
+          margin-bottom: 0.5em;
+        }
+
+        .label {
+          display: flex;
+          align-items: center;
+          margin: 0.5em;
+
+          .icon {
+            color: $B1;
+            margin-right: 0.5em;
+          }
+        }
+        .details {
+          margin: 0 auto;
+          display: flex;
+        }
+      }
+    }
+
+    .timing {
+      width: 100%;
+      margin: 1em 0;
+      background-color: rgb(245, 245, 245);
+      padding: 20px;
+      padding-left: 5em;
+      font-size: x-large;
+      font-weight: 600;
+    }
+  }
+  .options {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+    width: 60%;
+    .confirm {
+      padding: 1em 3em;
+      background-color: $P2;
+      border-radius: 10px;
+      font-size: large;
+      color: $N0;
+      cursor: pointer;
+    }
+    .cancel {
+      padding: 1em 3em;
+      background-color: $N0;
+      border: 1px solid $N1;
+      border-radius: 10px;
+      font-size: large;
+      cursor: pointer;
+    }
+  }
+}
