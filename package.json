@@ -7,7 +7,7 @@
     "back": "vite --mode production",
     "build": "vite build",
     "serve": "vite preview",
-    "start": "npm run dev"
+    "start": "vite --mode production"
   },
   "dependencies": {
     "@smartweb/vue-flash-message": "^1.0.0-alpha.12",
