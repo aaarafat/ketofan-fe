@@ -2,7 +2,7 @@
   <div class="working-day">
     <div class="head">
       <div>
-        {{ day.name }}
+        {{ day.day }}
       </div>
       <div class="switch" @click="handleSwitch">
         <label
