@@ -62,9 +62,7 @@ api.search.get(props.result.id + "/bookings").then((res) => {
       const timeNow = [now.getHours(), now.getMinutes(), now.getSeconds()].join(
         ":"
       );
-      b[d].forEach((slot) => {
-        if (slot.time < timeNow) slot.available = false;
-      });
+      b[d] = b[d].filter((slot) => slot.time >= timeNow);
     } else if (offset === 1) date = "Tomorrow";
     else date = moment().add(offset, "d").format("ddd DD/MM ");
     temp.push({
