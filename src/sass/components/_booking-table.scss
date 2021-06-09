@@ -28,6 +28,11 @@
     }
     .reserved {
       color: red;
+      text-decoration-line: line-through;
+      cursor: not-allowed;
+      &:hover {
+        background-color: $N0;
+      }
     }
     .head {
       cursor: auto;

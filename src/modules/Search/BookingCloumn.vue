@@ -18,10 +18,20 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
-let props = defineProps({ day: Object });
+import axios from "axios";
+import { defineProps, ref, inject } from "vue";
+import { useRouter } from "vue-router";
+import { $auth } from "../../services/auth";
+const router = useRouter();
+const api = inject("api");
+let props = defineProps({ day: Object, doctorId: Number });
 const handleClick = (e, s) => {
-  console.log(s);
+  if (!s.available) return;
+
+  router.push({
+    path: `/confirm/${props.doctorId}/${s.id}`,
+    query: { time: s.time.slice(0, 5), day: props.day.date },
+  });
 };
 </script>
 

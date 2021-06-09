@@ -5,24 +5,26 @@
         <img :src="url" />
       </div>
       <div class="info">
-        <span class="name"> {{ result.name }}</span>
+        <div class="name">{{ result.name }}</div>
+        <div class="bio">{{ result.bio }}</div>
         <div class="specialty label">
           <span class="material-icons-outlined icon"> medication </span>
-          <span> speciality </span>
+          <span> {{ result.specialization }} </span>
         </div>
         <div class="area label">
           <span class="material-icons-outlined icon"> place </span>
-          <span> area </span>
+          <span> {{ result.area }} </span>
         </div>
         <div class="fees label">
           <span class="material-icons-outlined icon"> payments </span>
-          <span> 750LE </span>
+          <span> {{ result.fees }} LE</span>
         </div>
       </div>
     </div>
 
     <div class="bookings" v-if="loaded">
-      <BookingTable :days="days" />
+      <BookingTable :days="days" :doctorId="props.result.id" />
+      <p>Appointments reservation</p>
     </div>
   </div>
 </template>
@@ -50,8 +52,6 @@ api.search.get(props.result.id + "/bookings").then((res) => {
   let b = res.bookings;
   let temp = [];
   const today = new Date().getDay();
-  console.log(moment().format("ddd DD/MM "));
-
   let date = "";
   Object.keys(b).forEach((d) => {
     let offset = (weekDays[d] - today + 7) % 7;
@@ -66,7 +66,6 @@ api.search.get(props.result.id + "/bookings").then((res) => {
     });
   });
   temp.sort((a, b) => (a.offset > b.offset ? 1 : b.offset > a.offset ? -1 : 0));
-  console.log(props.result.name, temp);
   days.value = temp;
   loaded.value = true;
 });

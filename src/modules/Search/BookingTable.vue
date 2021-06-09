@@ -1,9 +1,9 @@
 <template>
   <div class="booking-table">
     <swiper :slides-per-view="3" :scrollbar="{ draggable: true }" virtual>
-      <swiper-slide v-for="(d, i) in days" :key="d.id" :virtualIndex="i"
-        ><BookingColumn :day="d"
-      /></swiper-slide>
+      <swiper-slide v-for="(d, i) in days" :key="d.id" :virtualIndex="i">
+        <BookingColumn :day="d" :doctorId="doctorId" />
+      </swiper-slide>
     </swiper>
   </div>
 </template>
@@ -27,7 +27,7 @@ import "swiper/components/pagination/pagination.scss";
 import "swiper/components/scrollbar/scrollbar.scss";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Virtual]);
 
-let props = defineProps({ days: Array });
+let props = defineProps({ days: Array, doctorId: Number });
 </script>
 
 <style></style>

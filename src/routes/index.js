@@ -5,6 +5,7 @@ import About from "../views/About.vue";
 import SearchBy from "../views/SearchBy.vue";
 import Search from "../views/Search.vue";
 import ContactUs from "../views/ContactUs.vue";
+import ConfirmBooking from "../views/ConfirmBooking.vue";
 import DefaultLayout from "../layouts/DefaultLayout.vue";
 import DoctorLayout from "../layouts/DoctorLayout.vue";
 import HeaderLayout from "../layouts/HeaderLayout.vue";
@@ -41,6 +42,11 @@ const routes = [
         path: "/signup",
         name: "signup",
         component: Signup,
+      },
+      {
+        path: "/confirm/:doctorId/:id",
+        name: "confirmBooking",
+        component: ConfirmBooking,
       },
     ],
     beforeEnter: (to, from, next) => {
