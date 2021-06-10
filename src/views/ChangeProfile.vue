@@ -5,7 +5,7 @@
       <Form
         @submit="onSubmit"
         :validation-schema="schema"
-        ref="formRef"
+        :ref="formRef"
         :initial-values="user.user"
       >
         <FormGroup
@@ -50,25 +50,25 @@
 </template>
 
 <script setup>
-import FormGroup from "../modules/ChangeProfile/FormGroup.vue";
-import { Form } from "vee-validate";
-import * as Yup from "yup";
-import { inject, reactive, ref, onMounted } from "vue";
-import { flashMessage } from "@smartweb/vue-flash-message";
-import { useRouter } from "vue-router";
-import { useStore } from "vuex";
+import FormGroup from '../modules/ChangeProfile/FormGroup.vue';
+import { Form } from 'vee-validate';
+import * as Yup from 'yup';
+import { inject, reactive, ref, onMounted } from 'vue';
+import { flashMessage } from '@smartweb/vue-flash-message';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
 const schema = Yup.object().shape({
-  name: Yup.string().required().label("Name"),
-  email: Yup.string().email().required().label("Email Address"),
+  name: Yup.string().required().label('Name'),
+  email: Yup.string().email().required().label('Email Address'),
   mobileNumber: Yup.string()
-    .matches(/^((\+2)|2)?01[0125]\d{8}$/, "Mobile Number is invalid")
+    .matches(/^((\+2)|2)?01[0125]\d{8}$/, 'Mobile Number is invalid')
     .required()
-    .label("Mobile Number"),
-  dateOfBirth: Yup.date().required().label("Birthdate"),
+    .label('Mobile Number'),
+  dateOfBirth: Yup.date().required().label('Birthdate'),
 });
 
-const api = inject("api");
+const api = inject('api');
 const store = useStore();
 const router = useRouter();
 const user = ref({});
@@ -78,27 +78,27 @@ onMounted(async () => {
 });
 
 const handleCancel = () => {
-  router.push("/");
+  router.push('/');
 };
 
 const onSubmit = async (values, { setErrors }) => {
   const data = {
     name: values.name,
-    gender: "M",
+    gender: 'M',
     dateOfBirth: values.dateOfBirth,
     mobileNumber: values.mobileNumber,
   };
   console.log(data);
   try {
-    const res = await api.profile.put(user.id, { ...data }, "", true);
-    store.dispatch("setUser", res);
+    const res = await api.profile.put(user.id, { ...data }, '', true);
+    store.dispatch('setUser', res);
     console.log(res);
     if (res) {
-      store.dispatch("setUser", res);
+      store.dispatch('setUser', res);
     }
     flashMessage.show({
-      type: "success",
-      title: "Updated Successfully",
+      type: 'success',
+      title: 'Updated Successfully',
     });
   } catch (err) {
     console.log(err);
@@ -114,9 +114,9 @@ const onSubmit = async (values, { setErrors }) => {
       setErrors(errors);
     } else {
       flashMessage.show({
-        type: "error",
-        title: "Something Wrong Happened.",
-        text: "Please try again later.",
+        type: 'error',
+        title: 'Something Wrong Happened.',
+        text: 'Please try again later.',
       });
     }
   }
