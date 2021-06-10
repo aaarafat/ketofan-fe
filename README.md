@@ -94,7 +94,7 @@ npm run back
 
 3. Running on production
 
-Upon creating `.env.development` like in [Environmental Variables](#environmental-variables) section. run this script:
+Upon creating `.env.production` like in [Environmental Variables](#environmental-variables) section. run this script:
 
 ```sh
 npm run build
