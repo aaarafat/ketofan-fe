@@ -65,12 +65,13 @@ api.search.get(props.result.id + "/bookings").then((res) => {
       b[d] = b[d].filter((slot) => slot.time >= timeNow);
     } else if (offset === 1) date = "Tomorrow";
     else date = moment().add(offset, "d").format("ddd DD/MM ");
-    temp.push({
-      offset,
-      slots: b[d],
-      day: d,
-      date,
-    });
+    if (b[d].length > 0)
+      temp.push({
+        offset,
+        slots: b[d],
+        day: d,
+        date,
+      });
   });
   temp.sort((a, b) => (a.offset > b.offset ? 1 : b.offset > a.offset ? -1 : 0));
   days.value = temp;
