@@ -5,7 +5,6 @@
       <Form
         @submit="onSubmit"
         :validation-schema="schema"
-        :ref="formRef"
         :initial-values="user.user"
       >
         <FormGroup
