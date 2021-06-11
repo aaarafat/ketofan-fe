@@ -137,6 +137,159 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ![image](https://user-images.githubusercontent.com/35429211/121379791-ab126280-c944-11eb-8e05-2c2d8e91beab.png)
 
+## File Structure
+``` bash
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── img
+│   │   │   ├── about-us
+│   │   │   │   ├── lido.jpg
+│   │   │   │   ├── pablo.jpg
+│   │   │   │   └── veryh.jpeg
+│   │   │   ├── headerbg.png
+│   │   │   ├── homebg.jpg
+│   │   │   └── moh.png
+│   │   └── logo.png
+│   ├── common
+│   │   └── components
+│   │       ├── Footer.vue
+│   │       ├── Header.vue
+│   │       └── Navbar.vue
+│   ├── layouts
+│   │   ├── AdminLayout.vue
+│   │   ├── DefaultLayout.vue
+│   │   ├── DoctorLayout.vue
+│   │   └── HeaderLayout.vue
+│   ├── main.js
+│   ├── modules
+│   │   ├── About
+│   │   │   ├── AboutSideBar.vue
+│   │   │   ├── AboutUs.vue
+│   │   │   ├── LifeAtKetofan.vue
+│   │   │   └── OurTeam.vue
+│   │   ├── AdminPanel
+│   │   │   ├── AdminNavbar.vue
+│   │   │   ├── DoctorRequest.vue
+│   │   │   ├── DoctorsRequests.vue
+│   │   │   ├── Feedback.vue
+│   │   │   └── Feedbacks.vue
+│   │   ├── Appointments
+│   │   │   └── Appointment.vue
+│   │   ├── ChangeProfile
+│   │   │   └── FormGroup.vue
+│   │   ├── ContactUs
+│   │   │   ├── ContactForm.vue
+│   │   │   ├── FormGroup.vue
+│   │   │   └── Info.vue
+│   │   ├── DoctorPanel
+│   │   │   ├── DoctorAppointment.vue
+│   │   │   ├── DoctorAppointments.vue
+│   │   │   ├── DoctorNavbar.vue
+│   │   │   ├── DoctorWorkingDay.vue
+│   │   │   └── DoctorWorkingHours.vue
+│   │   ├── DoctorRequest
+│   │   │   ├── DoctorForm.vue
+│   │   │   ├── DropDown.vue
+│   │   │   ├── FormGroup.vue
+│   │   │   └── UploadPhoto.vue
+│   │   ├── Header
+│   │   │   ├── HeaderSearchBar.vue
+│   │   │   ├── HeaderSearchInputTab.vue
+│   │   │   └── HeaderSearchTab.vue
+│   │   ├── Home
+│   │   │   ├── ChooseFrom.vue
+│   │   │   ├── ChooseTopSpecialties.vue
+│   │   │   └── HomeHeader.vue
+│   │   ├── Navbar
+│   │   │   ├── ListItem.vue
+│   │   │   └── Menu.vue
+│   │   └── Search
+│   │       ├── BookingCloumn.vue
+│   │       ├── BookingTable.vue
+│   │       └── SearchResult.vue
+│   ├── outside.js
+│   ├── plugins
+│   │   ├── loading
+│   │   │   ├── css
+│   │   │   │   └── index.css
+│   │   │   ├── index.js
+│   │   │   ├── loaders
+│   │   │   │   ├── bars.vue
+│   │   │   │   ├── dots.vue
+│   │   │   │   ├── index.js
+│   │   │   │   └── spinner.vue
+│   │   │   └── main
+│   │   │       └── Component.vue
+│   │   └── storePlugins.js
+│   ├── routes
+│   │   └── index.js
+│   ├── sass
+│   │   ├── abstracts
+│   │   │   ├── _mixins.scss
+│   │   │   └── _variables.scss
+│   │   ├── base
+│   │   │   ├── _fonts.scss
+│   │   │   ├── _global.scss
+│   │   │   ├── _reset.scss
+│   │   │   └── _typography.scss
+│   │   ├── components
+│   │   │   └── _booking-table.scss
+│   │   ├── layouts
+│   │   │   ├── _admin-nav.scss
+│   │   │   ├── _doctor-nav.scss
+│   │   │   ├── _footer.scss
+│   │   │   ├── _header.scss
+│   │   │   ├── _home-header.scss
+│   │   │   ├── _layouts.scss
+│   │   │   └── _navigation.scss
+│   │   ├── main.scss
+│   │   └── views
+│   │       ├── about.scss
+│   │       ├── admin-feedbacks.scss
+│   │       ├── admin-requests.scss
+│   │       ├── appointments.scss
+│   │       ├── confirm-booking.scss
+│   │       ├── contact-us.scss
+│   │       ├── doctor-appointments.scss
+│   │       ├── doctor-request.scss
+│   │       ├── doctor-workhours.scss
+│   │       ├── home.scss
+│   │       ├── login.scss
+│   │       ├── profile.scss
+│   │       ├── search-by.scss
+│   │       ├── search.scss
+│   │       └── signup.scss
+│   ├── services
+│   │   ├── api.js
+│   │   └── auth.js
+│   ├── static
+│   │   └── db.json
+│   ├── store
+│   │   ├── index.js
+│   │   └── modules
+│   │       ├── auth.js
+│   │       ├── cities.js
+│   │       ├── doctorRequests.js
+│   │       ├── feedbacks.js
+│   │       ├── insurances.js
+│   │       └── specialties.js
+│   └── views
+│       ├── About.vue
+│       ├── Appointments.vue
+│       ├── ChangeProfile.vue
+│       ├── ConfirmBooking.vue
+│       ├── ContactUs.vue
+│       ├── DoctorRequest.vue
+│       ├── Home.vue
+│       ├── Login.vue
+│       ├── NotFound.vue
+│       ├── Search.vue
+│       ├── SearchBy.vue
+│       └── Signup.vue
+└── vite.config.js
+```
+
 ## Contributers
 
 <table>
