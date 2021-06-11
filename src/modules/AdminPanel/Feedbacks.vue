@@ -10,14 +10,16 @@
 </template>
 
 <script setup>
-import { inject, ref } from "vue";
+import { inject, ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import Feedback from "./Feedback.vue";
 const store = useStore();
 const feedbacks = ref([]);
-store.dispatch("fetchFeedbacks").then(() => {
-  feedbacks.value = store.getters.allFeedbacks;
-  console.log(feedbacks.value);
+onMounted(() => {
+  store.dispatch("fetchFeedbacks").then(() => {
+    feedbacks.value = store.getters.allFeedbacks;
+    console.log(feedbacks.value);
+  });
 });
 const handleDelete = (id) => {
   console.log("deleeeeeeeete");

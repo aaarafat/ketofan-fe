@@ -90,7 +90,11 @@ const onSubmit = async (values, { setErrors }) => {
   };
   console.log(data);
   try {
-    const res = await api.profile.put(user.id, { ...data }, "", true);
+    const options = {
+      throwError: true,
+      isLoading: true
+    };
+    const res = await api.profile.put(user.id, { ...data }, "", options);
     store.dispatch("setUser", res);
     console.log(res);
     if (res) {

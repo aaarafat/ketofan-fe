@@ -1,8 +1,8 @@
 <template>
   <div class="login">
     <div class="loginTitle">Login</div>
-    <div class="error-login" :class="{ visible: error}">
-      The credentials you entered is invalid.<br>
+    <div class="error-login" v-show="error">
+      The credentials you entered is invalid.<br />
       New user? <router-link to="signup">Create an account.</router-link>
     </div>
     <div class="formBody">
@@ -26,7 +26,13 @@
           v-model="data.password"
         />
       </div>
-      <button class="loginButton loginInput" @click="handleLogin">Login</button>
+      <button
+        class="loginButton loginInput"
+        @click="handleLogin"
+        :disabled="loading == true"
+      >
+        Login
+      </button>
     </div>
 
     <!-- <div class="formSeparator">
@@ -57,8 +63,10 @@ const store = useStore();
 const router = useRouter();
 const data = reactive({ email: "", password: "" });
 const error = ref(false);
+const loading = ref(false);
 const handleLogin = async () => {
   console.log(data.email, data.password);
+  loading.value = true;
   const res = await api.signin.post({ ...data });
   if (res) {
     store.dispatch("setUser", res);
@@ -67,12 +75,8 @@ const handleLogin = async () => {
     else router.push("/");
   } else {
     error.value = true;
+    loading.value = false;
   }
 };
 </script>
 
-<style scoped>
-.visible {
-  visibility: visible;
-}
-</style>

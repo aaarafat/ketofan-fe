@@ -55,7 +55,11 @@ const api = inject("api");
 
 async function onSubmit(values, { resetForm, setErrors }) {
   try {
-    const response = await api.contactUs.post(values, true);
+    const options = {
+      throwError: true,
+      isLoading: true
+    };
+    const response = await api.contactUs.post(values, options);
     flashMessage.show({
       type: "success",
       title: "Feedback Sent Successfully",

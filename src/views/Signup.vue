@@ -162,7 +162,11 @@ const handleSubmit = async () => {
   if (!enableSubmit) return;
 
   try {
-    const res = await api.register.post({ ...data }, true);
+    const options = {
+      throwError: true,
+      isLoading: true
+    };
+    const res = await api.register.post({ ...data }, options);
     console.log(res);
     store.dispatch("setUser", res);
     if (store.getters.isDoctor) router.push("/doctor");

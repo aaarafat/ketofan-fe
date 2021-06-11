@@ -7,7 +7,7 @@
       In case of acceptance we are going to send your password by email.
     </span>
   </div>
-  <Form class="form-container" @submit="onSubmit" :validation-schema="schema">
+  <Form class="form-container" @submit="onSubmit" :validation-schema="schema" ref="formRef">
     <div class="flex-container">
       <div class="fields-container">
         <div class="name-field">
@@ -106,6 +106,8 @@ import { Form } from "vee-validate";
 import { flashMessage } from "@smartweb/vue-flash-message";
 import * as Yup from "yup";
 
+const formRef = ref(null);
+
 const api = inject("api");
 const SUPPORTED_FILE = ["image/jpeg", "image/jpg", "image/png"];
 const BACK_TO_FRONT_MAP = {
@@ -134,7 +136,11 @@ async function onSubmit(values, { resetForm, setErrors }) {
   formData.append("areaId", values.area.id);
   formData.append("mobileNumber", values.mobile);
   try {
-    const response = await api.doctorsRequests.post(formData, true);
+    const options = {
+      throwError: true,
+      isLoading: true,
+    };
+    const response = await api.doctorsRequests.post(formData, options);
     router.push("/");
     flashMessage.show({
       type: "success",
@@ -143,6 +149,7 @@ async function onSubmit(values, { resetForm, setErrors }) {
     });
     resetForm(); //success
   } catch (err) {
+    console.log(err);
     console.log(err.response.data);
     if (err.response.data.status === 400) {
       const errors = err.response.data.errors.reduce(
